@@ -1,0 +1,19 @@
+﻿@model AddressViewModel
+<p></p>
+    <form method="post" action="~/Home/InputPage" class="form-horizontal" role="form">
+        <input style="width: 70%;" type="text" name="FullAddress" value="@ViewBag.FuzzyInput" />
+        <input type="submit" value="Разбить Адрес и вывести в текстовые поля" />
+    </form>
+    <p></p>
+    <form method="post" action="~/Home/OutputPage" class="form-horizontal" role="form">
+        <input type="text" readonly name="PostIndex" value="@ViewBag.Postindex" />
+        <input type="text" readonly name="State" value="@ViewBag.State" />
+        <input type="text" readonly name="City" value="@ViewBag.City" />
+        <input type="text" readonly name="Street" value="@ViewBag.Street" />
+        <input type="text" readonly name="House" value="@ViewBag.House" />
+        <input type="text" readonly name="Housing" value="@ViewBag.Housing" />
+        <input type="text" readonly name="Apartment" value="@ViewBag.Apartment" />
+        <input type="text" readonly name="District" value="@ViewBag.District" />
+        <input type="text" readonly name="Village" value="@ViewBag.Village" />
+        <input type="submit" value="Далее" />
+    </form>

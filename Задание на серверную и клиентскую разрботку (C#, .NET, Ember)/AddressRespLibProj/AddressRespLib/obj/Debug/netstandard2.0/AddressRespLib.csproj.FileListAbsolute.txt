@@ -1,0 +1,9 @@
+E:\AddressRespLibProj\AddressRespLib\bin\Debug\netstandard2.0\AddressRespLib.deps.json
+E:\AddressRespLibProj\AddressRespLib\bin\Debug\netstandard2.0\AddressRespLib.dll
+E:\AddressRespLibProj\AddressRespLib\bin\Debug\netstandard2.0\AddressRespLib.pdb
+E:\AddressRespLibProj\AddressRespLib\obj\Debug\netstandard2.0\AddressRespLib.csprojAssemblyReference.cache
+E:\AddressRespLibProj\AddressRespLib\obj\Debug\netstandard2.0\AddressRespLib.csproj.CoreCompileInputs.cache
+E:\AddressRespLibProj\AddressRespLib\obj\Debug\netstandard2.0\AddressRespLib.AssemblyInfoInputs.cache
+E:\AddressRespLibProj\AddressRespLib\obj\Debug\netstandard2.0\AddressRespLib.AssemblyInfo.cs
+E:\AddressRespLibProj\AddressRespLib\obj\Debug\netstandard2.0\AddressRespLib.dll
+E:\AddressRespLibProj\AddressRespLib\obj\Debug\netstandard2.0\AddressRespLib.pdb

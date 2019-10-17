@@ -1,0 +1,24 @@
+﻿@model AddressViewModel
+<p></p>
+
+<form method="post" action="~/Home/InputPage" class="form-horizontal" role="form">
+    <input type="hidden" name="FullAddress" value="@ViewBag.StandartOutput" />
+    <input type="submit" value="Назад" />
+</form>
+<p></p>
+<form method="post" action="~/Home/OutputPage" class="form-horizontal" role="form">
+    <input type="text" name="PostIndex" value="@ViewBag.PostIndex" />
+    <input type="text" name="State" value="@ViewBag.State" />
+    <input type="text" name="City" value="@ViewBag.City" />
+    <input type="text" name="Street" value="@ViewBag.Street" />
+    <input type="text" name="House" value="@ViewBag.House" />
+    <input type="text" name="Housing" value="@ViewBag.Housing" />
+    <input type="text" name="Apartment" value="@ViewBag.Apartment" />
+    <input type="text" name="District" value="@ViewBag.District" />
+    <input type="text" name="Village" value="@ViewBag.Village" />
+    <p></p>
+    <p>
+        <input style="width: 70%;" type="text" readonly value="@ViewBag.StandartOutput" />
+        <input type="submit" value="Составить стандартизированный адрес" />
+    </p>
+</form>
