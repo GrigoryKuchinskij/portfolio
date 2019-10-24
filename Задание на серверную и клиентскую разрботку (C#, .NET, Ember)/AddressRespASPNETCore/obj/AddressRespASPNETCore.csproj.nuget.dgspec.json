@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\AddressRespASPNETCore\\AddressRespASPNETCore\\AddressRespASPNETCore.csproj": {}
+    "E:\\address-recognition\\AddressRespASPNETCore\\AddressRespASPNETCore.csproj": {}
   },
   "projects": {
-    "E:\\AddressRespASPNETCore\\AddressRespASPNETCore\\AddressRespASPNETCore.csproj": {
+    "E:\\address-recognition\\AddressRespASPNETCore\\AddressRespASPNETCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\AddressRespASPNETCore\\AddressRespASPNETCore\\AddressRespASPNETCore.csproj",
+        "projectUniqueName": "E:\\address-recognition\\AddressRespASPNETCore\\AddressRespASPNETCore.csproj",
         "projectName": "AddressRespASPNETCore",
-        "projectPath": "E:\\AddressRespASPNETCore\\AddressRespASPNETCore\\AddressRespASPNETCore.csproj",
+        "projectPath": "E:\\address-recognition\\AddressRespASPNETCore\\AddressRespASPNETCore.csproj",
         "packagesPath": "C:\\Users\\grigory\\.nuget\\packages\\",
-        "outputPath": "E:\\AddressRespASPNETCore\\AddressRespASPNETCore\\obj\\",
+        "outputPath": "E:\\address-recognition\\AddressRespASPNETCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
