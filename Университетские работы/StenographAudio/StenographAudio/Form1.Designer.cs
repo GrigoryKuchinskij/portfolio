@@ -54,9 +54,9 @@
             this.TxBxDecryptBit = new System.Windows.Forms.TextBox();
             this.DestForDecrFileTxBx = new System.Windows.Forms.TextBox();
             this.EncrFileSearchTxBx = new System.Windows.Forms.TextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -351,14 +351,14 @@
             this.EncrFileSearchTxBx.Size = new System.Drawing.Size(938, 24);
             this.EncrFileSearchTxBx.TabIndex = 0;
             // 
-            // openFileDialog1
+            // openFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog.FileName = "openFileDialog";
             // 
-            // timer1
+            // timer
             // 
-            this.timer1.Interval = 90;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick_1);
+            this.timer.Interval = 90;
+            this.timer.Tick += new System.EventHandler(this.Timer_Tick_1);
             // 
             // Form1
             // 
@@ -367,12 +367,12 @@
             this.ClientSize = new System.Drawing.Size(1005, 315);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.HelpButton = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.Text = "SteganografAudio";
-            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
+            //this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -405,13 +405,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ProgressBar progrBarEncr;
         private System.Windows.Forms.ProgressBar progrBarDecr;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
