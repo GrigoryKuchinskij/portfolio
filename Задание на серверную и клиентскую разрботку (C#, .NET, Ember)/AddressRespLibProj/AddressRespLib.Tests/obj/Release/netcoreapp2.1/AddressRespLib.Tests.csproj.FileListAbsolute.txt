@@ -1,7 +1,9 @@
-E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.csprojAssemblyReference.cache
-E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.csproj.CoreCompileInputs.cache
-E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.AssemblyInfoInputs.cache
-E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.AssemblyInfo.cs
+E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\NUnit3.TestAdapter.dll
+E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\NUnit3.TestAdapter.pdb
+E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\nunit.engine.dll
+E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\nunit.engine.api.dll
+E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\testhost.exe
+E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\testhost.dll
 E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
 E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
@@ -12,6 +14,11 @@ E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\AddressResp
 E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\AddressRespLib.Tests.pdb
 E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\AddressRespLib.dll
 E:\AddressRespLibProj\AddressRespLib.Tests\bin\Release\netcoreapp2.1\AddressRespLib.pdb
+E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.csprojAssemblyReference.cache
+E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.AssemblyInfoInputs.cache
+E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.AssemblyInfo.cs
+E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.csproj.CoreCompileInputs.cache
 E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.csproj.CopyComplete
 E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.dll
 E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.pdb
+E:\AddressRespLibProj\AddressRespLib.Tests\obj\Release\netcoreapp2.1\AddressRespLib.Tests.genruntimeconfig.cache

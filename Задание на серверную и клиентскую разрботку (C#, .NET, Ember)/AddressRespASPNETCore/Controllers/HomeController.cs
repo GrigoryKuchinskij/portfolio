@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AddressRespASPNETCore.Models;
-using System.Net;
-using System.Net.Http;
-using System.Web;
-using System.Web.Http;
+//using System.Web.Http;
 
 namespace AddressRespASPNETCore.Controllers
 {
