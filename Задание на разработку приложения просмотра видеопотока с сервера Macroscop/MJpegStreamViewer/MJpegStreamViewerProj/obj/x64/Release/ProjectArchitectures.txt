@@ -1,0 +1,1 @@
+E:\MJpegStreamViewer\MJpegStreamViewer\MJpegStreamViewerProj\MJpegStreamViewerProj.csproj;x64

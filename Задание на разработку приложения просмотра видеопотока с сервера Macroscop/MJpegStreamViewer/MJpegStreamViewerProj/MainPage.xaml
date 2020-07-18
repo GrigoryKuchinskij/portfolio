@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="MJpegStreamViewerProj.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="240" MinHeight="160" d:DesignWidth="640" d:DesignHeight="480">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>        
+        <muxc:Button muxc:Grid.Row="0" x:Name="getChannelsBtn" Content="Получить список каналов" Margin="10,10,10,10" VerticalAlignment="Bottom" Click="getChannelsBtn_Click" HorizontalAlignment="Right" TabIndex="0"/>
+        <TextBox Grid.Row="0" x:Name="requestUriTBox" Header="Введите URL-запрос конфигурации c сервера видеонаблюдения:" PlaceholderText="URL" Margin="10,10,201,10" VerticalAlignment="Top" TextChanging="requestUriTBox_TextChanging" LostFocus="requestUriTBox_LostFocus" XYFocusKeyboardNavigation="Auto" TabIndex="1" />
+        <ListBox Grid.Row="1" x:Name="channelsListBox" Margin="0,0,0,0" SelectionChanged="channelsListBox_SelectionChanged" TabIndex="2"/>
+        <Grid Grid.Row="1" x:Name="shadeListBoxGrid" Background="Black" Margin="0,0,0,0" Opacity="0.5"/>
+        <TextBlock  Grid.Row="1" x:Name="overListBoxCenterText" Text="message" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" TextAlignment="Center"/>
+        <ProgressRing x:Name="ListProgressRing"  Grid.Row="1" IsActive="False" Width="60" Height="60" />
+        <TextBox muxc:Grid.Row="2" x:Name="serverPartUriTBox" Header="URL адрес запроса видеопотока с сервера:" PlaceholderText="URL" Margin="10,10,10,10" VerticalAlignment="Center" TextChanging="serverPartUriTBox_TextChanging" LostFocus="serverPartUriTBox_LostFocus" TabIndex="3" />
+    </Grid>
+</Page>
