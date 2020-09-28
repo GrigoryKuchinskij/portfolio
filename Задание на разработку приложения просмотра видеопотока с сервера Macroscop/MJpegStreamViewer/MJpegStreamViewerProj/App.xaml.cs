@@ -59,10 +59,6 @@ namespace MJpegStreamViewerProj
 
                 // Размещение фрейма в текущем окне
                 Window.Current.Content = rootFrame;
-                
-
-
-
             }
 
             if (e.PrelaunchActivated == false)

@@ -17,7 +17,6 @@ namespace MJpegStreamViewerProj
         private readonly string confErrorMsg = "Ошибка запроса конфигурации. ";
         private readonly string streamUriInpErrorMsg = "Ошибка ввода URI запроса видеопотока.";
 
-        //public BitmapImage BitmapImage; //{ get; set; }
         public MainPage()
         {
             this.InitializeComponent();            

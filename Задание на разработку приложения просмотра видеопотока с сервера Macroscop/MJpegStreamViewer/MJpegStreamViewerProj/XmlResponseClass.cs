@@ -23,8 +23,6 @@ namespace MJpegStreamViewerProj
             List<string> resolutionList = new List<string>();
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(stream);
-            //xDoc.Load("D://users.xml");
-            // получим корневой элемент
             XmlNodeList channelXMLList = xDoc.GetElementsByTagName("ChannelInfo");
             XmlNodeList resolutionXMLList = xDoc.GetElementsByTagName("ResolutionInfo");
             for (int i = 0; i < channelXMLList.Count; i++)
