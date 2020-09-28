@@ -47,14 +47,13 @@ namespace PolygonConsoleApp
                 "\r\n Пример:> ./PolygonConsoleApp.exe s=\"C:\\Temp\\Координаты_отрезков.csv\" p=\"C:\\Temp\\Координаты_углов_многоугольника.csv\"" +
                 "\r\n Приложение может работать с выпуклыми и невыпуклыми многоугольниками без самопересечений." +
                 "\r\n \r\n Нажмите Enter для начала расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода." +
-                "\r\n>>");
-            string inpString = Console.ReadLine();
+                "\r\n>>");            
             while (true)
             {
-                switch(inpString)
+                string inpString = Console.ReadLine().ToLower();
+                switch (inpString)
                 {
                     case "h":
-                    case "H":
                         Console.Write("\r\n Координаты отрезков задаются построчно (по ум. в файле \"segments.csv\"). Формат: {X начала отрезка};{Y начала отрезка};{X конца отрезка};{Y конца отрезка} " +
                         "\r\n Пример строки: 62,076745;79,945621;64,819002;84,763976" +
                         "\r\n Координаты углов многоугольника задаются построчно (по ум. в файле \"polygonPoints.csv\"). Формат: {X точки};{Y точки}" +
@@ -63,7 +62,6 @@ namespace PolygonConsoleApp
                         "\r\n>>");
                         break;
                     case "x":
-                    case "X":
                         Environment.Exit(0);
                         break;
                     case "":
@@ -74,7 +72,6 @@ namespace PolygonConsoleApp
                 }
                 Console.Write("\r\n \r\n Нажмите Enter для расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода." +
                 "\r\n>>");
-                inpString = Console.ReadLine();
             }
         }
 
