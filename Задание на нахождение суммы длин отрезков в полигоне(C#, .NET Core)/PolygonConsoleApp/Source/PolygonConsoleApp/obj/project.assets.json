@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\PolygonConsoleApp.csproj",
+      "projectUniqueName": "E:\\portfclone\\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\PolygonConsoleApp.csproj",
       "projectName": "PolygonConsoleApp",
-      "projectPath": "E:\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\PolygonConsoleApp.csproj",
+      "projectPath": "E:\\portfclone\\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\PolygonConsoleApp.csproj",
       "packagesPath": "C:\\Users\\Grigory\\.nuget\\packages\\",
-      "outputPath": "E:\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\obj\\",
+      "outputPath": "E:\\portfclone\\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Grigory\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -24,3 +24,16 @@ E:\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonC
 E:\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.dll
 E:\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.pdb
 E:\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.genruntimeconfig.cache
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Release\netcoreapp3.1\PolygonConsoleApp.exe
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Release\netcoreapp3.1\PolygonConsoleApp.deps.json
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Release\netcoreapp3.1\PolygonConsoleApp.runtimeconfig.json
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Release\netcoreapp3.1\PolygonConsoleApp.runtimeconfig.dev.json
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Release\netcoreapp3.1\PolygonConsoleApp.dll
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Release\netcoreapp3.1\PolygonConsoleApp.pdb
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.csprojAssemblyReference.cache
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.AssemblyInfoInputs.cache
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.AssemblyInfo.cs
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.csproj.CoreCompileInputs.cache
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.dll
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.pdb
+E:\portfclone\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Release\netcoreapp3.1\PolygonConsoleApp.genruntimeconfig.cache

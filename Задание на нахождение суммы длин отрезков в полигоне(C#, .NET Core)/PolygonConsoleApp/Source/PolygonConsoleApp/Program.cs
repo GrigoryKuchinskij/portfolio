@@ -8,44 +8,72 @@ using static PolygonConsoleApp.GeomShapesToCheckForIntersec;
 namespace PolygonConsoleApp
 {
     class Program
-    {
+    {        
         static void Main(string[] args)
         {
+            string polygonPointsFilePath = @"polygonPoints.csv";
+            string segmentsFilePath = @"segments.csv";
+
+            foreach (string arg in args)
+            {
+                switch(arg.Substring(0, 2))
+                {
+                    case "s=":
+                        segmentsFilePath = arg.Substring(2).Trim(new char[] { ' ', '"' });
+                        break;
+                    case "p=":
+                        polygonPointsFilePath = arg.Substring(2).Trim(new char[] { ' ', '"' });
+                        break;
+                }
+            }
+
             List<string[]> polygonPointsList = new List<string[]>();
             List<string[]> segmentsList = new List<string[]>();
-            try {
-                polygonPointsList = ReadCSVFile(@"polygonPoints.csv");
-                segmentsList = ReadCSVFile(@"segments.csv");
-            } catch { Console.WriteLine("Ошибка распознавания файлов polygonPoints.csv и segments.csv!"); Console.ReadKey(); Environment.Exit(0); }
+            try 
+            {
+                polygonPointsList = ReadCSVFile(polygonPointsFilePath);
+                segmentsList = ReadCSVFile(segmentsFilePath);
+            } catch 
+            { 
+                Console.WriteLine("Ошибка распознавания *.csv файлов!" +
+                "\r\n Нажмите Enter для выхода из приложения. "); Console.ReadKey(); Environment.Exit(-1); 
+            }
             Point[] polyPoints = ConvertToPoint(polygonPointsList);
             Segment[] lines = ConvertToSegment(segmentsList);            
-            Console.WriteLine(
+            Console.Write(
                 "\r\n Приложение рассчитывает сумму длин частей отрезков, находящихся внутри многоугольника. " + 
-                "\r\n Координаты отрезков и углов многоугольника задаются файлах \"segments.csv\" и \"polygonPoints.csv\"." +
+                "\r\n Координаты отрезков и углов многоугольника задаются в файлах \"segments.csv\" и \"polygonPoints.csv\", находящихся в папке с программой." +
+                "\r\n Вы также можете самостоятельно задать пути к файлам передав их в качестве аргументов. " +
+                "\r\n Пример:> ./PolygonConsoleApp.exe s=\"C:\\Temp\\Координаты_отрезков.csv\" p=\"C:\\Temp\\Координаты_углов_многоугольника.csv\"" +
                 "\r\n Приложение может работать с выпуклыми и невыпуклыми многоугольниками без самопересечений." +
-                "\r\n \r\n Нажмите Enter для начала расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода.");
+                "\r\n \r\n Нажмите Enter для начала расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода." +
+                "\r\n>>");
             string inpString = Console.ReadLine();
             while (true)
             {
-                if (inpString == "h" || inpString == "H")
+                switch(inpString)
                 {
-                    Console.WriteLine("\r\n Координаты отрезков задаются построчно в файле \"segments.csv\". В формате: {X начала отрезка};{Y начала отрезка};{X конца отрезка};{Y конца отрезка} " +
+                    case "h":
+                    case "H":
+                        Console.Write("\r\n Координаты отрезков задаются построчно (по ум. в файле \"segments.csv\"). Формат: {X начала отрезка};{Y начала отрезка};{X конца отрезка};{Y конца отрезка} " +
                         "\r\n Пример строки: 62,076745;79,945621;64,819002;84,763976" +
-                        "\r\n Координаты углов многоугольника задаются построчно в файле \"polygonPoints.csv\". В формате: {X точки};{Y точки}" +
+                        "\r\n Координаты углов многоугольника задаются построчно (по ум. в файле \"polygonPoints.csv\"). Формат: {X точки};{Y точки}" +
                         "\r\n Пример строки: 62,76284217;79,61893362" +
-                        "\r\n Углы многоугольника описываются последовательно, вдоль его границы.");
-                };
-                if (inpString == "")
-                {
-                    GeomShapesToCheckForIntersec shapesToCheckForIntersec = new GeomShapesToCheckForIntersec(polyPoints, lines);
-                    Console.WriteLine(shapesToCheckForIntersec.calcSegmentsSummInPoly());
-                    GC.Collect();
-                };
-                if (inpString == "x" || inpString == "X")
-                {
-                    break;
-                };
-                Console.WriteLine("\r\n \r\n Нажмите Enter для начала расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода.");
+                        "\r\n Углы многоугольника описываются последовательно, вдоль его границы." +
+                        "\r\n>>");
+                        break;
+                    case "x":
+                    case "X":
+                        Environment.Exit(0);
+                        break;
+                    case "":
+                        GeomShapesToCheckForIntersec shapesToCheckForIntersec = new GeomShapesToCheckForIntersec(polyPoints, lines);
+                        Console.WriteLine(shapesToCheckForIntersec.calcSegmentsSummInPoly());
+                        GC.Collect();
+                        break;
+                }
+                Console.Write("\r\n \r\n Нажмите Enter для расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода." +
+                "\r\n>>");
                 inpString = Console.ReadLine();
             }
         }
