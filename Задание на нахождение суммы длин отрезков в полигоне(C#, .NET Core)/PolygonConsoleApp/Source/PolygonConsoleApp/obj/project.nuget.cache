@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rtEEN+X0fCOoEfOO+lD88GeAo7SvpZ+2CR5HMxEyn+He7uBzawuZ9o6fKDFGNRvA47Ofe77bv80CjYnatRYzAg==",
+  "dgSpecHash": "5iS2t58sRL7yC2HFBDlPdu8b11DdsMCcReT7Rjy0eaq5076u1wLiaKp6lY+BZr0oTjAUq7Kkg2bosRYOFyFbIA==",
   "success": true,
   "projectFilePath": "E:\\portfclone\\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\PolygonConsoleApp.csproj",
   "expectedPackageFiles": [],
