@@ -16,11 +16,9 @@ namespace PolygonConsoleApp
             _lines = lines;
         }
 
-        private static double max(double a, double b) { return (a > b) ? a : b; }
-        private static double min(double a, double b) { return (a < b) ? a : b; }
-        private static double dbs(double a) { return (a < 0.0) ? -a : a; }
+        //private static double dbs(double a) { return (a < 0.0) ? -a : a; }
 
-        public static bool checkIntersectionOfTwoLineSegments(Segment L1, Segment L2, out Segment pointsIntersection) //метод, проверяющий пересекаются ли 2 отрезка [p1, p2] и [pA, pB]
+        public static bool CheckIntersectionOfTwoLineSegments(Segment L1, Segment L2, out Segment pointsIntersection) //метод, проверяющий пересекаются ли 2 отрезка [p1, p2] и [pA, pB]
         {                                                                                                       //и возвращающий истинность пересечения и точку (или отрезок) пересечения
             pointsIntersection = new Segment();
             if (L1 == null || L2 == null) return false;
@@ -38,14 +36,14 @@ namespace PolygonConsoleApp
                 L2.P1 = L2.P2;
                 L2.P2 = tmp;
             }
-            double maxYL1 = max(L1.P1.Y, L1.P2.Y);
-            double minYL1 = min(L1.P1.Y, L1.P2.Y);
-            double maxYL2 = max(L2.P1.Y, L2.P2.Y);
-            double minYL2 = min(L2.P1.Y, L2.P2.Y);
-            double maxXL1 = max(L1.P1.X, L1.P2.X);
-            double minXL1 = min(L1.P1.X, L1.P2.X);
-            double maxXL2 = max(L2.P1.X, L2.P2.X);
-            double minXL2 = min(L2.P1.X, L2.P2.X);
+            double maxYL1 = Math.Max(L1.P1.Y, L1.P2.Y);
+            double minYL1 = Math.Min(L1.P1.Y, L1.P2.Y);
+            double maxYL2 = Math.Max(L2.P1.Y, L2.P2.Y);
+            double minYL2 = Math.Min(L2.P1.Y, L2.P2.Y);
+            double maxXL1 = Math.Max(L1.P1.X, L1.P2.X);
+            double minXL1 = Math.Min(L1.P1.X, L1.P2.X);
+            double maxXL2 = Math.Max(L2.P1.X, L2.P2.X);
+            double minXL2 = Math.Min(L2.P1.X, L2.P2.X);
 
             if (maxXL1 < minXL2) { return false; }                          //проверим существование потенциального интервала для точки пересечения отрезков
             if (maxYL1 < minYL2) { return false; }
@@ -56,8 +54,8 @@ namespace PolygonConsoleApp
                 {
                     if (maxYL1 >= minYL2 && minYL1 <= maxYL2)               //проверим пересекаются ли они, т.е. есть ли у них общий Y
                     {
-                        double maxYi = min(maxYL1, maxYL2);
-                        double minYi = max(minYL1, minYL2);
+                        double maxYi = Math.Min(maxYL1, maxYL2);
+                        double minYi = Math.Max(minYL1, minYL2);
                         if (maxYi == minYi) pointsIntersection = new Segment { P1 = new Point { X = L1.P1.X, Y = maxYi } };
                         else pointsIntersection = new Segment { P1 = new Point { X = L1.P1.X, Y = maxYi }, P2 = new Point { X = L1.P1.X, Y = minYi } };
                         return true;
@@ -72,8 +70,8 @@ namespace PolygonConsoleApp
                 {
                     if (maxXL1 >= minXL2 && minXL1 <= maxXL2)               //проверим пересекаются ли они, т.е. есть ли у них общий Y
                     {
-                        double maxXi = min(maxXL1, maxXL2);
-                        double minXi = max(minXL1, minXL2);
+                        double maxXi = Math.Min(maxXL1, maxXL2);
+                        double minXi = Math.Max(minXL1, minXL2);
                         if (maxXi == minXi) pointsIntersection = new Segment { P1 = new Point { X = minXi, Y = L1.P1.Y } };
                         else pointsIntersection = new Segment { P1 = new Point { X = minXi, Y = L1.P1.Y }, P2 = new Point { X = maxXi, Y = L1.P1.Y } };
                         return true;
@@ -94,7 +92,7 @@ namespace PolygonConsoleApp
                 b2 = L2.P1.Y - A2 * L2.P1.X;
                 Yi = A2 * Xi + b2;
 
-                if (L2.P1.X <= Xi && L2.P2.X >= Xi && min(L1.P1.Y, L1.P2.Y) <= Yi && max(L1.P1.Y, L1.P2.Y) >= Yi)
+                if (L2.P1.X <= Xi && L2.P2.X >= Xi && Math.Min(L1.P1.Y, L1.P2.Y) <= Yi && Math.Max(L1.P1.Y, L1.P2.Y) >= Yi)
                 {
                     pointsIntersection = new Segment { P1 = new Point { X = Xi, Y = Yi } };
                     return true;
@@ -110,7 +108,7 @@ namespace PolygonConsoleApp
                 b1 = L1.P1.Y - A1 * L1.P1.X;
                 Yi = A1 * Xi + b1;
 
-                if (L1.P1.X <= Xi && L1.P2.X >= Xi && min(L2.P1.Y, L2.P2.Y) <= Yi && max(L2.P1.Y, L2.P2.Y) >= Yi)
+                if (L1.P1.X <= Xi && L1.P2.X >= Xi && Math.Min(L2.P1.Y, L2.P2.Y) <= Yi && Math.Max(L2.P1.Y, L2.P2.Y) >= Yi)
                 {
                     pointsIntersection = new Segment { P1 = new Point { X = Xi, Y = Yi } };
                     return true;
@@ -129,12 +127,28 @@ namespace PolygonConsoleApp
                 {
                     if (L1.P1.Y > L1.P2.Y)                                                //если наклон отрезка => \ 
                     {
-                        pointsIntersection = new Segment { P1 = new Point { X = max(minXL1, minXL2), Y = min(maxYL1, maxYL2) }, P2 = new Point { X = min(maxXL1, maxXL2), Y = max(minYL1, minYL2) } };
+                        pointsIntersection = new Segment { 
+                            P1 = new Point 
+                            { 
+                                X = Math.Max(minXL1, minXL2), Y = Math.Min(maxYL1, maxYL2) 
+                            },
+                            P2 = new Point 
+                            { 
+                                X = Math.Min(maxXL1, maxXL2), Y = Math.Max(minYL1, minYL2) 
+                            } };
                         return true;
                     }
                     if (L1.P1.Y < L1.P2.Y)                                                //если наклон отрезка => /
                     {
-                        pointsIntersection = new Segment { P1 = new Point { X = max(minXL1, minXL2), Y = max(minYL1, minYL2) }, P2 = new Point { X = min(maxXL1, maxXL2), Y = min(maxYL1, maxYL2) } };
+                        pointsIntersection = new Segment { 
+                            P1 = new Point 
+                            { 
+                                X = Math.Max(minXL1, minXL2), Y = Math.Max(minYL1, minYL2) 
+                            }, 
+                            P2 = new Point 
+                            { 
+                                X = Math.Min(maxXL1, maxXL2), Y = Math.Min(maxYL1, maxYL2) 
+                            } };
                         return true;
                     }
                 }
@@ -146,7 +160,7 @@ namespace PolygonConsoleApp
 
             //Xi - абсцисса точки пересечения двух прямых
             Xi = (b2 - b1) / (A1 - A2);
-            if ((Xi < max(L1.P1.X, L2.P1.X)) || (Xi > min(L1.P2.X, L2.P2.X)))
+            if ((Xi < Math.Max(L1.P1.X, L2.P1.X)) || (Xi > Math.Min(L1.P2.X, L2.P2.X)))
             { return false; }
             else                                                                    //если произвольные непараллельные отрезки
             {
@@ -183,7 +197,7 @@ namespace PolygonConsoleApp
                         oddNodes = !oddNodes;
                     }
                 };
-                if (!(max(poly[i].Y, poly[j].Y) < point.Y || min(poly[i].Y, poly[j].Y) > point.Y || max(poly[i].X, poly[j].X) < point.X || min(poly[i].X, poly[j].X) > point.X))
+                if (!(Math.Max(poly[i].Y, poly[j].Y) < point.Y || Math.Min(poly[i].Y, poly[j].Y) > point.Y || Math.Max(poly[i].X, poly[j].X) < point.X || Math.Min(poly[i].X, poly[j].X) > point.X))
                 {
                     double AL = (poly[j].Y - poly[i].Y) / (poly[j].X - poly[i].X);
                     double AL_P = (point.Y - poly[i].Y) / (point.X - poly[i].X);
@@ -258,7 +272,7 @@ namespace PolygonConsoleApp
                 for (int p2i = 0; p2i < _polyPoints.Count(); p2i++)                         //проход в цикле по граням многоугольника
                 {
                     Segment pointsIntersection;
-                    bool intersecIsEx = checkIntersectionOfTwoLineSegments(                 //проверка пересечения отрезка и грани
+                    bool intersecIsEx = CheckIntersectionOfTwoLineSegments(                 //проверка пересечения отрезка и грани
                         _lines[i],
                         new Segment
                         {
