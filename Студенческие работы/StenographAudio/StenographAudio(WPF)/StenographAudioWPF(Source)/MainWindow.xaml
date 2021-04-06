@@ -1,0 +1,142 @@
+﻿<Window x:Class="StenographAudio_WPF_.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StenographAudio_WPF_" 
+        xmlns:ViewModels="clr-namespace:StenographAudio_WPF_.ViewModels"
+        mc:Ignorable="d"
+        Title="SteganografAudio" Height="330" Width="800">
+    <Window.DataContext>
+        <ViewModels:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid Margin="0,10,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Margin="10,14,10,0" Height="141" VerticalAlignment="Top">
+            <Grid Margin="0,14,0,0" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Margin="0,0,0,0" VerticalAlignment="Stretch">
+                    Исходный звуковой файл
+                </TextBlock>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Text="{Binding InputSoundFilePath, Mode=OneWay}"  x:Name="SoundFileSearchTxBx" Height="24" Grid.Column="0" IsReadOnly="True"/>
+                    <Button Command="{Binding SoundFileSearchCommand}" x:Name="SoundFileSearchBtn" Grid.Column="1" Content="..." Width="20"/>
+                </Grid>
+                <TextBlock Grid.Row="2" Margin="0,0,0,0">
+                    Скрываемый файл
+                </TextBlock>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Text="{Binding InputFileForHidingPath, Mode=OneWay}" x:Name="FileForHidingSearchTxBx" Height="24" Grid.Column="0" IsReadOnly="True"/>
+                    <Button Command="{Binding FileForHidingSearchCommand}" x:Name="FileForHidingSearchBtn" Grid.Column="1" Content="..." Width="20"/>
+                </Grid>
+                <TextBlock Grid.Row="4" Margin="0,0,0,0">
+                    Выходной файл
+                </TextBlock>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Text="{Binding OutputEncrFilePath, Mode=OneWay}" x:Name="DestForEncrFileTxBx" Height="24" Grid.Column="0" IsReadOnly="True"/>
+                    <Button Command="{Binding DestForEncrFileCommand}" x:Name="DestForEncrFileBtn" Grid.Column="1" Content="..." Width="20"/>
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Height="28" VerticalAlignment="Top" Margin="16,0,16,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" TextAlignment="Right" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+                    Шифрование
+            </TextBlock>
+            <ProgressBar  x:Name="progrBarEncr" Grid.Column="1" Height="27" Margin="5,0,5,0" VerticalAlignment="Center" Maximum="100" Value="{Binding ProgrBarEncrVal, Mode=OneWay}"/>
+            <TextBlock Grid.Column="2" TextAlignment="Right" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+                    Количество занимаемых младших
+                    <LineBreak />
+                    бит (больше-&gt;хуже качество):
+            </TextBlock>
+            <TextBox x:Name="TxBxEncryptBit" Grid.Column="3" Width="15" Height="27" Margin="5,0,5,0" VerticalAlignment="Center" Text="{Binding EncryptBitsQuantity, Mode=TwoWay}" VerticalContentAlignment="Center" FontSize="19" HorizontalContentAlignment="Left"/>
+            <Button x:Name="EncryptBtn" Grid.Column="4" Content="  Зашифровать  " Command="{Binding EncryptStartCommand}"/>
+        </Grid>
+
+        <GroupBox Grid.Row="1" Margin="10,14,10,0" Height="101" VerticalAlignment="Top">
+            <Grid Margin="0,14,0,0" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Margin="0,0,0,0" VerticalAlignment="Stretch">
+                    Звуковой файл со скрытым содержимым
+                </TextBlock>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Height="24" Grid.Column="0" IsReadOnly="True" Text="{Binding InputEncrFilePath, Mode=OneWay}"/>
+                    <Button x:Name="EncrFileSearchBtn" Grid.Column="1" Content="..." Width="20" Command="{Binding EncrFileSearchCommand}"/>
+                </Grid>
+
+                <TextBlock Grid.Row="4" Margin="0,0,0,0">
+                    Выходной файл
+                </TextBlock>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Height="24" Grid.Column="0" IsReadOnly="True" Text="{Binding OutputDecrFilePath, Mode=OneWay}"/>
+                    <Button x:Name="DestForDecrFileBtn" Grid.Column="1" Content="..." Width="20" Command="{Binding DestForDecrFileCommand}"/>
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" Height="28" VerticalAlignment="Top" Margin="16,0,16,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" TextAlignment="Right" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+                Дешифрование
+            </TextBlock>
+            <ProgressBar Grid.Column="1" Height="27" Margin="5,0,5,0" VerticalAlignment="Center" Maximum="100" Value="{Binding ProgrBarDecrVal, Mode=OneWay}"/>
+            <TextBlock Grid.Column="2" TextAlignment="Right" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+                Количество занимаемых
+                <LineBreak />
+                младших бит:
+            </TextBlock>
+            <TextBox x:Name="TxBxDecryptBit" Grid.Column="3" Width="15" Height="27" Margin="5,0,5,0" VerticalAlignment="Center" Text="{Binding DecryptBitsQuantity, Mode=TwoWay}" VerticalContentAlignment="Center" FontSize="19" HorizontalContentAlignment="Left"/>
+            <Button x:Name="DecryptBtn" Grid.Column="4" Content="  Расшифровать  " Command="{Binding DecryptStartCommand}"/>
+        </Grid>
+    </Grid>
+</Window>
