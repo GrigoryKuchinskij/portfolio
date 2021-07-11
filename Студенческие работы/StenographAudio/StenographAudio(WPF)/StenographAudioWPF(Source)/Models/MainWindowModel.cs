@@ -34,8 +34,8 @@ namespace StenographAudio_WPF_.Models
         private string _OutputEncrFilePath;
         public string OutputEncrFilePath { get => _OutputEncrFilePath; set => _OutputEncrFilePath = value; }
 
-        private string _EncryptBitsQuantity;
-        public string EncryptBitsQuantity { get => _EncryptBitsQuantity; set => _EncryptBitsQuantity = value; }
+        private int _EncryptBitsQuantity;
+        public int EncryptBitsSelectedIndex { get => _EncryptBitsQuantity - 1; set => _EncryptBitsQuantity = value + 1; }
 
         private string _InputEncrFilePath;
         public string InputEncrFilePath { get => _InputEncrFilePath; set => _InputEncrFilePath = value; }
@@ -43,15 +43,17 @@ namespace StenographAudio_WPF_.Models
         private string _OutputDecrFilePath;
         public string OutputDecrFilePath { get => _OutputDecrFilePath; set => _OutputDecrFilePath = value; }
 
-        private string _DecryptBitsQuantity;
-        public string DecryptBitsQuantity { get => _DecryptBitsQuantity; set => _DecryptBitsQuantity = value; }
+        private int _DecryptBitsQuantity;
+        public int DecryptBitsSelectedIndex { get => _DecryptBitsQuantity - 1; set => _DecryptBitsQuantity = value + 1; }
 
         //величины для обновления прогресс-баров
         private double _ProgressEncrypt = 0;
         public double ProgrBarEncrVal { get => _ProgressEncrypt; }
+        public bool EncryptBtnIsEnabled;
 
         private double _ProgressDecrypt = 0;
         public double ProgrBarDecrVal { get => _ProgressDecrypt; }
+        public bool DecryptBtnIsEnabled;
 
         private delegate void delegateForInvoke();                //для лучшей работы программы процесс кодирования происходит в отдельном потоке, для него создается делегат
 
@@ -135,6 +137,10 @@ namespace StenographAudio_WPF_.Models
             catch { MessageBox.Show("Проверьте пути к файлам"); };
             _ProgressEncrypt = 0;
             RaisePropertyChanged("ProgrBarEncrVal");
+            DecryptBtnIsEnabled = true;
+            EncryptBtnIsEnabled = true;
+            RaisePropertyChanged("DecryptBtnIsEnabled");
+            RaisePropertyChanged("EncryptBtnIsEnabled");
         }
 
         public void Decrypt(string EncrFileSearchPath, string OutputFilePath, int Bits)         //Извлечение информации
@@ -185,12 +191,13 @@ namespace StenographAudio_WPF_.Models
                 }
                 BL = new List<byte>();
                 BL.Clear();                                                                     //очищаем лист байтов
-                byte[] outputBytes = new byte[lastNonZero / 8 + 6];                             //выходной массив
-                byte[] ResBytes = new byte[BA.Count / 8 + 6];                                   //массив с нулевыми битами
+                int ByteMassLength = (lastNonZero / 8) + 6;                                     //размер выходного массива в байтах с запасом
+                byte[] outputBytes = new byte[ByteMassLength];                                  //выходной массив
+                byte[] ResBytes = new byte[(BA.Count / 8) + 6];                                 //массив с нулевыми битами
                 BA.CopyTo(ResBytes, 0);                                                         //копируем в массив байт
                 BA = new BitArray(0);                                                           //очищаем массив байтов
                 //Запись в выходной массив полученных ненулевых битов
-                for (int k = 0; k < lastNonZero / 8 + 6; k++)
+                for (int k = 0; k < ByteMassLength; k++)
                 {
                     outputBytes[k] = ResBytes[k];
                 }
@@ -207,6 +214,10 @@ namespace StenographAudio_WPF_.Models
             catch { MessageBox.Show("Проверьте пути к файлам"); };
             _ProgressDecrypt = 0;
             RaisePropertyChanged("ProgrBarDecrVal");
+            DecryptBtnIsEnabled = true;
+            EncryptBtnIsEnabled = true;
+            RaisePropertyChanged("DecryptBtnIsEnabled");
+            RaisePropertyChanged("EncryptBtnIsEnabled");
         }
 
         public int SoundFileSearchDialog()                               //кнопка обзора пути к "Исходному звуковому файлу"
@@ -305,7 +316,10 @@ namespace StenographAudio_WPF_.Models
 
         public void EncryptStart()                                       //Кнопка "Зашифровать"
         {
-            //DecryptBtn.Enabled = false; EncryptBtn.Enabled = false;
+            DecryptBtnIsEnabled = false;
+            EncryptBtnIsEnabled = false;
+            RaisePropertyChanged("DecryptBtnIsEnabled");
+            RaisePropertyChanged("EncryptBtnIsEnabled");
             new delegateForInvoke(delegate () {                                                         //запуск потока для выполнения метода Crypt без зависания основной программы
                 Crypt(_InputSoundFilePath, _InputFileForHidingPath, _OutputEncrFilePath, Convert.ToInt16(_EncryptBitsQuantity));
                 GC.Collect();                                                                       //принудительная "уборка мусора"
@@ -314,7 +328,10 @@ namespace StenographAudio_WPF_.Models
 
         public void DecryptStart()                                       //Кнопка "Расшифровать"
         {
-            //DecryptBtn.Enabled = false; EncryptBtn.Enabled = false;/
+            DecryptBtnIsEnabled = false; 
+            EncryptBtnIsEnabled = false;
+            RaisePropertyChanged("DecryptBtnIsEnabled");
+            RaisePropertyChanged("EncryptBtnIsEnabled");
             new delegateForInvoke(delegate () {                                                         //запуск потока для выполнения метода Decrypt без зависания основной программы
                 Decrypt(_InputEncrFilePath, _OutputDecrFilePath, Convert.ToInt16(_DecryptBitsQuantity));
                 GC.Collect();                                                                       //принудительная "уборка мусора"

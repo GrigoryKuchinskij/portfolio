@@ -23,12 +23,15 @@ namespace StenographAudio_WPF_.ViewModels
 
         public DelegateCommand EncryptStartCommand { get; }
         public DelegateCommand DecryptStartCommand { get; }
-
+        
         public MainWindowViewModel()
         {
             _model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
-            _model.EncryptBitsQuantity = "1";
-            _model.DecryptBitsQuantity = "1";
+            _model.EncryptBitsSelectedIndex = 0;
+            _model.DecryptBitsSelectedIndex = 0;            
+            _model.EncryptBtnIsEnabled = true;
+            _model.DecryptBtnIsEnabled = true;
+
             SoundFileSearchCommand = new DelegateCommand(() =>
             {
                 if (_model.SoundFileSearchDialog() == -1)
@@ -63,12 +66,14 @@ namespace StenographAudio_WPF_.ViewModels
         public string InputSoundFilePath { get => _model.InputSoundFilePath; }
         public string InputFileForHidingPath { get => _model.InputFileForHidingPath; }
         public string OutputEncrFilePath { get => _model.OutputEncrFilePath; }
-        public string EncryptBitsQuantity { get => _model.EncryptBitsQuantity; set => _model.EncryptBitsQuantity = value; }
+        public int EncryptBitsCBSelectedIndex { get => _model.EncryptBitsSelectedIndex; set => _model.EncryptBitsSelectedIndex = value; }
         public string InputEncrFilePath { get => _model.InputEncrFilePath; }
         public string OutputDecrFilePath { get => _model.OutputDecrFilePath; }
-        public string DecryptBitsQuantity { get => _model.DecryptBitsQuantity; set => _model.DecryptBitsQuantity = value; }
+        public int DecryptBitsCBSelectedIndex { get => _model.DecryptBitsSelectedIndex; set => _model.DecryptBitsSelectedIndex = value; }
 
         public double ProgrBarEncrVal { get => _model.ProgrBarEncrVal; }
         public double ProgrBarDecrVal { get => _model.ProgrBarDecrVal; }
+        public bool EncryptBtnIsEnabled { get => _model.EncryptBtnIsEnabled; }
+        public bool DecryptBtnIsEnabled { get => _model.DecryptBtnIsEnabled; }
     }
 }
