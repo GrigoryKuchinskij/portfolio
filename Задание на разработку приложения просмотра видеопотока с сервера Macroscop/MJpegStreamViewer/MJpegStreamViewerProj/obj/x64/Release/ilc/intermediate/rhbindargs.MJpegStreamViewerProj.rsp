@@ -3,14 +3,14 @@
 "/runtime:mrt100_app"
 /eh:clr
 /pdb
-"/nativeLink:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.native.compiler\2.2.8-rel-28605-00\tools\x64\ilc\lib\Native\vmath.lib"
+"/nativeLink:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.native.compiler\2.2.10-rel-29722-00\tools\x64\ilc\lib\Native\vmath.lib"
 /customImports
 /methodBodyFolding
-"E:\MJpegStreamViewer\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\MDIL\MJpegStreamViewerProj.mdilexe"
-"/i:E:\MJpegStreamViewer\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\MDIL"
-"/out:E:\MJpegStreamViewer\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\Native\MJpegStreamViewerProj.exe"
-"/pdbAltPath:E:\MJpegStreamViewer\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc"
-"/res:E:\MJpegStreamViewer\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\Native.res"
-"/i:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.native.sharedlibrary\2.2.7-rel-28605-00\tools\SharedLibrary\ret\MDIL"
+"E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\MDIL\MJpegStreamViewerProj.mdilexe"
+"/i:E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\MDIL"
+"/out:E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\Native\MJpegStreamViewerProj.exe"
+"/pdbAltPath:E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc"
+"/res:E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\Native.res"
+"/i:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.native.sharedlibrary\2.2.8-rel-29722-00\tools\SharedLibrary\ret\MDIL"
 /shimexe
 "/classlib:SharedLibrary"
