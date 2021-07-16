@@ -137,10 +137,6 @@ namespace StenographAudio_WPF_.Models
             catch { MessageBox.Show("Проверьте пути к файлам"); };
             _ProgressEncrypt = 0;
             RaisePropertyChanged("ProgrBarEncrVal");
-            DecryptBtnIsEnabled = true;
-            EncryptBtnIsEnabled = true;
-            RaisePropertyChanged("DecryptBtnIsEnabled");
-            RaisePropertyChanged("EncryptBtnIsEnabled");
         }
 
         public void Decrypt(string EncrFileSearchPath, string OutputFilePath, int Bits)         //Извлечение информации
@@ -213,11 +209,7 @@ namespace StenographAudio_WPF_.Models
             }
             catch { MessageBox.Show("Проверьте пути к файлам"); };
             _ProgressDecrypt = 0;
-            RaisePropertyChanged("ProgrBarDecrVal");
-            DecryptBtnIsEnabled = true;
-            EncryptBtnIsEnabled = true;
-            RaisePropertyChanged("DecryptBtnIsEnabled");
-            RaisePropertyChanged("EncryptBtnIsEnabled");
+            RaisePropertyChanged("ProgrBarDecrVal");            
         }
 
         public int SoundFileSearchDialog()                               //кнопка обзора пути к "Исходному звуковому файлу"
@@ -322,6 +314,10 @@ namespace StenographAudio_WPF_.Models
             RaisePropertyChanged("EncryptBtnIsEnabled");
             new delegateForInvoke(delegate () {                                                         //запуск потока для выполнения метода Crypt без зависания основной программы
                 Crypt(_InputSoundFilePath, _InputFileForHidingPath, _OutputEncrFilePath, Convert.ToInt16(_EncryptBitsQuantity));
+                DecryptBtnIsEnabled = true;
+                EncryptBtnIsEnabled = true;
+                RaisePropertyChanged("DecryptBtnIsEnabled");
+                RaisePropertyChanged("EncryptBtnIsEnabled");
                 GC.Collect();                                                                       //принудительная "уборка мусора"
             }).BeginInvoke(null, null);
         }
@@ -334,6 +330,10 @@ namespace StenographAudio_WPF_.Models
             RaisePropertyChanged("EncryptBtnIsEnabled");
             new delegateForInvoke(delegate () {                                                         //запуск потока для выполнения метода Decrypt без зависания основной программы
                 Decrypt(_InputEncrFilePath, _OutputDecrFilePath, Convert.ToInt16(_DecryptBitsQuantity));
+                DecryptBtnIsEnabled = true;
+                EncryptBtnIsEnabled = true;
+                RaisePropertyChanged("DecryptBtnIsEnabled");
+                RaisePropertyChanged("EncryptBtnIsEnabled");
                 GC.Collect();                                                                       //принудительная "уборка мусора"
             }).BeginInvoke(null, null);
         }
