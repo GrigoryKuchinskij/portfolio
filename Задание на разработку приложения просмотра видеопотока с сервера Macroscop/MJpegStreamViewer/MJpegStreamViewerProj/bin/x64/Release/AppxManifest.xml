@@ -7,7 +7,7 @@
 
  Дополнительные сведения о файлах манифестов приложений см. по адресу http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="b31fa7b4-172b-4015-beb1-69d78b7760a3" Publisher="CN=Grigory" Version="1.0.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="b31fa7b4-172b-4015-beb1-69d78b7760a3" Publisher="CN=grigory" Version="1.0.1.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="b31fa7b4-172b-4015-beb1-69d78b7760a3" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>MJpegStreamViewerProj</DisplayName>
@@ -37,8 +37,8 @@
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="16.0" />
     <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2019" />
-    <build:Item Name="OperatingSystem" Version="10.0.19041.1100 (WinBuild.160101.0800)" />
-    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="16.0.31410.357" />
+    <build:Item Name="OperatingSystem" Version="10.0.19041.1889 (WinBuild.160101.0800)" />
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="16.0.32425.466" />
     <build:Item Name="ProjectGUID" Value="{2F8168F3-66D2-43AF-BE2E-356AD4C8F46E}" />
     <build:Item Name="ilc.exe" Version="2.2.29722.00 built by: PROJECTNREL" />
     <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="10.0.18362.1" />

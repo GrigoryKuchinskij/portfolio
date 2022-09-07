@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace MJpegStreamViewerProj
 {
@@ -35,6 +36,7 @@ namespace MJpegStreamViewerProj
         public List<string> channelSList = new List<string>();          //список названий каналов
         public string serverUriPart = "";                               //первая часть URI адреса запроса канала
         public List<string> paramsUriSList = new List<string>();        //список из параметров к первой части URI адресов каналов
+        private bool extOptIsOn;
 
         private event EventHandler<FrameReadyEventArgs> FrameReady;
         private event EventHandler<ErrorEventArgs> Error;
@@ -63,23 +65,18 @@ namespace MJpegStreamViewerProj
         {
             this.InitializeComponent();
             this.FrameReady += ShowImage;
-            this.Error += ShowError;
-            Frame rootFrame = Window.Current.Content as Frame;
-            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                rootFrame.CanGoBack ?
-                AppViewBackButtonVisibility.Visible :
-                AppViewBackButtonVisibility.Collapsed;            
+            this.Error += ShowError;            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             System.Net.ServicePointManager.DefaultConnectionLimit = 1;
-            receivedDataObject recDataObj = (receivedDataObject)e.Parameter;            //объект класса receivedDataObject для передачи данных о каналах между страницами
-            channelSList = recDataObj.channelStringList;
-            paramsUriSList = recDataObj.uriParamsStringList;
-            serverUriPart = recDataObj.serverUriPart;            
-            int chosenInd = recDataObj.chosenIndex;
+            pageDataObject pdo = (pageDataObject)e.Parameter;            //объект класса receivedDataObject для передачи данных о каналах между страницами
+            channelSList = pdo.channelStringList;
+            paramsUriSList = pdo.uriParamsStringList;
+            serverUriPart = pdo.serverUriPart;            
+            int chosenInd = pdo.chosenIndex;
+            extOptIsOn = pdo.extOptions;
             channelsCBox.SelectedIndex = chosenInd;
 
             ImageCenterText.Visibility = Visibility.Collapsed;
@@ -100,6 +97,17 @@ namespace MJpegStreamViewerProj
                 };
             }
             catch { StopStream(fpsRespErrorText); }
+
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+        }
+
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)               //возврат на главную страницу
+        {
+            StopStream("");
+            //SystemNavigationManager.GetForCurrentView().BackRequested -= OnBackRequested;
+            pageDataObject pdo = new pageDataObject();
+            pdo.extOptions = extOptIsOn;
+            Frame.Navigate(typeof(MainPage), pdo, new DrillInNavigationTransitionInfo());
         }
 
         private async void ShowImage(object sender, FrameReadyEventArgs e)
@@ -144,7 +152,7 @@ namespace MJpegStreamViewerProj
             streamIsActive = true;
             ImageCenterText.Text = "";
             ImageCenterText.Visibility = Visibility.Collapsed;
-            shadeImgGrid.Opacity = 0d;
+            shadeRectangle.Visibility = Visibility.Collapsed;
             var request = (HttpWebRequest)HttpWebRequest.Create(new Uri(streamUriString));
             request.BeginGetResponse(OnGetResponse, request);
         }
@@ -154,7 +162,8 @@ namespace MJpegStreamViewerProj
             streamIsActive = false;
             ImageCenterText.Text = stopReasonMsg;
             ImageCenterText.Visibility = Visibility.Visible;
-            shadeImgGrid.Opacity = 0.5d;
+            shadeRectangle.Visibility = Visibility.Visible;
+            
             Thread.Sleep(500);
             GC.Collect();                                                                       //принудительная "уборка мусора"
         }
@@ -250,18 +259,6 @@ namespace MJpegStreamViewerProj
             {
                 StopStream("");
                 StartStream(serverUriPart + (paramsUriSList.ElementAt(channelsCBox.SelectedIndex)).Split("&fps=")[0] + "&fps=" + Convert.ToString(fpsCBox.SelectedItem));
-            }
-        }
-
-        private void OnBackRequested(object sender, BackRequestedEventArgs e)       //возврат на главную страницу
-        {
-            StopStream("");
-            Frame rootFrame = Window.Current.Content as Frame;
-
-            if (rootFrame.CanGoBack)
-            {
-                e.Handled = true;
-                rootFrame.GoBack();
             }
         }
     }

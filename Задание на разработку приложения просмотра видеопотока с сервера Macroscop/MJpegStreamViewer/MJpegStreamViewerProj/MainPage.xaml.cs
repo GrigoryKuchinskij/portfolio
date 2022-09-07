@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Controls;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace MJpegStreamViewerProj
 {
@@ -16,25 +17,30 @@ namespace MJpegStreamViewerProj
         private List<string> channelList = new List<string>();
         private readonly string confErrorMsg = "Ошибка запроса конфигурации. ";
         private readonly string streamUriInpErrorMsg = "Ошибка ввода URI запроса видеопотока.";
+        private bool ExtendedOptionsIsOn;
 
         public MainPage()
         {
-            this.InitializeComponent();            
+            this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs _) 
+        protected override void OnNavigatedTo(NavigationEventArgs e) 
         {
             uriList = new List<string>();
             channelList = new List<string>();
             //DataContext = this;
             requestUriTBox.Text = defaultUriForConfigRequest;
             getChannelsBtn.IsEnabled = true;
-            serverPartUriTBox.Visibility = Visibility.Collapsed;
-            //shadeListBoxGrid.Opacity = 0.5d;
             shadeListBoxGrid.Visibility = Visibility.Collapsed;
             overListBoxCenterText.Visibility = Visibility.Collapsed;
             ListProgressRing.IsActive = false;
-            getChannels(); 
+            pageDataObject pdo = (pageDataObject)e.Parameter;
+            ExtendedOptionsIsOn = pdo.extOptions;
+            if (ExtendedOptionsIsOn)
+                ShowExtOpt();
+            else
+                HideExtOpt();
+            getChannels();
         }
 
         private void getChannelsBtn_Click(object sender, RoutedEventArgs e) => getChannels();
@@ -46,9 +52,8 @@ namespace MJpegStreamViewerProj
             {
                 getChannelsBtn.IsEnabled = false;
                 ListProgressRing.IsActive = true;
-                serverPartUriTBox.Visibility = Visibility.Visible;
                 serverPartUriTBox.Text = requestUriTBox.Text.Replace("configex", "mobile");
-                var request = (HttpWebRequest)HttpWebRequest.Create(requestUriTBox.Text);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUriTBox.Text);
                 request.BeginGetResponse(OnGetXmlResponse, request);
             }
             else
@@ -81,7 +86,7 @@ namespace MJpegStreamViewerProj
                     var uriLine = values[1] + fps;
                     uriList.Add(uriLine);
                     var quality = values[1].Split("&resolutionY=")[1].Split("&")[0] + "p";
-                    var channelStr = values[0] + " " + quality + " " + values[1].Replace("&"," ");
+                    var channelStr = values[0] + " " + quality + " " ;//+ values[1].Replace("&"," ");
                     channelList.Add(channelStr);
                 }                
             }
@@ -99,28 +104,26 @@ namespace MJpegStreamViewerProj
                     shadeListBoxGrid.Visibility = Visibility.Collapsed;
                     getChannelsBtn.Focus(FocusState.Programmatic);
                 });
-            request.Abort();            
+            request.Abort();
         }
 
         private void channelsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {            
+        {
             if(serverPartUriTBox.Text.Trim() != "" && (serverPartUriTBox.Text.Trim().IndexOf("http://") == 0 || serverPartUriTBox.Text.Trim().IndexOf("https://") == 0)) 
             {
-                receivedDataObject recDataObj = new receivedDataObject();
-                recDataObj.channelStringList = channelList;
-                recDataObj.uriParamsStringList = uriList;
-                recDataObj.serverUriPart = serverPartUriTBox.Text;
-                recDataObj.chosenIndex = channelsListBox.SelectedIndex;
-                //if (Frame.CanGoForward)
-                //    Frame.GoForward();
-                //else
-                Frame.Navigate(typeof(StreamPage), recDataObj);                
+                pageDataObject pageDataObj = new pageDataObject();
+                pageDataObj.channelStringList = channelList;
+                pageDataObj.uriParamsStringList = uriList;
+                pageDataObj.serverUriPart = serverPartUriTBox.Text;
+                pageDataObj.chosenIndex = channelsListBox.SelectedIndex;
+                pageDataObj.extOptions = ExtendedOptionsIsOn;
+                Frame.Navigate(typeof(StreamPage), pageDataObj, new ContinuumNavigationTransitionInfo());
             }
             else
             {
                 ShowTemporarilyMessageAsync(streamUriInpErrorMsg, 4000);
                 channelsListBox.SelectedIndex = -1;
-            }            
+            }
         }
 
         private async void ShowTemporarilyMessageAsync(string message, int millisecondsTimeout) 
@@ -146,26 +149,48 @@ namespace MJpegStreamViewerProj
         private void requestUriTBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             getChannelsBtn.IsEnabled = false;
-            //channelsListBox.IsEnabled = false;
             shadeListBoxGrid.Visibility = Visibility.Visible;
         }
         private void requestUriTBox_LostFocus(object sender, RoutedEventArgs e)
         {
             getChannelsBtn.IsEnabled = true;
-            //channelsListBox.IsEnabled = true;
             shadeListBoxGrid.Visibility = Visibility.Collapsed;
         }
 
         private void serverPartUriTBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
-            //channelsListBox.IsEnabled = false;
             shadeListBoxGrid.Visibility = Visibility.Visible;
         }
 
         private void serverPartUriTBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            //channelsListBox.IsEnabled = true;
             shadeListBoxGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void ShowExtendedOptionsBtn_Click(object sender, RoutedEventArgs e)
+        {            
+            if (ExtendedOptionsIsOn)
+            {
+                ExtendedOptionsIsOn = false;
+                HideExtOpt();
+            }
+            else
+            {
+                ExtendedOptionsIsOn = true;
+                ShowExtOpt();
+            }
+        }
+
+        private void ShowExtOpt()
+        {
+            requestUriTBox.Visibility = Visibility.Visible;
+            serverPartUriTBox.Visibility = Visibility.Visible;
+        }
+
+        private void HideExtOpt()
+        {
+            requestUriTBox.Visibility = Visibility.Collapsed;
+            serverPartUriTBox.Visibility = Visibility.Collapsed;
         }
     }
 }

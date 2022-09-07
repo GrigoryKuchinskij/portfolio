@@ -9,17 +9,22 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>        
-        <muxc:Button x:ConnectionId='2' muxc:Grid.Row="0" x:Name="getChannelsBtn" Content="Получить список каналов" Margin="10,10,10,10" VerticalAlignment="Bottom"                              HorizontalAlignment="Right" TabIndex="0"/>
-        <TextBox x:ConnectionId='3' Grid.Row="0" x:Name="requestUriTBox" Header="Введите URL-запрос конфигурации c сервера видеонаблюдения:" PlaceholderText="URL" Margin="10,10,201,10" VerticalAlignment="Top"                                                                                 XYFocusKeyboardNavigation="Auto" TabIndex="1" />
-        <ListBox x:ConnectionId='4' Grid.Row="1" x:Name="channelsListBox" Margin="0,0,0,0"                                                     TabIndex="2"/>
-        <Grid x:ConnectionId='5' Grid.Row="1" x:Name="shadeListBoxGrid" Background="Black" Margin="0,0,0,0" Opacity="0.5"/>
-        <TextBlock x:ConnectionId='6'  Grid.Row="1" x:Name="overListBoxCenterText" Text="message" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" TextAlignment="Center"/>
-        <ProgressRing x:ConnectionId='7' x:Name="ListProgressRing"  Grid.Row="1" IsActive="False" Width="60" Height="60" />
-        <TextBox x:ConnectionId='8' muxc:Grid.Row="2" x:Name="serverPartUriTBox" Header="URL адрес запроса видеопотока с сервера:" PlaceholderText="URL" Margin="10,10,10,10" VerticalAlignment="Center"                                                                                       TabIndex="3" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft" Margin="7,0,7,0" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft" muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="5,10,5,10" Height="70">
+                <muxc:HyperlinkButton x:ConnectionId='8' x:Name="ShowExtendedOptionsBtn" Content="Дополнительные настройки"                                      VerticalAlignment="Center"  HorizontalAlignment="Center" />
+                <muxc:Button x:ConnectionId='9' x:Name="getChannelsBtn" Content="Получить список каналов"                              TabIndex="0" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <muxc:TextBox x:ConnectionId='7' x:Name="requestUriTBox" Header="Введите URL-запрос конфигурации c сервера видеонаблюдения:" PlaceholderText="URL"                                                                                 XYFocusKeyboardNavigation="Auto" TabIndex="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,10,5,10" Height="55"  />
+        </StackPanel>
+        <ListBox x:ConnectionId='2' Grid.Row="1" x:Name="channelsListBox" Margin="0,0,0,0"                                                     TabIndex="2"/>
+        <Grid x:ConnectionId='3' Grid.Row="1" x:Name="shadeListBoxGrid" Background="Black" Margin="0,0,0,0" Opacity="0.5"/>
+        <TextBlock x:ConnectionId='4'  Grid.Row="1" x:Name="overListBoxCenterText" Text="message" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" TextAlignment="Center"/>
+        <ProgressRing x:ConnectionId='5' x:Name="ListProgressRing"  Grid.Row="1" IsActive="False" Width="60" Height="60" />
+        <TextBox x:ConnectionId='6' muxc:Grid.Row="2" x:Name="serverPartUriTBox" Header="URL адрес запроса видеопотока с сервера:" PlaceholderText="URL" Margin="10,10,10,10" VerticalAlignment="Center"                                                                                       TabIndex="3" Height="55" />
     </Grid>
 </Page>
 

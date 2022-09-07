@@ -68,7 +68,9 @@ namespace MJpegStreamViewerProj
                     // Если стек навигации не восстанавливается для перехода к первой странице,
                     // настройка новой страницы путем передачи необходимой информации в качестве параметра
                     // навигации
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    pageDataObject pdo = new pageDataObject();
+                    pdo.extOptions = false;
+                    rootFrame.Navigate(typeof(MainPage), pdo);
                 }
                 // Обеспечение активности текущего окна
                 Window.Current.Activate();                

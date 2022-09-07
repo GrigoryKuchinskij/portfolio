@@ -9,16 +9,21 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>        
-        <muxc:Button muxc:Grid.Row="0" x:Name="getChannelsBtn" Content="Получить список каналов" Margin="10,10,10,10" VerticalAlignment="Bottom" Click="getChannelsBtn_Click" HorizontalAlignment="Right" TabIndex="0"/>
-        <TextBox Grid.Row="0" x:Name="requestUriTBox" Header="Введите URL-запрос конфигурации c сервера видеонаблюдения:" PlaceholderText="URL" Margin="10,10,201,10" VerticalAlignment="Top" TextChanging="requestUriTBox_TextChanging" LostFocus="requestUriTBox_LostFocus" XYFocusKeyboardNavigation="Auto" TabIndex="1" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft" Margin="7,0,7,0" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft" muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="5,10,5,10" Height="70">
+                <muxc:HyperlinkButton x:Name="ShowExtendedOptionsBtn" Content="Дополнительные настройки" Click="ShowExtendedOptionsBtn_Click" VerticalAlignment="Center"  HorizontalAlignment="Center" />
+                <muxc:Button x:Name="getChannelsBtn" Content="Получить список каналов" Click="getChannelsBtn_Click" TabIndex="0" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <muxc:TextBox x:Name="requestUriTBox" Header="Введите URL-запрос конфигурации c сервера видеонаблюдения:" PlaceholderText="URL" TextChanging="requestUriTBox_TextChanging" LostFocus="requestUriTBox_LostFocus" XYFocusKeyboardNavigation="Auto" TabIndex="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,10,5,10" Height="55"  />
+        </StackPanel>
         <ListBox Grid.Row="1" x:Name="channelsListBox" Margin="0,0,0,0" SelectionChanged="channelsListBox_SelectionChanged" TabIndex="2"/>
         <Grid Grid.Row="1" x:Name="shadeListBoxGrid" Background="Black" Margin="0,0,0,0" Opacity="0.5"/>
         <TextBlock  Grid.Row="1" x:Name="overListBoxCenterText" Text="message" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" TextAlignment="Center"/>
         <ProgressRing x:Name="ListProgressRing"  Grid.Row="1" IsActive="False" Width="60" Height="60" />
-        <TextBox muxc:Grid.Row="2" x:Name="serverPartUriTBox" Header="URL адрес запроса видеопотока с сервера:" PlaceholderText="URL" Margin="10,10,10,10" VerticalAlignment="Center" TextChanging="serverPartUriTBox_TextChanging" LostFocus="serverPartUriTBox_LostFocus" TabIndex="3" />
+        <TextBox muxc:Grid.Row="2" x:Name="serverPartUriTBox" Header="URL адрес запроса видеопотока с сервера:" PlaceholderText="URL" Margin="10,10,10,10" VerticalAlignment="Center" TextChanging="serverPartUriTBox_TextChanging" LostFocus="serverPartUriTBox_LostFocus" TabIndex="3" Height="55" />
     </Grid>
 </Page>
