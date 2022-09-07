@@ -19,7 +19,7 @@ namespace PolygonConsoleApp
         //private static double dbs(double a) { return (a < 0.0) ? -a : a; }
 
         public static bool CheckIntersectionOfTwoLineSegments(Segment L1, Segment L2, out Segment pointsIntersection) //метод, проверяющий пересекаются ли 2 отрезка [p1, p2] и [pA, pB]
-        {                                                                                                       //и возвращающий истинность пересечения и точку (или отрезок) пересечения
+        {                                                                                                             //и возвращающий истинность пересечения и точку (или отрезок) пересечения
             pointsIntersection = new Segment();
             if (L1 == null || L2 == null) return false;
             double Xi, Yi,                                                  // - координаты точки пересечения двух прямых
@@ -44,6 +44,11 @@ namespace PolygonConsoleApp
             double minXL1 = Math.Min(L1.P1.X, L1.P2.X);
             double maxXL2 = Math.Max(L2.P1.X, L2.P2.X);
             double minXL2 = Math.Min(L2.P1.X, L2.P2.X);
+            
+            //////////////////////////////////////////////////////////////
+            //Проверка частных случаев пересечения для исключения ошибок//
+            //////////////////////////////////////////////////////////////
+            
 
             if (maxXL1 < minXL2) { return false; }                          //проверим существование потенциального интервала для точки пересечения отрезков
             if (maxYL1 < minYL2) { return false; }
@@ -116,6 +121,10 @@ namespace PolygonConsoleApp
                 return false;
             }
 
+            //////////////////////////////////////////
+            //Проверка остальных случаев пересечения//
+            //////////////////////////////////////////
+            
             //оба отрезка невертикальные и негоризонтальные
             A1 = (L1.P1.Y - L1.P2.Y) / (L1.P1.X - L1.P2.X);
             A2 = (L2.P1.Y - L2.P2.Y) / (L2.P1.X - L2.P2.X);
@@ -288,6 +297,7 @@ namespace PolygonConsoleApp
                     p1i = p2i;
                 }
                 listOfSegmentsAndPointsOnCurrentLine.Add(new Segment { P1 = _lines[i].P2 });//конечная точка отрезка
+                
                 //сортировка точек и очистка от повторений
                 Segment[] msvOfSegmentsAndPointsOnCurrentLine = listOfSegmentsAndPointsOnCurrentLine.ToArray();
                 Point[] unclearedMsvOfPoints = splitSegmentsIntoPoints(msvOfSegmentsAndPointsOnCurrentLine);
@@ -299,6 +309,7 @@ namespace PolygonConsoleApp
 
                 //проверка нахождения сегментов отрезка в многоугольнике
                 int tempPointIsInPoly = PointInPoly(msvOfPointsOnCurrentLine[0], _polyPoints);
+                
                 for (int firstIndex = 0; firstIndex < pOLCount - 1; firstIndex++)
                 {
                     int secondIndex = firstIndex + 1;
