@@ -13,6 +13,20 @@ namespace PolygonConsoleApp
         {
             string polygonPointsFilePath = @"polygonPoints.csv";
             string segmentsFilePath = @"segments.csv";
+            bool noComments = false;                     //Выдать результат сразу
+            string startMes = "\r\n Приложение рассчитывает сумму длин частей отрезков, находящихся внутри многоугольника. " + 
+                "\r\n Координаты отрезков и углов многоугольника задаются в файлах \"segments.csv\" и \"polygonPoints.csv\", находящихся в папке с программой." +
+                "\r\n Вы также можете самостоятельно задать пути к файлам передав их в качестве аргументов. " +
+                "\r\n Пример:> ./PolygonConsoleApp.exe s=\"C:\\Temp\\Координаты_отрезков.csv\" p=\"C:\\Temp\\Координаты_углов_многоугольника.csv\"" +
+                "\r\n Приложение может работать с выпуклыми и невыпуклыми многоугольниками без самопересечений.";
+            string cycleMes = "\r\n \r\n Нажмите Enter для расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода." +
+                "\r\n>>";
+            string helpMes = "\r\n Координаты отрезков задаются построчно (по ум. в файле \"segments.csv\"). Формат: {X начала отрезка};{Y начала отрезка};{X конца отрезка};{Y конца отрезка} " +
+                        "\r\n Пример строки: 62,076745;79,945621;64,819002;84,763976" +
+                        "\r\n Координаты углов многоугольника задаются построчно (по ум. в файле \"polygonPoints.csv\"). Формат: {X точки};{Y точки}" +
+                        "\r\n Пример строки: 62,76284217;79,61893362" +
+                        "\r\n Углы многоугольника описываются последовательно, вдоль его границы." +
+                        "\r\n>>";
 
             foreach (string arg in args)
             {
@@ -24,54 +38,55 @@ namespace PolygonConsoleApp
                     case "p=":
                         polygonPointsFilePath = arg.Substring(2).Trim(new char[] { ' ', '"' });
                         break;
+                    case "-c":                      //Аргумент для запуска программы без доп. комментариев
+                        noComments = true;
+                        break;
                 }
             }
 
             List<string[]> polygonPointsList = new List<string[]>();
             List<string[]> segmentsList = new List<string[]>();
-            try 
-            {
-                polygonPointsList = ReadCSVFile(polygonPointsFilePath);
-                segmentsList = ReadCSVFile(segmentsFilePath);
-            } catch 
-            { 
-                Console.WriteLine("Ошибка распознавания *.csv файлов!" +
-                "\r\n Нажмите Enter для выхода из приложения. "); Console.ReadKey(); Environment.Exit(-1); 
-            }
-            Point[] polyPoints = ConvertToPoint(polygonPointsList);
-            Segment[] lines = ConvertToSegment(segmentsList);            
-            Console.Write(
-                "\r\n Приложение рассчитывает сумму длин частей отрезков, находящихся внутри многоугольника. " + 
-                "\r\n Координаты отрезков и углов многоугольника задаются в файлах \"segments.csv\" и \"polygonPoints.csv\", находящихся в папке с программой." +
-                "\r\n Вы также можете самостоятельно задать пути к файлам передав их в качестве аргументов. " +
-                "\r\n Пример:> ./PolygonConsoleApp.exe s=\"C:\\Temp\\Координаты_отрезков.csv\" p=\"C:\\Temp\\Координаты_углов_многоугольника.csv\"" +
-                "\r\n Приложение может работать с выпуклыми и невыпуклыми многоугольниками без самопересечений." +
-                "\r\n \r\n Нажмите Enter для начала расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода." +
-                "\r\n>>");            
+            
+            if (!noComments) Console.Write(startMes + cycleMes);
+
+            string inpString = "";
+
             while (true)
-            {
-                string inpString = Console.ReadLine().ToLower();
+            {                
+                if (!noComments) inpString = Console.ReadLine().ToLower();
                 switch (inpString)
                 {
                     case "h":
-                        Console.Write("\r\n Координаты отрезков задаются построчно (по ум. в файле \"segments.csv\"). Формат: {X начала отрезка};{Y начала отрезка};{X конца отрезка};{Y конца отрезка} " +
-                        "\r\n Пример строки: 62,076745;79,945621;64,819002;84,763976" +
-                        "\r\n Координаты углов многоугольника задаются построчно (по ум. в файле \"polygonPoints.csv\"). Формат: {X точки};{Y точки}" +
-                        "\r\n Пример строки: 62,76284217;79,61893362" +
-                        "\r\n Углы многоугольника описываются последовательно, вдоль его границы." +
-                        "\r\n>>");
+                        Console.Write(helpMes);
                         break;
                     case "x":
                         Environment.Exit(0);
                         break;
                     case "":
+                        try
+                        {
+                            polygonPointsList = ReadCSVFile(polygonPointsFilePath);
+                            segmentsList = ReadCSVFile(segmentsFilePath);
+                        }
+                        catch
+                        {
+                            if (noComments)
+                            { Console.WriteLine("ER_READCSV"); Environment.Exit(-1); }
+                            else
+                            {
+                                Console.WriteLine("Ошибка распознавания *.csv файлов!" +
+                              "\r\n Нажмите Enter для выхода из приложения. "); Console.ReadKey(); Environment.Exit(-1);
+                            }
+                        }
+                        Point[] polyPoints = ConvertToPoint(polygonPointsList);
+                        Segment[] lines = ConvertToSegment(segmentsList);
                         GeomShapesToCheckForIntersec shapesToCheckForIntersec = new GeomShapesToCheckForIntersec(polyPoints, lines);
                         Console.WriteLine(shapesToCheckForIntersec.calcSegmentsSummInPoly());
+                        if (noComments) Environment.Exit(0);
                         GC.Collect();
                         break;
                 }
-                Console.Write("\r\n \r\n Нажмите Enter для расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода." +
-                "\r\n>>");
+                Console.Write(cycleMes);
             }
         }
 

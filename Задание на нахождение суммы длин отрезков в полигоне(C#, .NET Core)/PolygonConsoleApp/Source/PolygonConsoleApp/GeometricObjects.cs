@@ -19,7 +19,6 @@
 
         public class Segment
         {
-            //private double xbegSeg, ybegSeg, xendSeg, yendSeg;
             private Point p1, p2;
             public Point P1
             {
