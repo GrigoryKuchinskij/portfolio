@@ -50,3 +50,35 @@ E:\Share\palindrome-check\PalindromeCheckClient\bin\Release\Prism.Wpf.xml
 E:\Share\palindrome-check\PalindromeCheckClient\bin\Release\System.ValueTuple.xml
 E:\Share\palindrome-check\PalindromeCheckClient\obj\Release\GeneratedInternalTypeHelper.g.cs
 E:\Share\palindrome-check\PalindromeCheckClient\obj\Release\PalindromeCheckClient.csprojAssemblyReference.cache
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\PalindromeCheckClient.exe.config
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\PalindromeCheckClient.exe
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\PalindromeCheckClient.pdb
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Microsoft.WindowsAPICodePack.dll
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Microsoft.WindowsAPICodePack.Shell.dll
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Microsoft.Xaml.Behaviors.dll
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Prism.dll
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Prism.Wpf.dll
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\System.ValueTuple.dll
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Microsoft.WindowsAPICodePack.xml
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Microsoft.WindowsAPICodePack.Shell.xml
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Microsoft.Xaml.Behaviors.pdb
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Microsoft.Xaml.Behaviors.xml
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Prism.pdb
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Prism.xml
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Prism.Wpf.pdb
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\Prism.Wpf.xml
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\bin\Release\System.ValueTuple.xml
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.csproj.AssemblyReference.cache
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\MainWindow.g.cs
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\App.g.cs
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\GeneratedInternalTypeHelper.g.cs
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient_MarkupCompile.cache
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient_MarkupCompile.lref
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\MainWindow.baml
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.g.resources
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.Properties.Resources.resources
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.csproj.GenerateResource.cache
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.csproj.CoreCompileInputs.cache
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.csproj.CopyComplete
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.exe
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.pdb

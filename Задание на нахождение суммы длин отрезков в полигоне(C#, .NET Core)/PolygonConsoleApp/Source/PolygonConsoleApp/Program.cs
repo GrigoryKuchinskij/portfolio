@@ -94,6 +94,7 @@ namespace PolygonConsoleApp
         {
             using (StreamReader sr = new StreamReader(pathToCsvFile, Encoding.Default))
             {
+                _ = sr.ReadLine();  //Пропуск заголовка
                 List<string[]> vs = new List<string[]>();
                 while (!sr.EndOfStream)
                 {
@@ -130,17 +131,17 @@ namespace PolygonConsoleApp
                 {
                     if (_segmentsStringsList[i].Length == 4)
                     {
-                        double xbegSeg = Convert.ToDouble((string)_segmentsStringsList[i][0]);
-                        double ybegSeg = Convert.ToDouble((string)_segmentsStringsList[i][1]);
-                        double xendSeg = Convert.ToDouble((string)_segmentsStringsList[i][2]);
-                        double yendSeg = Convert.ToDouble((string)_segmentsStringsList[i][3]);
-                        if (xbegSeg > xendSeg)                                                                  //если x координата первой точки больше x второй 
-                        { (xbegSeg, xendSeg) = (xendSeg, xbegSeg); (ybegSeg, yendSeg) = (yendSeg, ybegSeg); }   //обмен координат точек отрезка
-                        else if (xbegSeg == xendSeg && ybegSeg < yendSeg) { (xbegSeg, xendSeg) = (xendSeg, xbegSeg); (ybegSeg, yendSeg) = (yendSeg, ybegSeg); }
+                        double XBegSeg = Convert.ToDouble((string)_segmentsStringsList[i][0]);
+                        double YBegSeg = Convert.ToDouble((string)_segmentsStringsList[i][1]);
+                        double XEndSeg = Convert.ToDouble((string)_segmentsStringsList[i][2]);
+                        double YEndSeg = Convert.ToDouble((string)_segmentsStringsList[i][3]);
+                        if (XBegSeg > XEndSeg)                                                                  //если x координата первой точки больше x второй 
+                        { (XBegSeg, XEndSeg) = (XEndSeg, XBegSeg); (YBegSeg, YEndSeg) = (YEndSeg, YBegSeg); }   //обмен координат точек отрезка
+                        else if (XBegSeg == XEndSeg && YBegSeg < YEndSeg) { (XBegSeg, XEndSeg) = (XEndSeg, XBegSeg); (YBegSeg, YEndSeg) = (YEndSeg, YBegSeg); }
                         _segmentsList.Add(new Segment
                         {
-                            P1 = new Point { X = xbegSeg, Y = ybegSeg },
-                            P2 = new Point { X = xendSeg, Y = yendSeg }
+                            P1 = new Point { X = XBegSeg, Y = YBegSeg },
+                            P2 = new Point { X = XEndSeg, Y = YEndSeg }
                         });
                     }
                 }

@@ -16,7 +16,116 @@ namespace PolygonConsoleApp
             _lines = lines;
         }
 
-        //private static double dbs(double a) { return (a < 0.0) ? -a : a; }
+        public double calcSegmentsSummInPoly()                                              //метод расчета суммы длинн частей отрезков внутри многоугольника 
+        {
+            double summLength = 0;
+            if (_polyPoints == null || _polyPoints.Length == 0) return 0;
+            for (int i = 0; i < _lines.Count(); i++)                                        //проход в цикле по отрезкам
+            {
+                List<Segment> listOfSegmentsAndPointsOnCurrentLine = new List<Segment>();   //точки и отрезки лежащие на текущем отрезке перекающиеся с многоугольником
+                listOfSegmentsAndPointsOnCurrentLine.Add(new Segment { P1 = _lines[i].P1 });//начальная точка отрезка
+                int p1i = _polyPoints.Count() - 1;                                          //предыдущая точка многоугольника
+                for (int p2i = 0; p2i < _polyPoints.Count(); p2i++)                         //проход в цикле по граням многоугольника
+                {
+                    Segment pointsIntersection;
+                    bool intersecIsEx = CheckIntersectionOfTwoLineSegments(                 //проверка пересечения отрезка и грани
+                        _lines[i],
+                        new Segment
+                        {
+                            P1 = _polyPoints[p1i],
+                            P2 = _polyPoints[p2i]
+                        },
+                        out pointsIntersection
+                    );
+                    if (intersecIsEx)
+                    {                                                                       //если есть пересечение
+                        listOfSegmentsAndPointsOnCurrentLine.Add(pointsIntersection);       //добавить элемент в список точек пересечений
+                    };
+                    p1i = p2i;
+                }
+                listOfSegmentsAndPointsOnCurrentLine.Add(new Segment { P1 = _lines[i].P2 });//конечная точка отрезка
+                
+                //сортировка точек и очистка от повторений
+                Point[] unclearedMsvOfPoints = splitSegmentsIntoPoints(listOfSegmentsAndPointsOnCurrentLine);
+                sortPointsOfLineByXY(ref unclearedMsvOfPoints);
+                Point[] msvOfPointsOnCurrentLine = removeDuplicatePoints(unclearedMsvOfPoints);
+
+                int pOLCount = msvOfPointsOnCurrentLine.Count();
+                if (pOLCount < 1) continue;
+
+                //проверка нахождения сегментов отрезка в многоугольнике
+                int tempPointIsInPoly = PointInPoly(msvOfPointsOnCurrentLine[0], _polyPoints);
+                
+                for (int firstIndex = 0; firstIndex < pOLCount - 1; firstIndex++)
+                {
+                    int secondIndex = firstIndex + 1;
+
+                    int fPointIsInPoly = tempPointIsInPoly;
+                    //int fPointIsInPoly = PointInPoly(msvOfPointsOnCurrentLine[firstIndex], _polyPoints);
+                    int sPointIsInPoly = PointInPoly(msvOfPointsOnCurrentLine[secondIndex], _polyPoints);
+                    tempPointIsInPoly = sPointIsInPoly;
+
+                    if (fPointIsInPoly == -1 || sPointIsInPoly == -1)                                       //если один из концов сегмента отрезка снаружи
+                        continue;
+                    if (fPointIsInPoly == 1 || sPointIsInPoly == 1)                                         //если один из концов сегмента отрезка внутри
+                    {
+                        double leng = Math.Sqrt(Math.Pow((msvOfPointsOnCurrentLine[secondIndex].X - msvOfPointsOnCurrentLine[firstIndex].X), 2)
+                                + Math.Pow((msvOfPointsOnCurrentLine[secondIndex].Y - msvOfPointsOnCurrentLine[firstIndex].Y), 2));
+                        summLength += leng;
+                        continue;
+                    }
+                    //если оба конца сегмента на грани 
+                    //расчет средней точки фрагмента отрезка
+                    double mX = msvOfPointsOnCurrentLine[firstIndex].X + ((msvOfPointsOnCurrentLine[secondIndex].X - msvOfPointsOnCurrentLine[firstIndex].X) / 2);
+                    double mY = msvOfPointsOnCurrentLine[firstIndex].Y + ((msvOfPointsOnCurrentLine[secondIndex].Y - msvOfPointsOnCurrentLine[firstIndex].Y) / 2);
+                    int mPointIsInPoly = PointInPoly(new Point { X = mX, Y = mY }, _polyPoints);
+
+                    if (mPointIsInPoly == 0 || mPointIsInPoly == 1)                                         //если средняя точка сегмента на грани или внутри
+                    {
+                        double leng = Math.Sqrt(Math.Pow((msvOfPointsOnCurrentLine[secondIndex].X - msvOfPointsOnCurrentLine[firstIndex].X), 2)
+                                + Math.Pow((msvOfPointsOnCurrentLine[secondIndex].Y - msvOfPointsOnCurrentLine[firstIndex].Y), 2));
+                        summLength += leng;
+                        continue;
+                    }
+                }
+            };
+            return summLength;            
+        }
+
+        public static int PointInPoly(Point point, Point[] poly)                                // метод принимает проверяемую точку и координаты вершин многоугольника
+        {                                                                                       // и возвращает значение нахождения проверяемой точки в многоугольнике
+            if (point == null || poly == null) return -1;
+            bool onEdge = false;
+            int i, j = poly.Length - 1;
+            bool oddNodes = false;
+            for (i = 0; i < poly.Length; i++)                                                   //прохождение по всем граням
+            {
+                if (Math.Round(point.Y, 8) == Math.Round(poly[i].Y, 8) && Math.Round(point.X, 8) == Math.Round(poly[i].X, 8)) { onEdge = true; break; }
+                if ((poly[i].Y < point.Y && poly[j].Y >= point.Y                                // обе вершины выше и ниже проверяемой точки
+                    || poly[j].Y < point.Y && poly[i].Y >= point.Y)
+                        && (poly[i].X <= point.X || poly[j].X <= point.X))
+                {
+                    if (poly[i].X + (point.Y - poly[i].Y) / (poly[j].Y - poly[i].Y) * (poly[j].X - poly[i].X) < point.X)
+                    {
+                        oddNodes = !oddNodes;
+                    }
+                };
+                if (!(Math.Max(poly[i].Y, poly[j].Y) < point.Y || Math.Min(poly[i].Y, poly[j].Y) > point.Y || Math.Max(poly[i].X, poly[j].X) < point.X || Math.Min(poly[i].X, poly[j].X) > point.X))
+                {
+                    double AL = (poly[j].Y - poly[i].Y) / (poly[j].X - poly[i].X);
+                    double AL_P = (point.Y - poly[i].Y) / (point.X - poly[i].X);
+                    if (Math.Round(AL, 8) == Math.Round(AL_P, 8))                               //точка лежит на отрезке или вершине
+                    //if ((point.Y == ((poly[j].Y - poly[i].Y) / 2) + poly[i].Y                                              
+                    //        && point.X == ((poly[j].X - poly[i].X) / 2) + poly[i].X)
+                    //    || point.Y == poly[i].Y && point.X == poly[i].X)
+                    { onEdge = true; break; }
+                }
+                j = i;
+            }
+            if (onEdge == true) return 0;       // точка на грани фигуры
+            else if (!oddNodes) return -1;      // точка вне фигуры            
+            else return 1;                      // точка внутри фигуры
+        }
 
         public static bool CheckIntersectionOfTwoLineSegments(Segment L1, Segment L2, out Segment pointsIntersection) //метод, проверяющий пересекаются ли 2 отрезка [p1, p2] и [pA, pB]
         {                                                                                                             //и возвращающий истинность пересечения и точку (или отрезок) пересечения
@@ -44,11 +153,11 @@ namespace PolygonConsoleApp
             double minXL1 = Math.Min(L1.P1.X, L1.P2.X);
             double maxXL2 = Math.Max(L2.P1.X, L2.P2.X);
             double minXL2 = Math.Min(L2.P1.X, L2.P2.X);
-            
+
             //////////////////////////////////////////////////////////////
             //Проверка частных случаев пересечения для исключения ошибок//
             //////////////////////////////////////////////////////////////
-            
+
 
             if (maxXL1 < minXL2) { return false; }                          //проверим существование потенциального интервала для точки пересечения отрезков
             if (maxYL1 < minYL2) { return false; }
@@ -124,7 +233,7 @@ namespace PolygonConsoleApp
             //////////////////////////////////////////
             //Проверка остальных случаев пересечения//
             //////////////////////////////////////////
-            
+
             //оба отрезка невертикальные и негоризонтальные
             A1 = (L1.P1.Y - L1.P2.Y) / (L1.P1.X - L1.P2.X);
             A2 = (L2.P1.Y - L2.P2.Y) / (L2.P1.X - L2.P2.X);
@@ -136,28 +245,36 @@ namespace PolygonConsoleApp
                 {
                     if (L1.P1.Y > L1.P2.Y)                                                //если наклон отрезка => \ 
                     {
-                        pointsIntersection = new Segment { 
-                            P1 = new Point 
-                            { 
-                                X = Math.Max(minXL1, minXL2), Y = Math.Min(maxYL1, maxYL2) 
+                        pointsIntersection = new Segment
+                        {
+                            P1 = new Point
+                            {
+                                X = Math.Max(minXL1, minXL2),
+                                Y = Math.Min(maxYL1, maxYL2)
                             },
-                            P2 = new Point 
-                            { 
-                                X = Math.Min(maxXL1, maxXL2), Y = Math.Max(minYL1, minYL2) 
-                            } };
+                            P2 = new Point
+                            {
+                                X = Math.Min(maxXL1, maxXL2),
+                                Y = Math.Max(minYL1, minYL2)
+                            }
+                        };
                         return true;
                     }
                     if (L1.P1.Y < L1.P2.Y)                                                //если наклон отрезка => /
                     {
-                        pointsIntersection = new Segment { 
-                            P1 = new Point 
-                            { 
-                                X = Math.Max(minXL1, minXL2), Y = Math.Max(minYL1, minYL2) 
-                            }, 
-                            P2 = new Point 
-                            { 
-                                X = Math.Min(maxXL1, maxXL2), Y = Math.Min(maxYL1, maxYL2) 
-                            } };
+                        pointsIntersection = new Segment
+                        {
+                            P1 = new Point
+                            {
+                                X = Math.Max(minXL1, minXL2),
+                                Y = Math.Max(minYL1, minYL2)
+                            },
+                            P2 = new Point
+                            {
+                                X = Math.Min(maxXL1, maxXL2),
+                                Y = Math.Min(maxYL1, maxYL2)
+                            }
+                        };
                         return true;
                     }
                 }
@@ -188,73 +305,19 @@ namespace PolygonConsoleApp
             };
         }
 
-        public static int PointInPoly(Point point, Point[] poly)                                // метод принимает проверяемую точку и координаты вершин многоугольника
-        {                                                                                       // и возвращает значение нахождения проверяемой точки в многоугольнике
-            if (point == null || poly == null) return -1;
-            bool onEdge = false;
-            int i, j = poly.Length - 1;
-            bool oddNodes = false;
-            for (i = 0; i < poly.Length; i++)                                                   //прохождение по всем граням
-            {
-                if (Math.Round(point.Y, 8) == Math.Round(poly[i].Y, 8) && Math.Round(point.X, 8) == Math.Round(poly[i].X, 8)) { onEdge = true; break; }
-                if ((poly[i].Y < point.Y && poly[j].Y >= point.Y                                // обе вершины выше и ниже проверяемой точки
-                    || poly[j].Y < point.Y && poly[i].Y >= point.Y)
-                        && (poly[i].X <= point.X || poly[j].X <= point.X))
-                {
-                    if (poly[i].X + (point.Y - poly[i].Y) / (poly[j].Y - poly[i].Y) * (poly[j].X - poly[i].X) < point.X)
-                    {
-                        oddNodes = !oddNodes;
-                    }
-                };
-                if (!(Math.Max(poly[i].Y, poly[j].Y) < point.Y || Math.Min(poly[i].Y, poly[j].Y) > point.Y || Math.Max(poly[i].X, poly[j].X) < point.X || Math.Min(poly[i].X, poly[j].X) > point.X))
-                {
-                    double AL = (poly[j].Y - poly[i].Y) / (poly[j].X - poly[i].X);
-                    double AL_P = (point.Y - poly[i].Y) / (point.X - poly[i].X);
-                    if (Math.Round(AL, 8) == Math.Round(AL_P, 8))                               //точка лежит на отрезке или вершине
-                    //if ((point.Y == ((poly[j].Y - poly[i].Y) / 2) + poly[i].Y                                              
-                    //        && point.X == ((poly[j].X - poly[i].X) / 2) + poly[i].X)
-                    //    || point.Y == poly[i].Y && point.X == poly[i].X)
-                    { onEdge = true; break; }
-                }
-                j = i;
-            }
-            if (onEdge == true) return 0;       // точка на грани фигуры
-            else if (!oddNodes) return -1;      // точка вне фигуры            
-            else return 1;                      // точка внутри фигуры
-        }
-
-        private void sortPointsOfLineByXY(ref Point[] points)
-        {
-            bool hadSomethingToSort = true;
-            while (hadSomethingToSort)
-            {
-                for (int i = 0; i < points.Length; i++)
-                    for (int j = 0; j < points.Length - 1; j++)
-                        if (points[j].X > points[j + 1].X
-                            || (points[j].X == points[j + 1].X && points[j].Y > points[j + 1].Y))
-                        {
-                            Point t = points[j + 1];
-                            points[j + 1] = points[j];
-                            points[j] = t;
-                            hadSomethingToSort = true;
-                        }
-                        else hadSomethingToSort = false;
-            }
-        }
-
-        private Point[] splitSegmentsIntoPoints(Segment[] segments)
+        static Point[] splitSegmentsIntoPoints(List<Segment> segments)
         {
             List<Point> pointsL = new List<Point>();
-            for (int i = 0; i < segments.Length; i++)
+            foreach (Segment seg in segments)
             {
-                pointsL.Add(segments[i].P1);
-                if (segments[i].P2 != null)
-                    pointsL.Add(segments[i].P2);
+                pointsL.Add(seg.P1);
+                if (seg.P2 != null)
+                    pointsL.Add(seg.P2);
             }
             return pointsL.ToArray();
         }
 
-        private Point[] removeDuplicatePoints(Point[] points)
+        static Point[] removeDuplicatePoints(Point[] points)
         {
             if (points == null) return null;
             List<Point> pointsL = new List<Point>();
@@ -269,81 +332,23 @@ namespace PolygonConsoleApp
             return pointsL.ToArray();
         }
 
-        public double calcSegmentsSummInPoly()                                              //метод расчета суммы длинн частей отрезков внутри многоугольника 
+        static void sortPointsOfLineByXY(ref Point[] points)
         {
-            double summLength = 0;
-            if (_polyPoints == null || _polyPoints.Length == 0) return 0;
-            for (int i = 0; i < _lines.Count(); i++)                                        //проход в цикле по отрезкам
+            Point temp;
+            for (int i = 1; i < points.Length; i++) 
             {
-                List<Segment> listOfSegmentsAndPointsOnCurrentLine = new List<Segment>();   //точки и отрезки лежащие на текущем отрезке перекающиеся с многоугольником
-                listOfSegmentsAndPointsOnCurrentLine.Add(new Segment { P1 = _lines[i].P1 });//начальная точка отрезка
-                int p1i = _polyPoints.Count() - 1;                                          //предыдущая точка многоугольника
-                for (int p2i = 0; p2i < _polyPoints.Count(); p2i++)                         //проход в цикле по граням многоугольника
+                temp = points[i];
+                var j = i;
+                while (j > 0 
+                    && (temp.X < points[j - 1].X 
+                        || (temp.X == points[j - 1].X && temp.Y < points[j - 1].Y)
+                    )) 
                 {
-                    Segment pointsIntersection;
-                    bool intersecIsEx = CheckIntersectionOfTwoLineSegments(                 //проверка пересечения отрезка и грани
-                        _lines[i],
-                        new Segment
-                        {
-                            P1 = _polyPoints[p1i],
-                            P2 = _polyPoints[p2i]
-                        },
-                        out pointsIntersection
-                    );
-                    if (intersecIsEx)
-                    {                                                                       //если есть пересечение
-                        listOfSegmentsAndPointsOnCurrentLine.Add(pointsIntersection);       //добавить элемент в список точек пересечений
-                    };
-                    p1i = p2i;
+                    points[j] = points[j - 1];
+                    j--;
                 }
-                listOfSegmentsAndPointsOnCurrentLine.Add(new Segment { P1 = _lines[i].P2 });//конечная точка отрезка
-                
-                //сортировка точек и очистка от повторений
-                Segment[] msvOfSegmentsAndPointsOnCurrentLine = listOfSegmentsAndPointsOnCurrentLine.ToArray();
-                Point[] unclearedMsvOfPoints = splitSegmentsIntoPoints(msvOfSegmentsAndPointsOnCurrentLine);
-                sortPointsOfLineByXY(ref unclearedMsvOfPoints);
-                Point[] msvOfPointsOnCurrentLine = removeDuplicatePoints(unclearedMsvOfPoints);
-
-                int pOLCount = msvOfPointsOnCurrentLine.Count();
-                if (pOLCount < 1) continue;
-
-                //проверка нахождения сегментов отрезка в многоугольнике
-                int tempPointIsInPoly = PointInPoly(msvOfPointsOnCurrentLine[0], _polyPoints);
-                
-                for (int firstIndex = 0; firstIndex < pOLCount - 1; firstIndex++)
-                {
-                    int secondIndex = firstIndex + 1;
-
-                    int fPointIsInPoly = tempPointIsInPoly;
-                    //int fPointIsInPoly = PointInPoly(msvOfPointsOnCurrentLine[firstIndex], _polyPoints);
-                    int sPointIsInPoly = PointInPoly(msvOfPointsOnCurrentLine[secondIndex], _polyPoints);
-                    tempPointIsInPoly = sPointIsInPoly;
-
-                    if (fPointIsInPoly == -1 || sPointIsInPoly == -1)                                       //если один из концов сегмента отрезка снаружи
-                        continue;
-                    if (fPointIsInPoly == 1 || sPointIsInPoly == 1)                                         //если один из концов сегмента отрезка внутри
-                    {
-                        double leng = Math.Sqrt(Math.Pow((msvOfPointsOnCurrentLine[secondIndex].X - msvOfPointsOnCurrentLine[firstIndex].X), 2)
-                                + Math.Pow((msvOfPointsOnCurrentLine[secondIndex].Y - msvOfPointsOnCurrentLine[firstIndex].Y), 2));
-                        summLength += leng;
-                        continue;
-                    }
-                    //если оба конца сегмента на грани 
-                    //расчет средней точки фрагмента отрезка
-                    double mX = msvOfPointsOnCurrentLine[firstIndex].X + ((msvOfPointsOnCurrentLine[secondIndex].X - msvOfPointsOnCurrentLine[firstIndex].X) / 2);
-                    double mY = msvOfPointsOnCurrentLine[firstIndex].Y + ((msvOfPointsOnCurrentLine[secondIndex].Y - msvOfPointsOnCurrentLine[firstIndex].Y) / 2);
-                    int mPointIsInPoly = PointInPoly(new Point { X = mX, Y = mY }, _polyPoints);
-
-                    if (mPointIsInPoly == 0 || mPointIsInPoly == 1)                                         //если средняя точка сегмента на грани или внутри
-                    {
-                        double leng = Math.Sqrt(Math.Pow((msvOfPointsOnCurrentLine[secondIndex].X - msvOfPointsOnCurrentLine[firstIndex].X), 2)
-                                + Math.Pow((msvOfPointsOnCurrentLine[secondIndex].Y - msvOfPointsOnCurrentLine[firstIndex].Y), 2));
-                        summLength += leng;
-                        continue;
-                    }
-                }
-            };
-            return summLength;
+                points[j] = temp;
+            }
         }
     }
 }
