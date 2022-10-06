@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Threading;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Prism.Mvvm;
+using PalindromeCheckClient.ViewModels;
 
 namespace PalindromeCheckClient.Models
 {
@@ -47,8 +48,8 @@ namespace PalindromeCheckClient.Models
         {
 
             FolderPathBtnIsEnabled = false; CheckPalindromeBtnIsEnabled = false;
-            RaisePropertyChanged("FolderPathBtnIsEnabled");
-            RaisePropertyChanged("CheckPalindromeBtnIsEnabled");
+            RaisePropertyChanged(nameof(MainWindowViewModel.FolderPathBtnIsEnabled));
+            RaisePropertyChanged(nameof(MainWindowViewModel.CheckPalindromeBtnIsEnabled));
             var thread = new Thread( StartSendFiles )
             { IsBackground = false };
             thread.Start();
@@ -150,8 +151,8 @@ namespace PalindromeCheckClient.Models
             limitReached = false;
             
             FolderPathBtnIsEnabled = true; CheckPalindromeBtnIsEnabled = true;
-            RaisePropertyChanged("FolderPathBtnIsEnabled");
-            RaisePropertyChanged("CheckPalindromeBtnIsEnabled");
+            RaisePropertyChanged(nameof(MainWindowViewModel.FolderPathBtnIsEnabled));
+            RaisePropertyChanged(nameof(MainWindowViewModel.CheckPalindromeBtnIsEnabled));
         }
 
         private void ProcessAnswerAndShow(string answer, int ind)
@@ -190,7 +191,7 @@ namespace PalindromeCheckClient.Models
                         }));
                     };
                 };
-                RaisePropertyChanged("DGSimTPalItems");
+                RaisePropertyChanged(nameof(MainWindowViewModel.DGSimTPalItems));
             }
             //GC.Collect();
         }
@@ -288,9 +289,9 @@ namespace PalindromeCheckClient.Models
                     string guidS = guid.ToString();
                     ObservCollectionForDG.Add(new FileDataItem { Text = stream.ReadToEnd().Replace("\r", "").Replace("\n", ""), Procd = false });
                 }                
-                RaisePropertyChanged("FolderPath"); 
-                RaisePropertyChanged("DGFilesItems");
-                RaisePropertyChanged("DGSimTPalItems");
+                RaisePropertyChanged(nameof(MainWindowViewModel.FolderPath));
+                RaisePropertyChanged(nameof(MainWindowViewModel.DGFilesItems));
+                RaisePropertyChanged(nameof(MainWindowViewModel.DGSimTPalItems));
                 return 0;
             }
             catch { return -1; }            
