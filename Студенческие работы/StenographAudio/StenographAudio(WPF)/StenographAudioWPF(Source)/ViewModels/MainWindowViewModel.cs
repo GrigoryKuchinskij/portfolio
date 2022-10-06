@@ -12,7 +12,7 @@ namespace StenographAudio_WPF_.ViewModels
 {
     class MainWindowViewModel : BindableBase
     {
-        readonly MainWindowModel _model = new MainWindowModel();
+        private readonly MainWindowModel _model = new MainWindowModel();
 
         public DelegateCommand SoundFileSearchCommand { get; }
         public DelegateCommand FileForHidingSearchCommand { get; }
@@ -27,10 +27,9 @@ namespace StenographAudio_WPF_.ViewModels
         public MainWindowViewModel()
         {
             _model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
-            _model.EncryptBitsSelectedIndex = 0;
-            _model.DecryptBitsSelectedIndex = 0;            
-            _model.EncryptBtnIsEnabled = true;
-            _model.DecryptBtnIsEnabled = true;
+            EncryptBitsCBSelectedIndex = 0;
+            DecryptBitsCBSelectedIndex = 0;
+            _model.CryptBtnsIsEnabled = true;
 
             SoundFileSearchCommand = new DelegateCommand(() =>
             {
@@ -66,14 +65,13 @@ namespace StenographAudio_WPF_.ViewModels
         public string InputSoundFilePath { get => _model.InputSoundFilePath; }
         public string InputFileForHidingPath { get => _model.InputFileForHidingPath; }
         public string OutputEncrFilePath { get => _model.OutputEncrFilePath; }
-        public int EncryptBitsCBSelectedIndex { get => _model.EncryptBitsSelectedIndex; set => _model.EncryptBitsSelectedIndex = value; }
+        public int EncryptBitsCBSelectedIndex { get => _model.BitsForCryptCount - 1; set => _model.BitsForCryptCount = value + 1; }
         public string InputEncrFilePath { get => _model.InputEncrFilePath; }
         public string OutputDecrFilePath { get => _model.OutputDecrFilePath; }
-        public int DecryptBitsCBSelectedIndex { get => _model.DecryptBitsSelectedIndex; set => _model.DecryptBitsSelectedIndex = value; }
+        public int DecryptBitsCBSelectedIndex { get => _model.BitsForDecryptCount - 1; set => _model.BitsForDecryptCount = value + 1; }
 
-        public double ProgrBarEncrVal { get => _model.ProgrBarEncrVal; }
-        public double ProgrBarDecrVal { get => _model.ProgrBarDecrVal; }
-        public bool EncryptBtnIsEnabled { get => _model.EncryptBtnIsEnabled; }
-        public bool DecryptBtnIsEnabled { get => _model.DecryptBtnIsEnabled; }
+        public double ProgrBarEncrVal { get => _model.ProgressEncrVal; }
+        public double ProgrBarDecrVal { get => _model.ProgressDecrVal; }
+        public bool CryptBtnsIsEnabled { get => _model.CryptBtnsIsEnabled; }
     }
 }
