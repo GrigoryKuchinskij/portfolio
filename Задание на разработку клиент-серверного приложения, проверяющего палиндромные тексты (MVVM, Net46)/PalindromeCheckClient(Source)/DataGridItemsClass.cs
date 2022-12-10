@@ -12,8 +12,8 @@ namespace PalindromeCheckClient
         public bool Procd { get; set; }
     }
 
-    public class SimilarityTPalItem
+    public class PalindromeStatusItem
     {
-        public string SimilarityTPalString { get; set; }
+        public string Value { get; set; }
     }
 }

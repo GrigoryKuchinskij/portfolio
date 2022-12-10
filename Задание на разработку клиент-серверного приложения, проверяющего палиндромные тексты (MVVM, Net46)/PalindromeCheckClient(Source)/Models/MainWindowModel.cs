@@ -17,43 +17,36 @@ using PalindromeCheckClient.ViewModels;
 namespace PalindromeCheckClient.Models
 {
     public class MainWindowModel : BindableBase
-    {     
-        static readonly string defIP = "127.0.0.1";
-        static readonly string defPort = "8090";
-        private string _URI;
-        public string URI { set => _URI = value; get => _URI; }
+    {
+        private static readonly string _DefIP = "127.0.0.1";
+        private static readonly string _DefPort = "8090";
 
-        private string _FolderPath;
-        public string FolderPath { get => _FolderPath; set => _FolderPath = value; }
+        public string URI { set; get; }
+        public string FolderPath { get; set; }
+        public bool WaitingForCommand { get; set; } = true;
 
         private readonly Dispatcher _dispatcher;
 
         private ObservableCollection<FileDataItem> ObservCollectionForDG = new ObservableCollection<FileDataItem>();
         public ReadOnlyObservableCollection<FileDataItem> PublicCollectionForDG;
-        private ObservableCollection<SimilarityTPalItem> SimTPalObservCollection = new ObservableCollection<SimilarityTPalItem>();
-        public ReadOnlyObservableCollection<SimilarityTPalItem> SimTPalPublicCollection;
+        private ObservableCollection<PalindromeStatusItem> SimTPalObservCollection = new ObservableCollection<PalindromeStatusItem>();
+        public ReadOnlyObservableCollection<PalindromeStatusItem> SimTPalPublicCollection;
 
         public MainWindowModel()
         {
             _dispatcher = Dispatcher.CurrentDispatcher;
             PublicCollectionForDG = new ReadOnlyObservableCollection<FileDataItem>(ObservCollectionForDG);
-            SimTPalPublicCollection = new ReadOnlyObservableCollection<SimilarityTPalItem>(SimTPalObservCollection);
-            _URI = "http://"+ defIP + ":"+ defPort + "/";
+            SimTPalPublicCollection = new ReadOnlyObservableCollection<PalindromeStatusItem>(SimTPalObservCollection);
+            URI = "http://"+ _DefIP + ":"+ _DefPort + "/";
         }
-
-        public bool FolderPathBtnIsEnabled = true;
-        public bool CheckPalindromeBtnIsEnabled = true;
 
         public void CheckPalindrome()
         {
-
-            FolderPathBtnIsEnabled = false; CheckPalindromeBtnIsEnabled = false;
-            RaisePropertyChanged(nameof(MainWindowViewModel.FolderPathBtnIsEnabled));
-            RaisePropertyChanged(nameof(MainWindowViewModel.CheckPalindromeBtnIsEnabled));
-            var thread = new Thread( StartSendFiles )
+            WaitingForCommand = false;
+            RaisePropertyChanged(nameof(MainWindowViewModel.WaitingForCommand));
+            Thread thread = new Thread( StartSendFiles )
             { IsBackground = false };
             thread.Start();
-            
 
             //GC.Collect();
         }
@@ -63,38 +56,40 @@ namespace PalindromeCheckClient.Models
 
         private void StartSendFiles()
         {
-            int i = 0, avTreads = -1, curTreads = 0; 
+            int i = 0, availableTreads = -1, curTreads = 0; 
             waitServ = defWaitServ;
             _dispatcher.Invoke(new Action(() => {
                 SimTPalObservCollection.Clear();
             }));
             foreach (FileDataItem item in ObservCollectionForDG)
             {
-                item.Procd = false;                
+                item.Procd = false;
             }
             while (true)                                                                //проход по всем элементам списка
-            {                                 
-                if (limitReached && avTreads == -1)                                     //если сервер перегружался и число доступных потоков ещё не задано
+            {
+                if (limitReached && availableTreads == -1)                              //если сервер перегружался и число доступных потоков ещё не задано
                 {
-                    avTreads = curTreads;                                               //присвоить счетчик текущих потоков => числу доступных потоков
-                    //curTreads = 0;
-                    //i = 0;
-                    //continue;
-                    //и начать с начала
+                    availableTreads = curTreads;                                        //присвоить счетчик текущих потоков => числу доступных потоков
                 }
                 else                                                                    //иначе, увеличить счетчик текущих потоков ...
+                {
                     curTreads++;
+                }
 
                 if (i >= ObservCollectionForDG.Count)                                   //если последний объект списка
                 {
                     int unProcd = 0;
                     foreach (FileDataItem dataItem in ObservCollectionForDG)
-                        if (dataItem.Procd == false) { 
+                    {
+                        if (dataItem.Procd == false)
+                        {
                             unProcd++;
                         }
+                    }
+
                     if (unProcd > 0)                                                    //если есть необработанные строки
                     {
-                        avTreads = Math.Min(unProcd, avTreads);
+                        availableTreads = Math.Min(unProcd, availableTreads);
                         curTreads = 0;
                         i = 0;                                                          //начать с начала
                         continue;
@@ -105,13 +100,13 @@ namespace PalindromeCheckClient.Models
                     };
                 };
 
-                if (ObservCollectionForDG[i].Procd == true)                             //если текущая строка обработана
+                if (ObservCollectionForDG[i].Procd)                                     //если текущая строка обработана
                 {
                     i++;
                     continue;                                                           //пропустить
                 };
 
-                var request = (HttpWebRequest)HttpWebRequest.Create(_URI);
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(URI);
                 request.Method = "POST";
                 string postData = "IsPalindrome=&word=" + ObservCollectionForDG[i].Text + "&index=" + i;
                 byte[] byteArray = Encoding.UTF8.GetBytes(postData);
@@ -139,9 +134,9 @@ namespace PalindromeCheckClient.Models
                     { IsBackground = true };
                 thread.Start();
                 i++;
-                if (avTreads != -1)                                                     //если число доступных потоков задано
+                if (availableTreads != -1)                                                     //если число доступных потоков задано
                     Thread.Sleep(
-                        Math.Max(waitServ / avTreads, defWaitServ)                      //задержка до обработки следущей строки исходя из числа доступных потоков (с учётом минимальной стандартной задержки)
+                        Math.Max(waitServ / availableTreads, defWaitServ)                      //задержка до обработки следущей строки исходя из числа доступных потоков (с учётом минимальной стандартной задержки)
                         );
                 else Thread.Sleep(
                     Math.Max(waitServ / curTreads, defWaitServ)                         //иначе => задержка до обработки следущей строки исходя из числа текущих потоков (с учётом минимальной стандартной задержки)
@@ -150,9 +145,8 @@ namespace PalindromeCheckClient.Models
             waitServ = defWaitServ;
             limitReached = false;
             
-            FolderPathBtnIsEnabled = true; CheckPalindromeBtnIsEnabled = true;
-            RaisePropertyChanged(nameof(MainWindowViewModel.FolderPathBtnIsEnabled));
-            RaisePropertyChanged(nameof(MainWindowViewModel.CheckPalindromeBtnIsEnabled));
+            WaitingForCommand = true;
+            RaisePropertyChanged(nameof(MainWindowViewModel.WaitingForCommand));
         }
 
         private void ProcessAnswerAndShow(string answer, int ind)
@@ -162,7 +156,7 @@ namespace PalindromeCheckClient.Models
                 _dispatcher.Invoke(new Action(() =>
                 {
                     while (SimTPalObservCollection.Count <= ind)
-                        SimTPalObservCollection.Add(new SimilarityTPalItem { SimilarityTPalString = "<Ожидание сервера>" });
+                        SimTPalObservCollection.Add(new PalindromeStatusItem { Value = "<Ожидание сервера>" });
                 }));
                 bool waitContain = answer.Contains("wait=");
                 if (waitContain)                                            //если сервер перегружен
@@ -185,7 +179,7 @@ namespace PalindromeCheckClient.Models
                         {
                             TranslateAnswer(ref answer);                    //перевод ответа для вывода в datagrid
 
-                            SimTPalObservCollection[ind] = new SimilarityTPalItem { SimilarityTPalString = answer };
+                            SimTPalObservCollection[ind] = new PalindromeStatusItem { Value = answer };
                             //вставка ответа в datagrid
                             ObservCollectionForDG[ind].Procd = true;        //пометить строку как обработанную
                         }));
@@ -269,11 +263,11 @@ namespace PalindromeCheckClient.Models
         {
             using (CommonOpenFileDialog dialogDirectory = new CommonOpenFileDialog { IsFolderPicker = true })
             {
-                return _FolderPath = dialogDirectory.ShowDialog() == CommonFileDialogResult.Ok ? dialogDirectory.FileName : null;
+                return FolderPath = dialogDirectory.ShowDialog() == CommonFileDialogResult.Ok ? dialogDirectory.FileName : null;
             }
         }
 
-        public int FillDataGridWithFolderPath() => FillDataGridWithFolderPath(_FolderPath);
+        public int FillDataGridWithFolderPath() => FillDataGridWithFolderPath(FolderPath);
 
         public int FillDataGridWithFolderPath(string folderPath)
         {
@@ -281,20 +275,20 @@ namespace PalindromeCheckClient.Models
             SimTPalObservCollection.Clear();
             try
             {
-                List<string> filesname = Directory.GetFiles(folderPath, "*.txt").ToList<string>();
+                List<string> filesname = Directory.GetFiles(folderPath, "*.txt").ToList();
                 foreach (var filePath in filesname)
                 {
                     StreamReader stream = new StreamReader(filePath, Encoding.UTF8);
                     Guid guid = Guid.NewGuid();
                     string guidS = guid.ToString();
                     ObservCollectionForDG.Add(new FileDataItem { Text = stream.ReadToEnd().Replace("\r", "").Replace("\n", ""), Procd = false });
-                }                
+                }
                 RaisePropertyChanged(nameof(MainWindowViewModel.FolderPath));
                 RaisePropertyChanged(nameof(MainWindowViewModel.DGFilesItems));
                 RaisePropertyChanged(nameof(MainWindowViewModel.DGSimTPalItems));
                 return 0;
             }
-            catch { return -1; }            
+            catch { return -1; }
         }
     }
 }

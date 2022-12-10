@@ -11,44 +11,45 @@ using System.Threading.Tasks;
 
 namespace PalindromeCheckClient.ViewModels
 {
-    class MainWindowViewModel : BindableBase
+    internal class MainWindowViewModel : BindableBase
     {
-        readonly MainWindowModel _model = new MainWindowModel();
+        private readonly MainWindowModel _Model = new MainWindowModel();
         public MainWindowViewModel()
         {
-            _model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
+            _Model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
             OpenCommand = new DelegateCommand(() =>
             {
-                _model.ShowOpenDialogForFolderPath();
+                _Model.ShowOpenDialogForFolderPath();
                 
-                if (_model.FillDataGridWithFolderPath() == -1)
+                if (_Model.FillDataGridWithFolderPath() == -1)
                 {
-                    _model.FolderPath = "ошибка чтения файлов";
+                    _Model.FolderPath = "ошибка чтения файлов";
                     Thread.Sleep(500);
-                    _model.FolderPath = "";
+                    _Model.FolderPath = "";
                 }
             });
-            CheckCommand = new DelegateCommand(() => 
+            CheckCommand = new DelegateCommand(() =>
             {
                 if (URI.Trim() != "" && (URI.Trim().IndexOf("http://") != -1 || URI.Trim().IndexOf("https://") != -1))
-                    _model.CheckPalindrome();
+                {
+                    _Model.CheckPalindrome();
+                }
                 else
                 {
-                    _model.URI = "неверный адрес";
+                    _Model.URI = "неверный адрес";
                     Thread.Sleep(500);
-                    _model.URI = "http ://127.0.0.1:8080/"; 
+                    _Model.URI = "http ://127.0.0.1:8080/"; 
                 }
             });
         }
-        
-        public string URI { get => _model.URI; set => _model.URI = value; }
-        public bool FolderPathBtnIsEnabled { get => _model.FolderPathBtnIsEnabled; set => _model.FolderPathBtnIsEnabled = value; }
-        public bool CheckPalindromeBtnIsEnabled { get => _model.CheckPalindromeBtnIsEnabled; set => _model.CheckPalindromeBtnIsEnabled = value; }
-        public string FolderPath { get => _model.FolderPath; set => _model.FolderPath = value; }
+
+        public string URI { get => _Model.URI; set => _Model.URI = value; }
+        public bool WaitingForCommand { get => _Model.WaitingForCommand; }
+        public string FolderPath { get => _Model.FolderPath; set => _Model.FolderPath = value; }
 
         public DelegateCommand OpenCommand { get; }
         public DelegateCommand CheckCommand { get; }
-        public ReadOnlyObservableCollection<FileDataItem> DGFilesItems => _model.PublicCollectionForDG;
-        public ReadOnlyObservableCollection<SimilarityTPalItem> DGSimTPalItems => _model.SimTPalPublicCollection;
+        public ReadOnlyObservableCollection<FileDataItem> DGFilesItems => _Model.PublicCollectionForDG;
+        public ReadOnlyObservableCollection<PalindromeStatusItem> DGSimTPalItems => _Model.SimTPalPublicCollection;
     }    
 }
