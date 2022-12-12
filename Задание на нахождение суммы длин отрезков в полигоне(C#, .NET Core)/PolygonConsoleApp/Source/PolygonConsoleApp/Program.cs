@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using static PolygonConsoleApp.GeometricObjects;
-using static PolygonConsoleApp.GeomShapesToCheckForIntersec;
+using static PolygonConsoleApp.CalcGeometricIntersections;
 
 namespace PolygonConsoleApp
 {
@@ -80,8 +80,8 @@ namespace PolygonConsoleApp
                         }
                         Point[] polyPoints = ConvertToPoint(polygonPointsList);
                         Segment[] lines = ConvertToSegment(segmentsList);
-                        GeomShapesToCheckForIntersec shapesToCheckForIntersec = new GeomShapesToCheckForIntersec(polyPoints, lines);
-                        Console.WriteLine(shapesToCheckForIntersec.calcSegmentsSummInPoly());
+                        double summ = CalcGeometricIntersections.CalcSegmentsSummInPoly(polyPoints, lines);
+                        Console.WriteLine(summ);
                         if (noComments) Environment.Exit(0);
                         GC.Collect();
                         break;
