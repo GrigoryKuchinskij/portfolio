@@ -48,15 +48,23 @@ namespace StenographAudio_WPF_.Models
             //_dispatcher = Dispatcher.CurrentDispatcher;
         }
 
+        private void ReadWaveFileInBytes(WaveFileReader WFR, out byte[] AudioFile)  //считывание wave файла в массив   
+        {
+            long fileLength = WFR.Length;
+            AudioFile = new byte[fileLength];
+            WFR.Read(AudioFile, 0, (int)fileLength);
+            WFR.Close();
+            WFR.Dispose();
+        }
+
         public void Encrypt(string SoundFileSearchPath, string InputFileNameForHiding, string OutputFilePath, int Bits)
         {
             try
             {
-                WaveFileReader WFRwaveFileInput = new WaveFileReader(SoundFileSearchPath);     //создается новый объект waveFileReader на основе считываемого wave файла
                 StreamReader SR = new StreamReader(InputFileNameForHiding);                    //создается новый объект streamReader на основе считываемого zip файла                
-                long WFRLength = WFRwaveFileInput.Length;                                      //определение длинны входного wave файла
-                WaveFileWriter WFW = new WaveFileWriter(OutputFilePath, WFRwaveFileInput.WaveFormat);   //Создание нового файла формата wave (выходного)
-                double OnePerc = (WFRLength / 100);
+                WaveFileReader WFR = new WaveFileReader(SoundFileSearchPath);     //создается новый объект waveFileReader на основе считываемого wave файла
+                ReadWaveFileInBytes(WFR, out byte[] AudioFile);
+                long WFRLength = WFR.Length;
 
                 //Считываем скрываемый zip файл в байтовый лист
                 BinaryReader BR = new BinaryReader(SR.BaseStream);                              //создание нового объекта binaryReader для побайтового считывания zip файла из streamReader
@@ -79,15 +87,13 @@ namespace StenographAudio_WPF_.Models
                 BL = new List<byte>();
                 BL.Clear();                                                                     //очищение листа байтов
 
-
                 int icurW;                                                                      //Считанный байт из входного wav файла
                 int IPosZ = 0;                                                                  //Текущая позиция во входном zip файле
                 int Mask = (~0 << Bits);                                                        //Маска для обнуления начальных бит (сдвиг влево на указанное число Bits)
 
                 // Запись в выходной файл
-                byte[] AudioFile = new byte[WFRLength];                                         //создание массива байтов 
-                WFRwaveFileInput.Read(AudioFile, 0, (int)WFRLength);                            //считывание исходного wave файла в массив                 
-
+                WaveFileWriter WFW = new WaveFileWriter(OutputFilePath, WFR.WaveFormat);   //Создание нового файла формата wave (выходного)
+                double OnePerc = (WFRLength / 100);
                 double percCounter = 0;
                 for (long k = 0; k < WFRLength; k++)                                            //до тех пор пока не обработается каждый байт входного wav файла:
                 {
@@ -114,8 +120,6 @@ namespace StenographAudio_WPF_.Models
                 }
                 WFW.Close();                                                                    //закрытие waveFileWriter
                 WFW.Dispose();                                                                  //освобождение ресурсов от waveFileWriter
-                WFRwaveFileInput.Close();                                                       //закрытие waveFileReader
-                WFRwaveFileInput.Dispose();                                                     //освобождение ресурсов от waveFileReader
                 InputZipFileBits = new BitArray(0);                                             //очищение массива байтов
             }
             catch { MessageBox.Show("Проверьте пути к файлам"); };
@@ -127,28 +131,21 @@ namespace StenographAudio_WPF_.Models
         {
             try
             {
-                WaveFileReader WFR = new WaveFileReader(EncrFileSearchPath);                    //создается новый объект waveFileReader на основе считываемого wave файла
-                StreamWriter SW = new StreamWriter(OutputFilePath);                             //создается новый объект streamWriter для записываемого zip файла
+                WaveFileReader WFR = new WaveFileReader(EncrFileSearchPath);                    //создается новый объект waveFileReader на основе считываемого wave файла     
+                ReadWaveFileInBytes(WFR, out byte[] AudioFile);
                 long WFRLength = WFR.Length;                                                    //определение длинны входного wave файла
-                byte[] AudioBytes = new byte[WFRLength];                                        //создаем массив байтов 
-                WFR.Read(AudioBytes, 0, (int)WFRLength);                                        //cчитываем wav файл в массив байтов
-                WFR.Close();                                                                    //закрываем waveFileReader
-                WFR.Dispose();                                                                  //освобождаем ресурсы от waveFileReader
-                List<byte> BL = new List<byte>(AudioBytes);                                     //копируем массив байтов в лист BL
-                AudioBytes = new byte[0];                                                       //очищаем массив
 
-                int BLCount = BL.Count;
-                BitArray BA = new BitArray(BLCount * 8);                                        //создаем массив битов для выходного zip файла, с расчетом, что весь файл может войти в результат
+                BitArray BA = new BitArray((int)(WFRLength * 8));                               //создаем массив битов для выходного zip файла, с расчетом, что весь файл может войти в результат
                 BA.SetAll(false);                                                               //устанавливаем массив для выходного zip файла в нули
 
                 int lastNonZero = 0;                                                            //Количество ненулевых бит в результате
                 int bitCount = 0;                                                               //Количество битов
 
-                double OnePerc = (BLCount / 100);
-                double percCounter = 0;
-                for (int i = 0; i < BLCount; i++)                                               //проход по всем байтам листа BL
+                double OnePerc = (WFRLength / 100);
+                double byteCounter = 0;
+                for (int i = 0; i < WFRLength; i++)                                             //проход по всем байтам листа BL
                 {
-                    byte CurByte = BL[i];                                                       //считываем текущий байт из листа байтов
+                    byte CurByte = AudioFile[i];                                                //считываем текущий байт из листа байтов
                     byte CurMask = (byte)(1 << (Bits - 1));                                     //текущая маска, по которой будем выделять требуемый бит
 
                     // Считываем все биты маски
@@ -161,16 +158,14 @@ namespace StenographAudio_WPF_.Models
                         CurMask = (byte)(CurMask >> 1);                                         //сдвигаем маску для более старшего бита (если нужно)
                     }
 
-                    percCounter++;
-                    if (percCounter >= OnePerc * 2)
+                    byteCounter++;
+                    if (byteCounter >= OnePerc * 2)
                     {
-                        percCounter = 0;
-                        ProgressDecrVal = (i * 50) / BLCount;
+                        byteCounter = 0;
+                        ProgressDecrVal = (i * 50) / WFRLength;
                         RaisePropertyChanged(nameof(MainWindowViewModel.ProgrBarDecrVal));
                     }
                 }
-                BL = new List<byte>();
-                BL.Clear();                                                                     //очищаем лист байтов
                 int ByteMassLength = (lastNonZero / 8) + 6;                                     //размер выходного массива в байтах с запасом
                 byte[] outputBytes = new byte[ByteMassLength];                                  //выходной массив
                 byte[] ResBytes = new byte[(BA.Count / 8) + 6];                                 //массив с нулевыми битами
@@ -184,6 +179,7 @@ namespace StenographAudio_WPF_.Models
                 ResBytes = new byte[0];                                                         //очищаем массив
                 ProgressDecrVal = 99;
                 RaisePropertyChanged(nameof(MainWindowViewModel.ProgrBarDecrVal));
+                StreamWriter SW = new StreamWriter(OutputFilePath);                             //создается новый объект streamWriter для записываемого zip файла
                 BinaryWriter BW = new BinaryWriter(SW.BaseStream);                              //создание нового файла формата zip (выходного)
                 BW.Write(outputBytes);                                                          //запись расшифрованных данных в выходной файл
                 BW.Close();                                                                     //закрываем BinaryWriter
@@ -194,87 +190,6 @@ namespace StenographAudio_WPF_.Models
             catch { MessageBox.Show("Проверьте пути к файлам"); };
             ProgressDecrVal = 0;
             RaisePropertyChanged(nameof(MainWindowViewModel.ProgrBarDecrVal));
-        }
-
-        public int SoundFileSearchDialog()                               //кнопка обзора пути к "Исходному звуковому файлу"
-        {
-            OpenFileDialog dialog = new OpenFileDialog()
-            {
-                Filter = "wave files (*.wav)|*.wav|All files (*.*)|*.*",
-                Title = "Выберите исходный звуковой файл"
-            };
-
-            if (dialog.ShowDialog() == true)
-            {
-                InputSoundFilePath = dialog.FileName;
-                RaisePropertyChanged(nameof(MainWindowViewModel.InputSoundFilePath));
-                return 0;
-            }
-            else return -1;
-        }
-
-        public int FileForHidingSearchDialog()                           //кнопка обзора пути к "Скрываемому файлу"
-        {
-            OpenFileDialog dialog = new OpenFileDialog()
-            {
-                Filter = "ZIP files (*.zip)|*.zip|All files (*.*)|*.*",
-                Title = "Выберите скрываемый файл"
-            };
-            if (dialog.ShowDialog() == true)
-            {
-                InputFileForHidingPath = dialog.FileName;
-                RaisePropertyChanged(nameof(MainWindowViewModel.InputFileForHidingPath));
-                return 0;
-            }
-            else return -1;
-        }
-
-        public int DestForEncrFileDialog()                               //кнопка обзора пути к сохраняемому "Выходному (закодированному) аудио файлу"
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog()
-            {
-                Filter = "wave files (*.wav)|*.wav|All files (*.*)|*.*",
-                Title = "Сохранить закодированный аудио файл",
-            };
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                OutputEncrFilePath = saveFileDialog.FileName;
-                RaisePropertyChanged(nameof(MainWindowViewModel.OutputEncrFilePath));
-                return 0;
-            }
-            else return -1;
-        }
-
-        public int EncrFileSearchDialog()                                //кнопка обзора пути к "Исходному (закодированному) звуковому файлу"
-        {
-            OpenFileDialog dialog = new OpenFileDialog()
-            {
-                Filter = "wave files (*.wav)|*.wav|All files (*.*)|*.*",
-                Title = "Выберите закодированный звуковой файл"
-            };
-            if (dialog.ShowDialog() == true)
-            {
-                InputEncrFilePath = dialog.FileName;
-                RaisePropertyChanged(nameof(MainWindowViewModel.InputEncrFilePath));
-                return 0;
-            }
-            else return -1;
-        }
-
-        public int DestForDecrFileDialog()                               //кнопка обзора пути к сохраняемому "Выходному (раскодированному) файлу"
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog()
-            {
-                Filter = "ZIP files (*.zip)|*.zip|All files (*.*)|*.*",
-                Title = "Сохранить раскодированный файл",
-            };
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                OutputDecrFilePath = saveFileDialog.FileName;
-                RaisePropertyChanged(nameof(MainWindowViewModel.OutputDecrFilePath));
-                return 0;
-            }
-            else return -1;
         }
 
         public void EncryptStart()                                       //Кнопка "Зашифровать"

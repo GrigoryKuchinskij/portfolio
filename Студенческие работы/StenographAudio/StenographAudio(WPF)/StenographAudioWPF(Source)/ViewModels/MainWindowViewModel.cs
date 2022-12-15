@@ -7,6 +7,7 @@ using StenographAudio_WPF_.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Threading;
+using Microsoft.Win32;
 
 namespace StenographAudio_WPF_.ViewModels
 {
@@ -31,43 +32,85 @@ namespace StenographAudio_WPF_.ViewModels
             DecryptBitsCBSelectedIndex = 0;
             _model.CryptBtnsIsEnabled = true;
 
-            SoundFileSearchCommand = new DelegateCommand(() =>
+            SoundFileSearchCommand = new DelegateCommand(() =>      //кнопка обзора пути к "Исходному звуковому файлу"
             {
-                if (_model.SoundFileSearchDialog() == -1)
-                    _model.InputSoundFilePath = "ошибка чтения файла";
+                OpenFileDialog dialog = new OpenFileDialog()
+                {
+                    Filter = "wave files (*.wav)|*.wav|All files (*.*)|*.*",
+                    Title = "Выберите исходный звуковой файл"
+                };
+                InputSoundFilePath = ShowOpenDialog(dialog);
+                RaisePropertyChanged(nameof(InputSoundFilePath));
             });
-            FileForHidingSearchCommand = new DelegateCommand(() =>
+            FileForHidingSearchCommand = new DelegateCommand(() =>  //кнопка обзора пути к "Скрываемому файлу"
             {
-                if (_model.FileForHidingSearchDialog() == -1)
-                    _model.InputFileForHidingPath = "ошибка чтения файла";
+                OpenFileDialog dialog = new OpenFileDialog()
+                {
+                    Filter = "ZIP files (*.zip)|*.zip|All files (*.*)|*.*",
+                    Title = "Выберите скрываемый файл"
+                };
+                InputFileForHidingPath = ShowOpenDialog(dialog);
+                RaisePropertyChanged(nameof(InputFileForHidingPath));
             });
-            DestForEncrFileCommand = new DelegateCommand(() =>
+            DestForEncrFileCommand = new DelegateCommand(() =>      //кнопка обзора пути к сохраняемому "Выходному (закодированному) аудио файлу"
             {
-                if (_model.DestForEncrFileDialog() == -1)
-                    _model.OutputEncrFilePath = "ошибка задания пути к файлу";
+                SaveFileDialog saveFileDialog = new SaveFileDialog()
+                {
+                    Filter = "wave files (*.wav)|*.wav|All files (*.*)|*.*",
+                    Title = "Сохранить закодированный аудио файл",
+                };
+                OutputEncrFilePath = ShowSaveDialog(saveFileDialog);
+                RaisePropertyChanged(nameof(OutputEncrFilePath));
             });
 
-            EncrFileSearchCommand = new DelegateCommand(() =>
+            EncrFileSearchCommand = new DelegateCommand(() =>       //кнопка обзора пути к "Исходному (закодированному) звуковому файлу"
             {
-                if (_model.EncrFileSearchDialog() == -1)
-                    _model.InputEncrFilePath = "ошибка чтения файла";
+                OpenFileDialog dialog = new OpenFileDialog()
+                {
+                    Filter = "wave files (*.wav)|*.wav|All files (*.*)|*.*",
+                    Title = "Выберите закодированный звуковой файл"
+                };
+                InputEncrFilePath = ShowOpenDialog(dialog);
+                RaisePropertyChanged(nameof(InputEncrFilePath));
             });
-            DestForDecrFileCommand = new DelegateCommand(() =>
+            DestForDecrFileCommand = new DelegateCommand(() =>      //кнопка обзора пути к сохраняемому "Выходному (раскодированному) файлу"
             {
-                if (_model.DestForDecrFileDialog() == -1)
-                    _model.OutputDecrFilePath = "ошибка задания пути к файлу";
+                SaveFileDialog saveFileDialog = new SaveFileDialog()
+                {
+                    Filter = "ZIP files (*.zip)|*.zip|All files (*.*)|*.*",
+                    Title = "Сохранить раскодированный файл",
+                };
+                OutputDecrFilePath = ShowSaveDialog(saveFileDialog);
+                RaisePropertyChanged(nameof(OutputDecrFilePath));
             });
 
             EncryptStartCommand = new DelegateCommand(() => _model.EncryptStart());
             DecryptStartCommand = new DelegateCommand(() => _model.DecryptStart());
         }
 
-        public string InputSoundFilePath { get => _model.InputSoundFilePath; }
-        public string InputFileForHidingPath { get => _model.InputFileForHidingPath; }
-        public string OutputEncrFilePath { get => _model.OutputEncrFilePath; }
+
+        private string ShowOpenDialog(OpenFileDialog dialog)
+        {
+            if (dialog.ShowDialog() == true)
+                return dialog.FileName;
+            else
+                return "ошибка чтения файла";
+        }
+
+        private string ShowSaveDialog(SaveFileDialog dialog)
+        {
+            if (dialog.ShowDialog() == true)
+                return dialog.FileName;
+            else
+                return "ошибка задания пути к файлу";
+        }
+
+        public string InputSoundFilePath { get => _model.InputSoundFilePath; private set => _model.InputSoundFilePath = value; }
+        public string InputFileForHidingPath { get => _model.InputFileForHidingPath; private set => _model.InputFileForHidingPath = value; }
+        public string OutputEncrFilePath { get => _model.OutputEncrFilePath; private set => _model.OutputEncrFilePath = value; }
         public int EncryptBitsCBSelectedIndex { get => _model.BitsForCryptCount - 1; set => _model.BitsForCryptCount = value + 1; }
-        public string InputEncrFilePath { get => _model.InputEncrFilePath; }
-        public string OutputDecrFilePath { get => _model.OutputDecrFilePath; }
+        public string InputEncrFilePath { get => _model.InputEncrFilePath; private set => _model.InputEncrFilePath = value; }
+        public string OutputDecrFilePath { get => _model.OutputDecrFilePath; private set => _model.OutputDecrFilePath = value; }
         public int DecryptBitsCBSelectedIndex { get => _model.BitsForDecryptCount - 1; set => _model.BitsForDecryptCount = value + 1; }
 
         public double ProgrBarEncrVal { get => _model.ProgressEncrVal; }
