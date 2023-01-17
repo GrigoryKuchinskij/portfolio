@@ -17,45 +17,45 @@ namespace PolygonConsoleApp
                 
                 listOfSegmentsAndPointsOnCurrentLine.Add(new Segment { P1 = lines[i].P1 }); //начальная точка отрезка
 
-                int p1i = polyPoints.Count() - 1;                                           //предыдущая точка многоугольника
-                for (int p2i = 0; p2i < polyPoints.Count(); p2i++)                          //проход в цикле по граням многоугольника
+                int previousPointIndex = polyPoints.Count() - 1;                                           //предыдущая точка многоугольника
+                for (int pointIndex = 0; pointIndex < polyPoints.Count(); pointIndex++)                          //проход в цикле по граням многоугольника
                 {
                     Segment pointsIntersection;
-                    bool intersecIsExist = CheckIntersectionOfTwoLineSegments(              //проверка пересечения отрезка и грани
+                    bool intersectionIsExist = CheckIntersectionOfTwoLineSegments(              //проверка пересечения отрезка и грани
                         lines[i],
                         new Segment
                         {
-                            P1 = polyPoints[p1i],
-                            P2 = polyPoints[p2i]
+                            P1 = polyPoints[previousPointIndex],
+                            P2 = polyPoints[pointIndex]
                         },
                         out pointsIntersection
                     );
-                    if (intersecIsExist)
+                    if (intersectionIsExist)
                     {                                                                       //если есть пересечение
                         listOfSegmentsAndPointsOnCurrentLine.Add(pointsIntersection);       //добавить элемент в список точек пересечений
                     };
-                    p1i = p2i;
+                    previousPointIndex = pointIndex;
                 }
 
                 listOfSegmentsAndPointsOnCurrentLine.Add(new Segment { P1 = lines[i].P2 });//конечная точка отрезка
                 
                 //сортировка точек и очистка от повторений
-                Point[] unclearedMassOfPoints = SplitSegmentsIntoPoints(listOfSegmentsAndPointsOnCurrentLine);
-                sortPointsOfLineByXY(ref unclearedMassOfPoints);
-                Point[] PointsOnCurrentLine = RemoveDuplicatePoints(unclearedMassOfPoints);
+                Point[] unclearedArrayOfPoints = SplitSegmentsIntoPoints(listOfSegmentsAndPointsOnCurrentLine);
+                sortPointsOfLineByXY(ref unclearedArrayOfPoints);
+                Point[] PointsOnCurrentLine = RemoveDuplicatedPoints(unclearedArrayOfPoints);
 
                 int pOLCount = PointsOnCurrentLine.Count();
                 if (pOLCount < 1) continue;
 
                 //проверка нахождения сегментов отрезка в многоугольнике
 
-                PointInPoly(PointsOnCurrentLine[0], polyPoints, out int tempPointIsInPoly);
+                PointInPoly(PointsOnCurrentLine[0], polyPoints, out sbyte tempPointIsInPoly);
                 for (int firstIndex = 0; firstIndex < pOLCount - 1; firstIndex++)
                 {
                     int secondIndex = firstIndex + 1;
 
-                    int firstPointIsInPoly = tempPointIsInPoly;
-                    PointInPoly(PointsOnCurrentLine[secondIndex], polyPoints, out int secondPointIsInPoly);
+                    sbyte firstPointIsInPoly = tempPointIsInPoly;
+                    PointInPoly(PointsOnCurrentLine[secondIndex], polyPoints, out sbyte secondPointIsInPoly);
                     tempPointIsInPoly = secondPointIsInPoly;
 
                     if (firstPointIsInPoly == -1 || secondPointIsInPoly == -1)                                       //если один из концов сегмента отрезка снаружи
@@ -87,7 +87,7 @@ namespace PolygonConsoleApp
 
         public static bool PointInPoly(Point point, Point[] poly) => PointInPoly(point, poly, out _);
 
-        public static bool PointInPoly(Point point, Point[] poly, out int state)                // метод принимает проверяемую точку и координаты вершин многоугольника
+        public static bool PointInPoly(Point point, Point[] poly, out sbyte state)              // метод принимает проверяемую точку и координаты вершин многоугольника
         {                                                                                       // и возвращает значение нахождения проверяемой точки в многоугольнике
             if (point == null || poly == null)
             {
@@ -111,9 +111,9 @@ namespace PolygonConsoleApp
                 };
                 if (!(Math.Max(poly[i].Y, poly[j].Y) < point.Y || Math.Min(poly[i].Y, poly[j].Y) > point.Y || Math.Max(poly[i].X, poly[j].X) < point.X || Math.Min(poly[i].X, poly[j].X) > point.X))
                 {
-                    double AL = (poly[j].Y - poly[i].Y) / (poly[j].X - poly[i].X);
-                    double AL_P = (point.Y - poly[i].Y) / (point.X - poly[i].X);
-                    if (Math.Round(AL, 8) == Math.Round(AL_P, 8))                               //точка лежит на отрезке или вершине
+                    double coordinateDifferenceRatio = (poly[j].Y - poly[i].Y) / (poly[j].X - poly[i].X);
+                    double CDRatioBetweenPolypointAndPoint = (point.Y - poly[i].Y) / (point.X - poly[i].X);
+                    if (Math.Round(coordinateDifferenceRatio, 8) == Math.Round(CDRatioBetweenPolypointAndPoint, 8))                               //точка лежит на отрезке или вершине
                     { onEdge = true; break; }
                 }
                 j = i;
@@ -295,7 +295,9 @@ namespace PolygonConsoleApp
             //Xi - абсцисса точки пересечения двух прямых
             Xi = (b2 - b1) / (A1 - A2);
             if ((Xi < Math.Max(L1.P1.X, L2.P1.X)) || (Xi > Math.Min(L1.P2.X, L2.P2.X)))
-            { return false; }
+            { 
+                return false; 
+            }
             else                                                                    //если произвольные непараллельные отрезки
             {
                 double f11 = L1.P2.Y - L1.P1.Y;
@@ -325,7 +327,7 @@ namespace PolygonConsoleApp
             return pointsL.ToArray();
         }
 
-        private static Point[] RemoveDuplicatePoints(Point[] points)
+        private static Point[] RemoveDuplicatedPoints(Point[] points)
         {
             if (points == null) return null;
             List<Point> pointsL = new List<Point>();
