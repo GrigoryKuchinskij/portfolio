@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PalindromeCheckServer.exe" size="12800">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PalindromeCheckServer.exe" size="14336">
       <assemblyIdentity name="PalindromeCheckServer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>23BpdxAwMySqCcbmRmS6Ch9woLmMfO+7r2TssjdoFKU=</dsig:DigestValue>
+        <dsig:DigestValue>Df7AOpQjOhFQpsnmAVELeWPCzB/oSSqSEexrCQJBem0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

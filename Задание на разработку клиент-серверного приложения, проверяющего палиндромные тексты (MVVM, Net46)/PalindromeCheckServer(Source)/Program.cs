@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -13,32 +14,55 @@ namespace PalindromeCheckServer
     class Program
     {
         static readonly string DefaultPort = "8090";
+        static int numbOfRequestsLimit = 128;
+        static int defaultNumbOfRequests = 4;
         internal static bool IsRunAsAdmin()
         {
             WindowsIdentity id = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(id);
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
+
         static void Main(string[] args)
         {
+            Console.WindowWidth = 125;
+            int consoleSizeH = Console.WindowHeight;
+            int consoleSizeW = Console.WindowWidth;
+            Console.SetBufferSize(consoleSizeW, consoleSizeH);
+
+            Dictionary<string, string> consoleOutputs = new Dictionary<string, string>
+            {
+                {"os_not_supported","Текущая ос не поддерживается!" },
+                {"launch_as_admin", "Запустите от имени администратора!"},
+                {"on","вкл." },
+                {"off","выкл." },
+                {"server_launched_at_addr","Сервер запущен по адресу " },
+                {"skip_punctuation","Пропуск знаков припинания в палиндроме: " },
+                {"skip_similar", "Пропуск схожих символов и беззвучных в палиндроме: "},
+                {"available_number_of_threads", "Доступно ${numbOfRequests} поток(-а/-ов) для обрабатываемых запросов"},
+                {"keys_binding", @"[x]-Выход | [*число*]-количество потоков | [s]-Пропуск знаков | [e]-Приравнять ""Е"" к ""Ё"", ""И"" к ""Й"" и отбросить ""Ь"" и ""Ъ"""},
+                {"command_not_recognized", "Команда не распознана"},
+                {"server_not_launched", "Сервер не запущен!" },
+                {"server_stopped","Сервер остановлен!" },
+                {"requests_header_text","Нагрузка:" },//        Состояние запроса:" },
+                {"request_error" ,"Ошибка обработки запроса!"}
+            };
             if (!HttpListener.IsSupported)
             {
-                Console.WriteLine("Текущая ос не поддерживается!");             //если текущая ос не поддерживается
+                Console.WriteLine(consoleOutputs["os_not_supported"]);             //если текущая ос не поддерживается
                 Console.ReadKey();
                 return;
             }
             if (!IsRunAsAdmin())
             {
-                Console.WriteLine("Запустите от имени администратора!");
+                Console.WriteLine(consoleOutputs["launch_as_admin"]);
                 Console.ReadKey();
                 return;
             }
 
             HttpListener httpListener = new HttpListener();
             CheckPalindromeServer server = new CheckPalindromeServer(httpListener);
-            server.Notify += Console.WriteLine;
-            server.MaxNumbOfRequests = 4;
-
+            server.MaxNumbOfRequests = defaultNumbOfRequests;
             string Ip = "+", Port = DefaultPort;
             bool exit = false;
             foreach (string arg in args)
@@ -47,61 +71,108 @@ namespace PalindromeCheckServer
                     Ip = arg.Substring(5);
                 if (arg.ToLower().StartsWith("port-"))
                     Port = arg.Substring(5);
-                if (arg.ToLower().StartsWith("maxreq-"))
+                if (arg.ToLower().StartsWith("maxreq-") && Convert.ToInt32(arg.Substring(7)) <= numbOfRequestsLimit)
                     server.MaxNumbOfRequests = Convert.ToInt32(arg.Substring(7));
                 if (arg == "skip-punctuation") server.SkipPn = true;
-                if (arg == "skip-similar") server.SkipEquals = true;
+                if (arg == "skip-similar") server.SkipSimilar = true;
             }
             string addr = @"http://" + Ip + ":" + Port + "/";
             server.Listener.Prefixes.Add(addr);
+
+            string tempTextInput = "";
+            bool inputIsComplete = true;
+
+            server.Notify += (string message) => DrawServerTextLine(message);
+
             //запускаем север
             server.Listener.Start();
-            Console.WriteLine(@"Сервер запущен по адресу " + addr);
-            if (server.SkipPn) Console.WriteLine("Пропуск знаков припинания в палиндроме: вкл");
-            else Console.WriteLine("Пропуск знаков припинания в палиндроме: выкл");
-            if (server.SkipEquals) Console.WriteLine("Пропуск схожих символов и беззвучных в палиндроме: вкл");
-            else Console.WriteLine("Пропуск схожих символов и беззвучных в палиндроме: выкл");
-            Console.WriteLine(@"Доступно " + server.MaxNumbOfRequests + " поток(-а/-ов) для обрабатываемых запросов");
-            Console.WriteLine();
-
             Task.Run(() => server.StartClientFlow());
-
             while (!exit)
             {
-                Console.WriteLine(@"[x]-Выход | [*число*]-количество потоков | [s]-Пропуск знаков | [e]-Приравнять ""Е"" к ""Ё"", ""И"" к ""Й"" и отбросить ""Ь"" и ""Ъ""");
-                string cs = Console.ReadLine().ToLower();
-                switch (cs)
+                if (inputIsComplete)
+                    DrawConsole();
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+                char inputChar = keyInfo.KeyChar;
+                ConsoleKey key = keyInfo.Key;
+                switch (key)
                 {
-                    case "x":
+                    case ConsoleKey.X:
                         server.Listener.Stop();
                         server.Listener.Abort();
                         exit = true;
                         break;
-                    case "s":
+                    case ConsoleKey.S:
                         server.SkipPn = !server.SkipPn;
-                        if (server.SkipPn)
-                            Console.WriteLine("Пропуск знаков припинания в палиндроме: вкл");
-                        else
-                            Console.WriteLine("Пропуск знаков припинания в палиндроме: выкл");
                         break;
-                    case "e":
-                        server.SkipEquals = !server.SkipEquals;
-                        if (server.SkipEquals)
-                            Console.WriteLine("Пропуск схожих символов и беззвучных в палиндроме: вкл");
-                        else
-                            Console.WriteLine("Пропуск схожих символов и беззвучных в палиндроме: выкл");
+                    case ConsoleKey.E:
+                        server.SkipSimilar = !server.SkipSimilar;
+                        break;
+                    case ConsoleKey.Backspace:
+                        tempTextInput = tempTextInput.Remove(tempTextInput.Length - 1);
                         break;
                     default:
                         try
                         {
-                            server.MaxNumbOfRequests = Convert.ToInt32(cs);
-                            Console.WriteLine(@"Доступно " + server.MaxNumbOfRequests + " поток(-а/-ов) для обрабатываемых запросов");
+                            if (key != ConsoleKey.Enter)
+                            {
+                                tempTextInput += inputChar;
+                                inputIsComplete = false;
+                            }
+                            else
+                            {
+                                server.MaxNumbOfRequests = Convert.ToInt32(tempTextInput);
+                                tempTextInput = "";
+                                inputIsComplete = true;
+                            }
                         }
                         catch
                         {
-                            Console.WriteLine("Команда не распознана");
+                            Console.WriteLine(consoleOutputs["command_not_recognized"]);
                         };
                         break;
+                }
+            }
+
+            void DrawConsole()
+            {
+                Console.Clear();
+                Console.SetCursorPosition(consoleSizeW - 40, 0);
+                Console.WriteLine(consoleOutputs["requests_header_text"]);
+
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine(consoleOutputs["server_launched_at_addr"] + addr);
+
+                if (server.SkipPn) Console.WriteLine(consoleOutputs["skip_punctuation"] + consoleOutputs["on"]);
+                else Console.WriteLine(consoleOutputs["skip_punctuation"] + consoleOutputs["off"]);
+
+                if (server.SkipSimilar) Console.WriteLine(consoleOutputs["skip_similar"] + consoleOutputs["on"]);
+                else Console.WriteLine(consoleOutputs["skip_similar"] + consoleOutputs["off"]);
+
+                
+                Console.WriteLine(consoleOutputs["available_number_of_threads"].Replace("${numbOfRequests}", $"{server.MaxNumbOfRequests}"));
+                Console.WriteLine();
+                Console.WriteLine(consoleOutputs["keys_binding"]);
+                Console.WriteLine();
+                //Console.SetCursorPosition(0, 7);
+            }
+
+            void DrawServerTextLine(string text)
+            {
+                if (inputIsComplete)
+                {
+                    inputIsComplete = false;
+                    if (consoleOutputs.ContainsKey(text))
+                    {
+                        Console.WriteLine(consoleOutputs[text]);
+                    }
+                    else if (text.StartsWith("Load:"))
+                    {
+                        text = text.Replace("Load:", "  ");
+                        Console.SetCursorPosition(consoleSizeW - text.Count() - 1, 0);
+                        Console.WriteLine(text);//.Replace("#",new String(' ',15)));
+                        Console.SetCursorPosition(0, 7);
+                    }
+                    inputIsComplete = true;
                 }
             }
         }
@@ -116,7 +187,7 @@ namespace PalindromeCheckServer
         private bool skipSimilar = false;
         private int maxNumbOfRequests = 2;
         private int currentNumbOfRequests = 0;
-        private readonly int sleepDuration = 3;
+        private readonly int sleepDuration = 3;                         //имитация загрузки сервера
         private readonly string[,] xmlPage = {
             { @"<input name=""answer"" value=""",@"""><br>" },
             { @"<input name=""index"" value=""",@""">" }
@@ -124,7 +195,7 @@ namespace PalindromeCheckServer
 
         public HttpListener Listener { get; private set; }
         public int MaxNumbOfRequests { get => maxNumbOfRequests; set => maxNumbOfRequests = value; }
-        public bool SkipEquals { get => skipSimilar; set => skipSimilar = value; }
+        public bool SkipSimilar { get => skipSimilar; set => skipSimilar = value; }
         public bool SkipPn { get => skipPunctuation; set => skipPunctuation = value; }
 
         public CheckPalindromeServer(HttpListener listener) => Listener = listener;
@@ -133,10 +204,9 @@ namespace PalindromeCheckServer
         {
             if (Listener.IsListening == false)
             {
-                Notify.Invoke("Сервер не запущен!");
+                Notify.Invoke("server_not_launched");
                 return;
-            };
-            Notify.Invoke(@"Нагрузка:        Состояние запроса:");
+            };            
             while (Listener.IsListening)                                //пока сервер запущен
             {
                 HttpListenerContext context = Listener.GetContext();    //ожидаем входящие запросы
@@ -147,14 +217,14 @@ namespace PalindromeCheckServer
                     SendResponseData(context.Response,
                         xmlPage[0, 0] + "wait=" + sleepDuration + xmlPage[0, 1]
                         + xmlPage[1, 0] + reqID + xmlPage[1, 1]);
-                    Notify.Invoke(currentNumbOfRequests + @"/" + maxNumbOfRequests + "        rejected");
+                    //Notify.Invoke("Load:" + currentNumbOfRequests + @"/" + maxNumbOfRequests);// + "#rejected");
                     continue;
                 }
                 else
                     Task.Run(() => CheckPalindromeInContext(context));
             }
             currentNumbOfRequests = 0;                                      //при остановке сервера сбросить счетчик
-            Notify.Invoke("Сервер остановлен!");
+            Notify.Invoke("server_stopped");
         }
 
         private void ExtractValuesFromContext(ref HttpListenerContext context, out string reqWord, out string reqID)
@@ -162,7 +232,7 @@ namespace PalindromeCheckServer
             reqWord = "";
             reqID = "";
             string reqText = ReadRequestData(context.Request);
-            Notify.Invoke(currentNumbOfRequests + @"/" + maxNumbOfRequests + "        received "); //+ reqText);
+            Notify.Invoke("Load:" + currentNumbOfRequests + @"/" + maxNumbOfRequests);// + "#received ");
             string[] reqvals = reqText.Split('&');
             foreach (string reqval in reqvals)
             {
@@ -183,7 +253,7 @@ namespace PalindromeCheckServer
                 char[] punctuation = { '.', ',', '!', '?', ';', ':', '"', '-' };
                 char[] eqLetterE = { '.', ',', '!', '?', ';', ':', '"', '-' };
                 ExtractValuesFromContext(ref context, out reqWord, out reqID);
-                reqWord = reqWord.ToLower();//.Replace("\r","").Replace("\n", "");
+                reqWord = reqWord.ToLower();
                 if (skipPunctuation == true)
                 {
                     reqWord = new string(reqWord.Select(s => (punctuation.Contains(s) ? ' ' : s)).ToArray());
@@ -202,18 +272,16 @@ namespace PalindromeCheckServer
                 SendResponseData(context.Response,
                     xmlPage[0, 0] + isPal.ToString() + xmlPage[0, 1]
                     + xmlPage[1, 0] + reqID + xmlPage[1, 1]);
-                Notify.Invoke(currentNumbOfRequests + @"/" + maxNumbOfRequests + "        processed");
             }
-            catch //(HttpException ex) 
+            catch
             {
-                Notify.Invoke(@"Ошибка обработки запроса!");// + ex.Message); 
-                                                            //}
-                                                            //catch { 
+                Notify.Invoke("request_error");
                 SendResponseData(context.Response,
                     xmlPage[0, 0] + "Error" + xmlPage[0, 1]
                     + xmlPage[1, 0] + "-1" + xmlPage[1, 1]);
             }
             --currentNumbOfRequests;
+            Notify.Invoke("Load:" + currentNumbOfRequests + @"/" + maxNumbOfRequests);// + "#processed");
         }
 
         private string ReadRequestData(HttpListenerRequest request)

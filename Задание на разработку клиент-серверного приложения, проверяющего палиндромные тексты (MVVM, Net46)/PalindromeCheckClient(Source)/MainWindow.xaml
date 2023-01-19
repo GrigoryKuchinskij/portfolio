@@ -25,7 +25,7 @@
                         HorizontalScrollBarVisibility="Auto"
                         VerticalScrollBarVisibility="Disabled"
                         IsReadOnly="True"
-                        ItemsSource="{Binding DGFilesItems,
+                        ItemsSource="{Binding FilesToCheckDGItems,
                                             UpdateSourceTrigger=PropertyChanged, Mode=OneWay,
                                             NotifyOnTargetUpdated=True,
                                             NotifyOnSourceUpdated=True}" HeadersVisibility="Column">
@@ -44,7 +44,7 @@
                         HorizontalScrollBarVisibility="Disabled"
                         VerticalScrollBarVisibility="Disabled"
                         IsReadOnly="True"
-                        ItemsSource="{Binding DGSimTPalItems,
+                        ItemsSource="{Binding PalindromeStatusDGItems,
                                             UpdateSourceTrigger=PropertyChanged, Mode=OneWay,
                                             NotifyOnTargetUpdated=True,
                                             NotifyOnSourceUpdated=True}" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False" HeadersVisibility="Column" CanUserResizeColumns="False">

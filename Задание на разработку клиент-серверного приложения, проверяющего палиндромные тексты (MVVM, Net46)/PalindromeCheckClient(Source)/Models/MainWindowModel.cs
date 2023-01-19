@@ -27,16 +27,16 @@ namespace PalindromeCheckClient.Models
 
         private readonly Dispatcher _dispatcher;
 
-        private ObservableCollection<FileDataItem> ObservCollectionForDG = new ObservableCollection<FileDataItem>();
-        public ReadOnlyObservableCollection<FileDataItem> PublicCollectionForDG;
-        private ObservableCollection<PalindromeStatusItem> SimTPalObservCollection = new ObservableCollection<PalindromeStatusItem>();
-        public ReadOnlyObservableCollection<PalindromeStatusItem> SimTPalPublicCollection;
+        private ObservableCollection<FileDataItem> ObservableFileDataCollection = new ObservableCollection<FileDataItem>();
+        public ReadOnlyObservableCollection<FileDataItem> PublicFileDataCollectionForDG;
+        private ObservableCollection<PalindromeStatusItem> PalindromeStatusObservableCollection = new ObservableCollection<PalindromeStatusItem>();
+        public ReadOnlyObservableCollection<PalindromeStatusItem> PalindromeStatusPublicCollection;
 
         public MainWindowModel()
         {
             _dispatcher = Dispatcher.CurrentDispatcher;
-            PublicCollectionForDG = new ReadOnlyObservableCollection<FileDataItem>(ObservCollectionForDG);
-            SimTPalPublicCollection = new ReadOnlyObservableCollection<PalindromeStatusItem>(SimTPalObservCollection);
+            PublicFileDataCollectionForDG = new ReadOnlyObservableCollection<FileDataItem>(ObservableFileDataCollection);
+            PalindromeStatusPublicCollection = new ReadOnlyObservableCollection<PalindromeStatusItem>(PalindromeStatusObservableCollection);
             URI = "http://"+ _DefIP + ":"+ _DefPort + "/";
         }
 
@@ -59,9 +59,9 @@ namespace PalindromeCheckClient.Models
             int i = 0, availableTreads = -1, curTreads = 0; 
             waitServ = defWaitServ;
             _dispatcher.Invoke(new Action(() => {
-                SimTPalObservCollection.Clear();
+                PalindromeStatusObservableCollection.Clear();
             }));
-            foreach (FileDataItem item in ObservCollectionForDG)
+            foreach (FileDataItem item in ObservableFileDataCollection)
             {
                 item.Procd = false;
             }
@@ -76,10 +76,10 @@ namespace PalindromeCheckClient.Models
                     curTreads++;
                 }
 
-                if (i >= ObservCollectionForDG.Count)                                   //если последний объект списка
+                if (i >= ObservableFileDataCollection.Count)                                   //если последний объект списка
                 {
                     int unProcd = 0;
-                    foreach (FileDataItem dataItem in ObservCollectionForDG)
+                    foreach (FileDataItem dataItem in ObservableFileDataCollection)
                     {
                         if (dataItem.Procd == false)
                         {
@@ -100,7 +100,7 @@ namespace PalindromeCheckClient.Models
                     };
                 };
 
-                if (ObservCollectionForDG[i].Procd)                                     //если текущая строка обработана
+                if (ObservableFileDataCollection[i].Procd)                                     //если текущая строка обработана
                 {
                     i++;
                     continue;                                                           //пропустить
@@ -108,7 +108,7 @@ namespace PalindromeCheckClient.Models
 
                 HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(URI);
                 request.Method = "POST";
-                string postData = "IsPalindrome=&word=" + ObservCollectionForDG[i].Text + "&index=" + i;
+                string postData = "IsPalindrome=&word=" + ObservableFileDataCollection[i].Text + "&index=" + i;
                 byte[] byteArray = Encoding.UTF8.GetBytes(postData);
                 request.ContentType = "text/html";
                 request.ContentLength = byteArray.Length;
@@ -155,8 +155,8 @@ namespace PalindromeCheckClient.Models
             {
                 _dispatcher.Invoke(new Action(() =>
                 {
-                    while (SimTPalObservCollection.Count <= ind)
-                        SimTPalObservCollection.Add(new PalindromeStatusItem { Value = "<Ожидание сервера>" });
+                    while (PalindromeStatusObservableCollection.Count <= ind)
+                        PalindromeStatusObservableCollection.Add(new PalindromeStatusItem { Value = "<Ожидание сервера>" });
                 }));
                 bool waitContain = answer.Contains("wait=");
                 if (waitContain)                                            //если сервер перегружен
@@ -173,19 +173,19 @@ namespace PalindromeCheckClient.Models
                 }
                 else
                 {
-                    if (ind <= SimTPalObservCollection.Count && ind <= ObservCollectionForDG.Count && ObservCollectionForDG[ind].Procd == false)
+                    if (ind <= PalindromeStatusObservableCollection.Count && ind <= ObservableFileDataCollection.Count && ObservableFileDataCollection[ind].Procd == false)
                     {                                                       //отбрасываются обработанные строки и строки вне диапазона 
                         _dispatcher.Invoke(new Action(() =>
                         {
                             TranslateAnswer(ref answer);                    //перевод ответа для вывода в datagrid
 
-                            SimTPalObservCollection[ind] = new PalindromeStatusItem { Value = answer };
+                            PalindromeStatusObservableCollection[ind] = new PalindromeStatusItem { Value = answer };
                             //вставка ответа в datagrid
-                            ObservCollectionForDG[ind].Procd = true;        //пометить строку как обработанную
+                            ObservableFileDataCollection[ind].Procd = true;        //пометить строку как обработанную
                         }));
                     };
                 };
-                RaisePropertyChanged(nameof(MainWindowViewModel.DGSimTPalItems));
+                RaisePropertyChanged(nameof(MainWindowViewModel.PalindromeStatusDGItems));
             }
             //GC.Collect();
         }
@@ -271,8 +271,8 @@ namespace PalindromeCheckClient.Models
 
         public int FillDataGridWithFolderPath(string folderPath)
         {
-            ObservCollectionForDG.Clear();
-            SimTPalObservCollection.Clear();
+            ObservableFileDataCollection.Clear();
+            PalindromeStatusObservableCollection.Clear();
             try
             {
                 List<string> filesname = Directory.GetFiles(folderPath, "*.txt").ToList();
@@ -281,11 +281,11 @@ namespace PalindromeCheckClient.Models
                     StreamReader stream = new StreamReader(filePath, Encoding.UTF8);
                     Guid guid = Guid.NewGuid();
                     string guidS = guid.ToString();
-                    ObservCollectionForDG.Add(new FileDataItem { Text = stream.ReadToEnd().Replace("\r", "").Replace("\n", ""), Procd = false });
+                    ObservableFileDataCollection.Add(new FileDataItem { Text = stream.ReadToEnd().Replace("\r", "").Replace("\n", ""), Procd = false });
                 }
                 RaisePropertyChanged(nameof(MainWindowViewModel.FolderPath));
-                RaisePropertyChanged(nameof(MainWindowViewModel.DGFilesItems));
-                RaisePropertyChanged(nameof(MainWindowViewModel.DGSimTPalItems));
+                RaisePropertyChanged(nameof(MainWindowViewModel.FilesToCheckDGItems));
+                RaisePropertyChanged(nameof(MainWindowViewModel.PalindromeStatusDGItems));
                 return 0;
             }
             catch { return -1; }

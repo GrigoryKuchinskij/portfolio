@@ -49,7 +49,7 @@ namespace PalindromeCheckClient.ViewModels
 
         public DelegateCommand OpenCommand { get; }
         public DelegateCommand CheckCommand { get; }
-        public ReadOnlyObservableCollection<FileDataItem> DGFilesItems => _Model.PublicCollectionForDG;
-        public ReadOnlyObservableCollection<PalindromeStatusItem> DGSimTPalItems => _Model.SimTPalPublicCollection;
+        public ReadOnlyObservableCollection<FileDataItem> FilesToCheckDGItems => _Model.PublicFileDataCollectionForDG;
+        public ReadOnlyObservableCollection<PalindromeStatusItem> PalindromeStatusDGItems => _Model.PalindromeStatusPublicCollection;
     }    
 }
