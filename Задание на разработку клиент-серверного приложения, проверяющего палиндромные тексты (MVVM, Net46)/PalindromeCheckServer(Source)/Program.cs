@@ -44,7 +44,7 @@ namespace PalindromeCheckServer
                 {"command_not_recognized", "Команда не распознана"},
                 {"server_not_launched", "Сервер не запущен!" },
                 {"server_stopped","Сервер остановлен!" },
-                {"requests_header_text","Нагрузка:" },//        Состояние запроса:" },
+                {"load_header_text","Нагрузка:" },//        Состояние запроса:" },
                 {"request_error" ,"Ошибка обработки запроса!"}
             };
             if (!HttpListener.IsSupported)
@@ -108,7 +108,8 @@ namespace PalindromeCheckServer
                         server.SkipSimilar = !server.SkipSimilar;
                         break;
                     case ConsoleKey.Backspace:
-                        tempTextInput = tempTextInput.Remove(tempTextInput.Length - 1);
+                        if (tempTextInput.Length != 0)
+                            tempTextInput = tempTextInput.Remove(tempTextInput.Length - 1);
                         break;
                     default:
                         try
@@ -137,7 +138,7 @@ namespace PalindromeCheckServer
             {
                 Console.Clear();
                 Console.SetCursorPosition(consoleSizeW - 40, 0);
-                Console.WriteLine(consoleOutputs["requests_header_text"]);
+                Console.WriteLine(consoleOutputs["load_header_text"]);
 
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine(consoleOutputs["server_launched_at_addr"] + addr);
@@ -147,12 +148,12 @@ namespace PalindromeCheckServer
 
                 if (server.SkipSimilar) Console.WriteLine(consoleOutputs["skip_similar"] + consoleOutputs["on"]);
                 else Console.WriteLine(consoleOutputs["skip_similar"] + consoleOutputs["off"]);
-
-                
+                                
                 Console.WriteLine(consoleOutputs["available_number_of_threads"].Replace("${numbOfRequests}", $"{server.MaxNumbOfRequests}"));
                 Console.WriteLine();
                 Console.WriteLine(consoleOutputs["keys_binding"]);
                 Console.WriteLine();
+                Console.Write(">");
                 //Console.SetCursorPosition(0, 7);
             }
 
@@ -170,7 +171,7 @@ namespace PalindromeCheckServer
                         text = text.Replace("Load:", "  ");
                         Console.SetCursorPosition(consoleSizeW - text.Count() - 1, 0);
                         Console.WriteLine(text);//.Replace("#",new String(' ',15)));
-                        Console.SetCursorPosition(0, 7);
+                        Console.SetCursorPosition(1, 7);
                     }
                     inputIsComplete = true;
                 }
