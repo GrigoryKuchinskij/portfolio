@@ -34,18 +34,18 @@ namespace MJpegStreamViewerProj
             shadeListBoxGrid.Visibility = Visibility.Collapsed;
             overListBoxCenterText.Visibility = Visibility.Collapsed;
             ListProgressRing.IsActive = false;
-            pageDataObject pdo = (pageDataObject)e.Parameter;
-            ExtendedOptionsIsOn = pdo.extOptions;
+            PageDataObject pdo = (PageDataObject)e.Parameter;
+            ExtendedOptionsIsOn = pdo.ExtOptions;
             if (ExtendedOptionsIsOn)
                 ShowExtOpt();
             else
                 HideExtOpt();
-            getChannels();
+            GetChannels();
         }
 
-        private void getChannelsBtn_Click(object sender, RoutedEventArgs e) => getChannels();
+        private void GetChannelsBtn_Click(object sender, RoutedEventArgs e) => GetChannels();
 
-        private void getChannels() 
+        private void GetChannels()
         {
             channelsListBox.ItemsSource = null;
             if (requestUriTBox.Text.Trim() != "" && (requestUriTBox.Text.Trim().IndexOf("http://") == 0 || requestUriTBox.Text.Trim().IndexOf("https://") == 0))
@@ -69,26 +69,27 @@ namespace MJpegStreamViewerProj
         {
             channelList.Clear();
             uriList.Clear();
-            var request = (HttpWebRequest)asyncResult.AsyncState;
+            HttpWebRequest request = (HttpWebRequest)asyncResult.AsyncState;
             try
             {
-                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
-                var stream = response.GetResponseStream();
-                var responseList = XmlResponseClass.XmlResponse(stream);
+                HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asyncResult);
+                System.IO.Stream stream = response.GetResponseStream();
+                List<string> responseList = XmlResponseClass.XmlResponse(stream);
                 stream.Close();
                 response.Close();
                 foreach (string responseLine in responseList)
                 {
-                    var values = responseLine.Split("%#");
-                    var fpsLimit = Convert.ToInt32(values[2]);
+                    string[] values = responseLine.Split("%#");
+                    int fpsLimit = Convert.ToInt32(values[2]);
                     string fps;
-                    if (fpsLimit != 0) fps = "&fps=" + fpsLimit.ToString(); else fps = "&fps=60";
-                    var uriLine = values[1] + fps;
+                    if (fpsLimit != 0)
+                        fps = "&fps=" + fpsLimit.ToString(); else fps = "&fps=60";
+                    string uriLine = values[1] + fps;
                     uriList.Add(uriLine);
-                    var quality = values[1].Split("&resolutionY=")[1].Split("&")[0] + "p";
-                    var channelStr = values[0] + " " + quality + " " ;//+ values[1].Replace("&"," ");
+                    string quality = values[1].Split("&resolutionY=")[1].Split("&")[0] + "p";
+                    string channelStr = values[0] + " " + quality + " " ;//+ values[1].Replace("&"," ");
                     channelList.Add(channelStr);
-                }                
+                }
             }
             catch (Exception ex)
             {
@@ -97,7 +98,7 @@ namespace MJpegStreamViewerProj
                 uriList.Clear();
             }
             _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                { 
+                {
                     channelsListBox.ItemsSource = channelList;
                     ListProgressRing.IsActive = false;
                     getChannelsBtn.IsEnabled = true;
@@ -107,16 +108,16 @@ namespace MJpegStreamViewerProj
             request.Abort();
         }
 
-        private void channelsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ChannelsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(serverPartUriTBox.Text.Trim() != "" && (serverPartUriTBox.Text.Trim().IndexOf("http://") == 0 || serverPartUriTBox.Text.Trim().IndexOf("https://") == 0)) 
             {
-                pageDataObject pageDataObj = new pageDataObject();
-                pageDataObj.channelStringList = channelList;
-                pageDataObj.uriParamsStringList = uriList;
-                pageDataObj.serverUriPart = serverPartUriTBox.Text;
-                pageDataObj.chosenIndex = channelsListBox.SelectedIndex;
-                pageDataObj.extOptions = ExtendedOptionsIsOn;
+                PageDataObject pageDataObj = new PageDataObject();
+                pageDataObj.ChannelStringList = channelList;
+                pageDataObj.UriParamsStringList = uriList;
+                pageDataObj.ServerUriPart = serverPartUriTBox.Text;
+                pageDataObj.ChosenIndex = channelsListBox.SelectedIndex;
+                pageDataObj.ExtOptions = ExtendedOptionsIsOn;
                 Frame.Navigate(typeof(StreamPage), pageDataObj, new ContinuumNavigationTransitionInfo());
             }
             else
@@ -146,29 +147,29 @@ namespace MJpegStreamViewerProj
             });
         }
 
-        private void requestUriTBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        private void RequestUriTBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             getChannelsBtn.IsEnabled = false;
             shadeListBoxGrid.Visibility = Visibility.Visible;
         }
-        private void requestUriTBox_LostFocus(object sender, RoutedEventArgs e)
+        private void RequestUriTBox_LostFocus(object sender, RoutedEventArgs e)
         {
             getChannelsBtn.IsEnabled = true;
             shadeListBoxGrid.Visibility = Visibility.Collapsed;
         }
 
-        private void serverPartUriTBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        private void ServerPartUriTBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             shadeListBoxGrid.Visibility = Visibility.Visible;
         }
 
-        private void serverPartUriTBox_LostFocus(object sender, RoutedEventArgs e)
+        private void ServerPartUriTBox_LostFocus(object sender, RoutedEventArgs e)
         {
             shadeListBoxGrid.Visibility = Visibility.Collapsed;
         }
 
         private void ShowExtendedOptionsBtn_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             if (ExtendedOptionsIsOn)
             {
                 ExtendedOptionsIsOn = false;

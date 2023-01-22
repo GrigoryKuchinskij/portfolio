@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MJpegStreamViewerProj
 {
-    class pageDataObject
+    internal class PageDataObject
     {
-        public string serverUriPart { get; set; }
-        public int chosenIndex { get; set; }
-        public bool extOptions { get; set; }
-        public List<string> channelStringList { get; set; }
-        public List<string> uriParamsStringList { get; set; }
-        public pageDataObject() { }
+        public string ServerUriPart { get; set; }
+        public int ChosenIndex { get; set; }
+        public bool ExtOptions { get; set; }
+        public List<string> ChannelStringList { get; set; }
+        public List<string> UriParamsStringList { get; set; }
+        public PageDataObject() { }
     }
 }

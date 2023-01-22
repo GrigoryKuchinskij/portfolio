@@ -65,7 +65,6 @@
       <RootProperty Name="TabIndex" />
       <RootProperty Name="Height" />
       <RootProperty Name="XYFocusKeyboardNavigation" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootEvent Name="TextChanging" />
       <RootEvent Name="LostFocus" />
     </RootType>
@@ -73,12 +72,14 @@
       <RootProperty Name="Content" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="FontSize" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
       <RootProperty Name="TabIndex" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="MJpegStreamViewerProj.MainPage" />
@@ -99,6 +100,8 @@
       <RootProperty Name="LabelPosition" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="IsCompact" />
+      <RootProperty Name="BorderBrush" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">

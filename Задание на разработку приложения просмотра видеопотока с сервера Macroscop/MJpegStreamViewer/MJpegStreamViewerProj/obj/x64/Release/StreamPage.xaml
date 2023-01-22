@@ -10,7 +10,7 @@
     <Page.TopAppBar>
         <CommandBar IsSticky="True" Background="Transparent" IsOpen="True" DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed" ClosedDisplayMode="Compact">
             <!--<AppBarButton x:Name="BackButton" Icon="Back"  Click="BackButton_Click" muxc:ToolTipService.ToolTip="Назад"/>-->
-            <AppBarToggleButton x:ConnectionId='2' x:Name="PlayBtn" Icon="Video"                       muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="40" Width="35" LabelPosition="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center" muxc:ToolTipService.ToolTip="Включить камеру"/>
+            <AppBarToggleButton x:ConnectionId='2' x:Name="PlayBtn" Icon="Video"                       muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="40" Width="35" LabelPosition="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center" muxc:ToolTipService.ToolTip="Включить камеру" IsCompact="False" BorderBrush="{muxc:ThemeResource ComboBoxBorderThemeBrush}" />
             <CommandBar.Content>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                     

@@ -10,13 +10,13 @@
     <Page.TopAppBar>
         <CommandBar IsSticky="True" Background="Transparent" IsOpen="True" DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed" ClosedDisplayMode="Compact">
             <!--<AppBarButton x:Name="BackButton" Icon="Back"  Click="BackButton_Click" muxc:ToolTipService.ToolTip="Назад"/>-->
-            <AppBarToggleButton x:Name="PlayBtn" Icon="Video" Click="PlayBtn_Click" muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="40" Width="35" LabelPosition="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center" muxc:ToolTipService.ToolTip="Включить камеру"/>
+            <AppBarToggleButton x:Name="PlayBtn" Icon="Video" Click="PlayBtn_Click" muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="40" Width="35" LabelPosition="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center" muxc:ToolTipService.ToolTip="Включить камеру" IsCompact="False" BorderBrush="{muxc:ThemeResource ComboBoxBorderThemeBrush}" />
             <CommandBar.Content>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                     
-                    <ComboBox x:Name="channelsCBox" ItemsSource="{x:Bind channelSList}" HorizontalAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" muxc:ToolTipService.ToolTip="Канал" Height="40" SelectionChanged="channelsCBox_SelectionChanged"/>
+                    <ComboBox x:Name="channelsCBox" ItemsSource="{x:Bind channelSList}" HorizontalAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" muxc:ToolTipService.ToolTip="Канал" Height="40" SelectionChanged="ChannelsCBox_SelectionChanged"/>
                     <TextBlock FontSize="15" Text=" FPS:" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox x:Name="fpsCBox" ItemsSource="{x:Bind fpsList}" PlaceholderText="" muxc:ToolTipService.ToolTip="Кадры в секунду" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" SelectionChanged="fpsCBox_SelectionChanged" Width="65"/>
+                    <ComboBox x:Name="fpsCBox" ItemsSource="{x:Bind fpsList}" PlaceholderText="" muxc:ToolTipService.ToolTip="Кадры в секунду" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" SelectionChanged="FpsCBox_SelectionChanged" Width="65"/>
                     
                 </StackPanel>
             </CommandBar.Content>

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using static PolygonConsoleApp.GeometricObjects;
-using static PolygonConsoleApp.CalcGeometricIntersections;
 
 namespace PolygonConsoleApp
 {
@@ -18,15 +17,14 @@ namespace PolygonConsoleApp
                 "\r\n Координаты отрезков и углов многоугольника задаются в файлах \"segments.csv\" и \"polygonPoints.csv\", находящихся в папке с программой." +
                 "\r\n Вы также можете самостоятельно задать пути к файлам передав их в качестве аргументов. " +
                 "\r\n Пример:> ./PolygonConsoleApp.exe s=\"C:\\Temp\\Координаты_отрезков.csv\" p=\"C:\\Temp\\Координаты_углов_многоугольника.csv\"" +
-                "\r\n Приложение может работать с выпуклыми и невыпуклыми многоугольниками без самопересечений.";
-            string cycleMessage = "\r\n \r\n Нажмите Enter для расчета, или введите \"H\" и Enter для дополнительной информации. Введите \"X\" и Enter для выхода." +
-                "\r\n>>";
-            string helpMessage = "\r\n Координаты отрезков задаются построчно (по ум. в файле \"segments.csv\"). Формат: {X начала отрезка};{Y начала отрезка};{X конца отрезка};{Y конца отрезка} " +
-                        "\r\n Пример строки: 62,076745;79,945621;64,819002;84,763976" +
-                        "\r\n Координаты углов многоугольника задаются построчно (по ум. в файле \"polygonPoints.csv\"). Формат: {X точки};{Y точки}" +
-                        "\r\n Пример строки: 62,76284217;79,61893362" +
-                        "\r\n Углы многоугольника описываются последовательно, вдоль его границы." +
-                        "\r\n>>";
+                "\r\n Приложение может работать с выпуклыми и невыпуклыми многоугольниками без самопересечений."+
+                "\r\n \r\n [ Enter ] для расчета | [ H ] для дополнительной информации | [ X ] для выхода\r\n>>";
+            string helpMessage = "\r\n Координаты отрезков задаются построчно (по ум. в файле \"segments.csv\")." +
+                "\r\n Формат: {X начала отрезка};{Y начала отрезка};{X конца отрезка};{Y конца отрезка} " +
+                "\r\n Пример строки: 62,076745;79,945621;64,819002;84,763976" +
+                "\r\n Координаты углов многоугольника задаются построчно (по ум. в файле \"polygonPoints.csv\"). Формат: {X точки};{Y точки}" +
+                "\r\n Пример строки: 62,76284217;79,61893362" +
+                "\r\n Углы многоугольника описываются последовательно, вдоль его границы.\r\n>>";
 
             foreach (string arg in args)
             {
@@ -44,22 +42,26 @@ namespace PolygonConsoleApp
                 }
             }
 
-            if (!noComments) Console.Write(startMessage + cycleMessage);
+            if (!noComments) Console.Write(startMessage);
 
-            string userInput = "";
+            ConsoleKey key = ConsoleKey.Enter;
 
             while (true)
             {
-                if (!noComments) userInput = Console.ReadLine().ToLower();
-                switch (userInput)
+                if (!noComments)
                 {
-                    case "h":
-                        Console.Write(helpMessage);
+                    key = Console.ReadKey().Key;
+                }
+                switch (key)
+                {
+                    case ConsoleKey.H:
+                        Console.Clear();
+                        Console.Write(startMessage + helpMessage);
                         break;
-                    case "x":
+                    case ConsoleKey.X:
                         Environment.Exit(0);
                         break;
-                    case "":
+                    case ConsoleKey.Enter:
                         try
                         {
                             List<string[]> polygonPointsList = ReadCSVFile(polygonPointsFilePath);
@@ -67,7 +69,10 @@ namespace PolygonConsoleApp
                             Point[] polyPoints = ConvertToPoint(polygonPointsList);
                             Segment[] lines = ConvertToSegment(segmentsList);
                             double summ = CalcGeometricIntersections.CalcSegmentsSummInPoly(polyPoints, lines);
-                            Console.WriteLine(summ);
+                            Console.Clear();
+                            Console.WriteLine(startMessage + summ);
+                            if (noComments)
+                                Environment.Exit(0);
                         }
                         catch
                         {
@@ -76,15 +81,16 @@ namespace PolygonConsoleApp
                             else
                             {
                                 Console.WriteLine("Ошибка распознавания *.csv файлов!" +
-                              "\r\n Нажмите Enter для выхода из приложения. "); Console.ReadKey(); Environment.Exit(-1);
+                              "\r\n Нажмите любую клавишу для выхода из приложения. "); Console.ReadKey(); Environment.Exit(-1);
                             }
                         }
-                        if (noComments)
-                            Environment.Exit(0);
                         GC.Collect();
                         break;
+                    default:
+                        Console.Clear();
+                        Console.Write(startMessage);
+                        break;
                 }
-                Console.Write(cycleMessage);
             }
         }
 
@@ -103,30 +109,30 @@ namespace PolygonConsoleApp
             }
         }
 
-        private static Point[] ConvertToPoint(List<string[]> _pointsList)
+        private static Point[] ConvertToPoint(List<string[]> pointsList)
         {
-            Point[] _points = new Point[_pointsList.Count];
-            for (int i = 0; i < _pointsList.Count; i++)
+            Point[] pointsArray = new Point[pointsList.Count];
+            for (int i = 0; i < pointsList.Count; i++)
             {
-                if (_pointsList[i].Length == 2)
+                if (pointsList[i].Length == 2)
                 {
-                    _points[i] = new Point { X = Convert.ToDouble(_pointsList[i][0]), Y = Convert.ToDouble(_pointsList[i][1]) };
+                    pointsArray[i] = new Point { X = Convert.ToDouble(pointsList[i][0]), Y = Convert.ToDouble(pointsList[i][1]) };
                 }
             }
-            return _points;
+            return pointsArray;
         }
 
-        private static Segment[] ConvertToSegment(List<string[]> _segmentsStringsList)
+        private static Segment[] ConvertToSegment(List<string[]> segmentsStringsList)
         {
-            List<Segment> _segmentsList = new List<Segment>();
-            for (int i = 0; i < _segmentsStringsList.Count; i++)
+            List<Segment> segmentsList = new List<Segment>();
+            for (int i = 0; i < segmentsStringsList.Count; i++)
             {
-                if (_segmentsStringsList[i].Length == 4)
+                if (segmentsStringsList[i].Length == 4)
                 {
-                    double XBegSeg = Convert.ToDouble((string)_segmentsStringsList[i][0]);
-                    double YBegSeg = Convert.ToDouble((string)_segmentsStringsList[i][1]);
-                    double XEndSeg = Convert.ToDouble((string)_segmentsStringsList[i][2]);
-                    double YEndSeg = Convert.ToDouble((string)_segmentsStringsList[i][3]);
+                    double XBegSeg = Convert.ToDouble((string)segmentsStringsList[i][0]);
+                    double YBegSeg = Convert.ToDouble((string)segmentsStringsList[i][1]);
+                    double XEndSeg = Convert.ToDouble((string)segmentsStringsList[i][2]);
+                    double YEndSeg = Convert.ToDouble((string)segmentsStringsList[i][3]);
                     if (XBegSeg > XEndSeg)                                                                  //если X координата первой точки больше X второй 
                     {
                         (XBegSeg, XEndSeg) = (XEndSeg, XBegSeg);
@@ -136,15 +142,13 @@ namespace PolygonConsoleApp
                     {
                         (YBegSeg, YEndSeg) = (YEndSeg, YBegSeg);
                     }
-                    _segmentsList.Add(new Segment
+                    segmentsList.Add(new Segment
                     {
                         P1 = new Point { X = XBegSeg, Y = YBegSeg },
                         P2 = new Point { X = XEndSeg, Y = YEndSeg }
                     });
-                }
-
-            }
-            return _segmentsList.ToArray();
+                }            }
+            return segmentsList.ToArray();
         }
     }
 }

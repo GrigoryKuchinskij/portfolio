@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace MJpegStreamViewerProj
@@ -68,8 +58,8 @@ namespace MJpegStreamViewerProj
                     // Если стек навигации не восстанавливается для перехода к первой странице,
                     // настройка новой страницы путем передачи необходимой информации в качестве параметра
                     // навигации
-                    pageDataObject pdo = new pageDataObject();
-                    pdo.extOptions = false;
+                    PageDataObject pdo = new PageDataObject();
+                    pdo.ExtOptions = false;
                     rootFrame.Navigate(typeof(MainPage), pdo);
                 }
                 // Обеспечение активности текущего окна
@@ -82,7 +72,7 @@ namespace MJpegStreamViewerProj
         /// </summary>
         /// <param name="sender">Фрейм, для которого произошел сбой навигации</param>
         /// <param name="e">Сведения о сбое навигации</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
@@ -103,9 +93,9 @@ namespace MJpegStreamViewerProj
         /// <param name="e">Сведения о запросе приостановки.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
-            var deferral = e.SuspendingOperation.GetDeferral();
+            SuspendingDeferral deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Сохранить состояние приложения и остановить все фоновые операции
             deferral.Complete();
-        }        
+        }
     }
 }

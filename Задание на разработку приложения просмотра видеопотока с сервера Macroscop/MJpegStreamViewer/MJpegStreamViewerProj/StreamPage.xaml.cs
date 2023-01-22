@@ -6,12 +6,12 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
-using System.Xml;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Media.Animation;
+using System.Threading.Tasks;
 
 namespace MJpegStreamViewerProj
 {
@@ -65,18 +65,18 @@ namespace MJpegStreamViewerProj
         {
             this.InitializeComponent();
             this.FrameReady += ShowImage;
-            this.Error += ShowError;            
+            this.Error += ShowError;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            System.Net.ServicePointManager.DefaultConnectionLimit = 1;
-            pageDataObject pdo = (pageDataObject)e.Parameter;            //объект класса receivedDataObject для передачи данных о каналах между страницами
-            channelSList = pdo.channelStringList;
-            paramsUriSList = pdo.uriParamsStringList;
-            serverUriPart = pdo.serverUriPart;            
-            int chosenInd = pdo.chosenIndex;
-            extOptIsOn = pdo.extOptions;
+            ServicePointManager.DefaultConnectionLimit = 1;
+            PageDataObject pdo = (PageDataObject)e.Parameter;            //объект класса receivedDataObject для передачи данных о каналах между страницами
+            channelSList = pdo.ChannelStringList;
+            paramsUriSList = pdo.UriParamsStringList;
+            serverUriPart = pdo.ServerUriPart;
+            int chosenInd = pdo.ChosenIndex;
+            extOptIsOn = pdo.ExtOptions;
             channelsCBox.SelectedIndex = chosenInd;
 
             ImageCenterText.Visibility = Visibility.Collapsed;
@@ -84,8 +84,9 @@ namespace MJpegStreamViewerProj
 
             fpsList = new List<int>();
             fpsCBox.SelectedValue = defFpsList.DefaultIfEmpty(30).FirstOrDefault();
-            try {
-                var fps = Convert.ToInt32(paramsUriSList.ElementAt(chosenInd).Split("&fps=")[1]);
+            try
+            {
+                int fps = Convert.ToInt32(paramsUriSList.ElementAt(chosenInd).Split("&fps=")[1]);
                 fpsList.Clear();
                 foreach (int fpsitem in defFpsList)
                 {
@@ -105,8 +106,8 @@ namespace MJpegStreamViewerProj
         {
             StopStream("");
             //SystemNavigationManager.GetForCurrentView().BackRequested -= OnBackRequested;
-            pageDataObject pdo = new pageDataObject();
-            pdo.extOptions = extOptIsOn;
+            PageDataObject pdo = new PageDataObject();
+            pdo.ExtOptions = extOptIsOn;
             Frame.Navigate(typeof(MainPage), pdo, new DrillInNavigationTransitionInfo());
         }
 
@@ -138,10 +139,10 @@ namespace MJpegStreamViewerProj
 
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (streamIsActive) 
-            { 
-                StopStream(pauseText);                
-                return; 
+            if (streamIsActive)
+            {
+                StopStream(pauseText);
+                return;
             };
             StartStream(serverUriPart + (paramsUriSList.ElementAt(channelsCBox.SelectedIndex)).Split("&fps=")[0] + "&fps=" + Convert.ToString(fpsCBox.SelectedItem));
             //StartStream(new Uri("http://demo.macroscop.com:8080/mobile?login=root&channelid=2016897c-8be5-4a80-b1a3-7f79a9ec729c&resolutionX=640&resolutionY=480&fps=25"));            
@@ -153,7 +154,7 @@ namespace MJpegStreamViewerProj
             ImageCenterText.Text = "";
             ImageCenterText.Visibility = Visibility.Collapsed;
             shadeRectangle.Visibility = Visibility.Collapsed;
-            var request = (HttpWebRequest)HttpWebRequest.Create(new Uri(streamUriString));
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(new Uri(streamUriString));
             request.BeginGetResponse(OnGetResponse, request);
         }
 
@@ -163,19 +164,18 @@ namespace MJpegStreamViewerProj
             ImageCenterText.Text = stopReasonMsg;
             ImageCenterText.Visibility = Visibility.Visible;
             shadeRectangle.Visibility = Visibility.Visible;
-            
             Thread.Sleep(500);
             GC.Collect();                                                                       //принудительная "уборка мусора"
         }
 
         private void OnGetResponse(IAsyncResult asyncResult)                                    //метод запускаемый асинхронно и принимающий Http-ответы
         {
-            var request = (HttpWebRequest)asyncResult.AsyncState;
+            HttpWebRequest request = (HttpWebRequest)asyncResult.AsyncState;
             request.Timeout = 300;
             try
             {
-                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
-                var stream = response.GetResponseStream();
+                HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asyncResult);
+                Stream stream = response.GetResponseStream();
                 ResponseMJpegStream(stream);
                 stream.Close();
                 response.Close();
@@ -190,9 +190,9 @@ namespace MJpegStreamViewerProj
 
         public void ResponseMJpegStream(Stream stream)                                                 //метод распознающий поток MJPEG видеоданных
         {
-            var binaryReader = new BinaryReader(stream);
-            var currentPosition = 0;
-            var buffer = new byte[ChunkSize];                                                   //буфер для считываемых кадров
+            BinaryReader binaryReader = new BinaryReader(stream);
+            int currentPosition = 0;
+            byte[] buffer = new byte[ChunkSize];                                                   //буфер для считываемых кадров
             byte[] currentChunk;                                                                //чанк для считывания потока в буфер
             byte[] FrameBuffer;                                                                 //буфер для кадра
             int collectorCounter = 0;
@@ -208,50 +208,46 @@ namespace MJpegStreamViewerProj
                     else                                                                        //сброс буфера если его размер больше 10MB
                     {
                         currentPosition = 0;
-                        Array.Resize(ref buffer, ChunkSize);                        
+                        Array.Resize(ref buffer, ChunkSize);
                     }
-                }                
+                }
                 Array.Copy(currentChunk, 0, buffer, currentPosition, currentChunk.Length);      //копирование текущего чанка в буфер начиная с текущей позиции
                 currentPosition += currentChunk.Length;                                         //увеличение текущей позиции в буфере на размер чанка
                 int soi = buffer.Find(JpegSOI, currentPosition, 0);                             //поиск позиции начальных байт JPEG в буфере при помощи перегруженного метода Find
                 if (soi != -1)                                                                  //если нахождение прошло успешно
-                {                    
+                {
                     int eoi = buffer.Find(JpegEOI, currentPosition, startAt: soi);              //нахождение позиции последних битов JPEG кадра в буфере
                     if (eoi != -1)                                                              //если нахождение прошло успешно
                     {
                         if (eoi > soi)                                                          //если начало и конец кадра расчитаны верно
                         {
-                            var endOfCurrentImage = eoi + JpegEOI.Length;                       //расчет размера текущего кадра
+                            int endOfCurrentImage = eoi + JpegEOI.Length;                       //расчет размера текущего кадра
                             FrameBuffer = new byte[endOfCurrentImage - soi];                    //пересоздание массива необходимого, для кадра, размера
                             Array.Copy(buffer, soi, FrameBuffer, 0, FrameBuffer.Length);        //копирование данных из буфера в только-что созданный массив
                             this.FrameReady?.Invoke(this, new FrameReadyEventArgs               //вызов метода запуска события обновления картинки imOfStream
                             {
                                 FrameBuffer = FrameBuffer,
-                            });     
-                            var remainingSize = currentPosition - endOfCurrentImage;            //расчет размера буфера для оставшихся кадров
+                            });
+                            int remainingSize = currentPosition - endOfCurrentImage;            //расчет размера буфера для оставшихся кадров
                             Array.Copy(buffer, endOfCurrentImage, buffer, 0, remainingSize);    //копирование байтов буфера, начиная с текущей позиции, в начало буфера
                             currentPosition = remainingSize;                                    //обновление значения теущей позиции в измененном буфере
                             ChunkSize = Convert.ToInt32(FrameBuffer.Length * 0.5d);             //пересчет размера чанка чтобы избежать множественных считываний
-                        }
-                        else
-                        {                                                                       //пропуск кадра
-                            eoi = -1;
-                            soi = -1;
                         }
                     }
                 }
                 if (collectorCounter >= 100)
                 { GC.Collect(); collectorCounter = 0; }                                         //принудительная "уборка мусора"
-                else collectorCounter++;
+                else 
+                    collectorCounter++;
             }
             buffer = new byte[0];
             binaryReader.Close();
             binaryReader.Dispose();
         }
 
-        private void fpsCBox_SelectionChanged(object sender, SelectionChangedEventArgs e) { SelectionChanged(); }       //метод привязанный к событию изменения качества потока
+        private void FpsCBox_SelectionChanged(object sender, SelectionChangedEventArgs e) { SelectionChanged(); }       //метод привязанный к событию изменения качества потока
 
-        private void channelsCBox_SelectionChanged(object sender, SelectionChangedEventArgs e) { SelectionChanged(); }  //метод привязанный к событию изменения канала
+        private void ChannelsCBox_SelectionChanged(object sender, SelectionChangedEventArgs e) { SelectionChanged(); }  //метод привязанный к событию изменения канала
 
         private void SelectionChanged()                                             //метод для смены канала или качества видеопотока
         {
@@ -263,7 +259,7 @@ namespace MJpegStreamViewerProj
         }
     }
 
-    static class Extensions
+    internal static class Extensions
     {
         public static int Find(this byte[] buff, byte[] pattern, int limit = int.MaxValue, int startAt = 0)     //метод-расширение для поиска пограничных байт JPEG в буфере начиная с определенной позиции
         {

@@ -9,16 +9,16 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft" Margin="7,0,7,0" HorizontalAlignment="Center">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft" muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="5,10,5,10" Height="70">
-                <muxc:HyperlinkButton x:ConnectionId='8' x:Name="ShowExtendedOptionsBtn" Content="Дополнительные настройки"                                      VerticalAlignment="Center"  HorizontalAlignment="Center" />
-                <muxc:Button x:ConnectionId='9' x:Name="getChannelsBtn" Content="Получить список каналов"                              TabIndex="0" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" FlowDirection="RightToLeft" muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="5,10,5,10" Height="61">
+                <muxc:HyperlinkButton x:ConnectionId='8' x:Name="ShowExtendedOptionsBtn" Content="Дополнительные настройки"                                      VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="12" />
+                <muxc:Button x:ConnectionId='9' x:Name="getChannelsBtn" Content="Получить список каналов"                              TabIndex="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
-            <muxc:TextBox x:ConnectionId='7' x:Name="requestUriTBox" Header="Введите URL-запрос конфигурации c сервера видеонаблюдения:" PlaceholderText="URL"                                                                                 XYFocusKeyboardNavigation="Auto" TabIndex="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,10,5,10" Height="55"  />
+            <muxc:TextBox x:ConnectionId='7' x:Name="requestUriTBox" Header="Введите URL-запрос конфигурации c сервера видеонаблюдения:" PlaceholderText="URL"                                                                                 XYFocusKeyboardNavigation="Auto" TabIndex="1" VerticalAlignment="Bottom" Margin="5,10,5,10"  />
         </StackPanel>
         <ListBox x:ConnectionId='2' Grid.Row="1" x:Name="channelsListBox" Margin="0,0,0,0"                                                     TabIndex="2"/>
         <Grid x:ConnectionId='3' Grid.Row="1" x:Name="shadeListBoxGrid" Background="Black" Margin="0,0,0,0" Opacity="0.5"/>

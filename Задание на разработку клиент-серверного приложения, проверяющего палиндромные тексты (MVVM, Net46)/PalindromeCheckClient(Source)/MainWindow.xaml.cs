@@ -33,9 +33,6 @@ namespace PalindromeCheckClient
         {
             InitializeComponent();
             DataContext = new MainWindowViewModel();
-            //URITbx.Text = _defURI;
-            //this.DataContext = mWinVM;
-            //mWinVM.URI = URIstr;            
         }
     }
 }

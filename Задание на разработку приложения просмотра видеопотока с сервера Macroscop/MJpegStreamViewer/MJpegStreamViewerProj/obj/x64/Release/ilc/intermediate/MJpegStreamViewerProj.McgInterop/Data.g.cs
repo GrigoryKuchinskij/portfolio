@@ -81,7 +81,7 @@ namespace __Interop
 	//     + Total Forward Stubs = 537
 	//         + Unshared Forward Stubs = 463
 	//         + Shared Forward Stubs = 74
-	//         + Shared Forward Stubs Cache Hit = 889
+	//         + Shared Forward Stubs Cache Hit = 895
 	//     + Total Reverse Stubs = 166
 	//         + Unshared Reverse Stubs = 143
 	//         + Shared Reverse Stubs = 23
@@ -91,17 +91,17 @@ namespace __Interop
 	//     + WinRT interfaces : 350
 	//     + WinRT classes : 172
 	//     + WinRT delegates : 35
-	//     + WinRT class methods : 694
+	//     + WinRT class methods : 700
 	//     + dispatch classes : 236
 	//     + dispatch methods : 460
-	//     + stub classes : 324
-	//     + stub methods : 1249
+	//     + stub classes : 325
+	//     + stub methods : 1255
 	//     + vtables : 133
 	//     + vtable methods : 313
 	// 
 	// Reducer Data
 	//     + discarded v-tables : 653
-	//     + discarded v-table methods : 1657
+	//     + discarded v-table methods : 1663
 	//     + discarded class methods : 0
 	//     + discarded dispatch class methods : 60
 	//     + discarded stub class methods : 0
@@ -3408,10 +3408,11 @@ namespace __Interop
 					FixupDispatchClassType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(typeof(global::Windows.UI.Xaml.Controls.CommandBar).TypeHandle),
 					Flags = global::System.Runtime.InteropServices.McgInterfaceFlags.isIInspectable,
 				}, 
-				// index: 293, iid: 67918e1b-f2d5-44d1-8b84-92b87f80a350 Windows.UI.Xaml.Controls.ICommandBarElement, CCW discarded, RCW discarded
+				// index: 293, iid: 67918e1b-f2d5-44d1-8b84-92b87f80a350 Windows.UI.Xaml.Controls.ICommandBarElement, CCW discarded
 				new global::System.Runtime.InteropServices.McgInterfaceData() {
 					ItfGuid = new global::System.Guid(1737592347, -3371, 17617, 0x8B, 0x84, 0x92, 0xB8, 0x7F, 0x80, 0xA3, 0x50), // {67918e1b-f2d5-44d1-8b84-92b87f80a350}
 					FixupItfType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(typeof(global::Windows.UI.Xaml.Controls.ICommandBarElement).TypeHandle),
+					FixupDispatchClassType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(typeof(global::Windows.UI.Xaml.Controls.AppBarToggleButton).TypeHandle),
 					Flags = global::System.Runtime.InteropServices.McgInterfaceFlags.isIInspectable,
 				}, 
 				// index: 294, iid: d5644006-717d-512d-8785-b48c17e73468 Windows.Foundation.Collections.IObservableVector<Windows.UI.Xaml.Controls.ICommandBarElement>, CCW discarded, RCW discarded
@@ -19581,6 +19582,7 @@ namespace __Interop
 			[global::System.Runtime.CompilerServices.TypeHandleFixup(18688, typeof(global::Windows.UI.Xaml.Controls.ICommandBar))]
 			[global::System.Runtime.CompilerServices.TypeHandleFixup(18696, typeof(global::Windows.UI.Xaml.Controls.CommandBar))]
 			[global::System.Runtime.CompilerServices.TypeHandleFixup(18752, typeof(global::Windows.UI.Xaml.Controls.ICommandBarElement))]
+			[global::System.Runtime.CompilerServices.TypeHandleFixup(18760, typeof(global::Windows.UI.Xaml.Controls.AppBarToggleButton))]
 			[global::System.Runtime.CompilerServices.TypeHandleFixup(18816, typeof(global::Windows.Foundation.Collections.IObservableVector<global::Windows.UI.Xaml.Controls.ICommandBarElement>))]
 			[global::System.Runtime.CompilerServices.TypeHandleFixup(18880, typeof(global::System.Collections.Generic.IList<global::Windows.UI.Xaml.Controls.ICommandBarElement>))]
 			[global::System.Runtime.CompilerServices.TypeHandleFixup(18888, typeof(global::System.Collections.Generic.IList_A__wux__Controls_ICommandBarElement_V___Impl.Dispatcher))]
