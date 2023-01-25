@@ -147,7 +147,8 @@ namespace PolygonConsoleApp
                         P1 = new Point { X = XBegSeg, Y = YBegSeg },
                         P2 = new Point { X = XEndSeg, Y = YEndSeg }
                     });
-                }            }
+                }            
+            }
             return segmentsList.ToArray();
         }
     }
