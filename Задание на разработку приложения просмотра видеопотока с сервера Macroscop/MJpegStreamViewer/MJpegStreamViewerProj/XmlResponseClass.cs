@@ -14,40 +14,61 @@ using System.Threading.Tasks;
 
 namespace MJpegStreamViewerProj
 {
-    class XmlResponseClass
+    class XmlResponse
     {
-        public static List<string> XmlResponse(Stream stream)
+        //public List<UriPartItem> UriPartList { get; private set; }
+        //public List<ChannelDataItem> ChannelidList { get; private set; }
+        //public List<QualityDataItem> QualityList { get; private set; }
+
+        public class ChannelDataItem
         {
-            List<string> uriPartList = new List<string>();
-            List<string> channelidList = new List<string>();
-            List<string> resolutionList = new List<string>();
+            public string Name { get; set; }
+            public string Id { get; set; }
+        }
+
+        public class QualityDataItem
+        {
+            public int Height { get; set; }
+            public int Width { get; set; }
+            public int FPS { get; set; }
+        }
+
+        public class XMLDataItem
+        {
+            public ChannelDataItem ChannelData { get; set; }
+            public QualityDataItem QualityData { get; set; }
+        }
+
+        public static List<XMLDataItem> ReadXMLFromStream(Stream stream)
+        {
+            List<ChannelDataItem> ChannelidList = new List<ChannelDataItem>();
+            List<QualityDataItem> QualityList = new List<QualityDataItem>();
+            List<XMLDataItem> UriPartList = new List<XMLDataItem>();
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(stream);
-            XmlNodeList channelXMLList = xDoc.GetElementsByTagName("ChannelInfo");
-            XmlNodeList resolutionXMLList = xDoc.GetElementsByTagName("ResolutionInfo");
-            for (int i = 0; i < channelXMLList.Count; i++)
+            XmlNodeList channelsXMLList = xDoc.GetElementsByTagName("ChannelInfo");
+            XmlNodeList resolutionsXMLList = xDoc.GetElementsByTagName("ResolutionInfo");
+            foreach (XmlNode channel in channelsXMLList)
             {
-                XmlNode channel = channelXMLList.Item(i);
                 XmlNode channelName = channel.Attributes.GetNamedItem("Name");
                 XmlNode channelid = channel.Attributes.GetNamedItem("Id");
-                channelidList.Add(channelName.Value.Replace("%#","") + "%#" + "&channelid=" + channelid.Value);
+                ChannelidList.Add(new ChannelDataItem { Name = channelName.Value, Id = channelid.Value });
             }
-            for (int i = 0; i < resolutionXMLList.Count; i++)
+            foreach (XmlNode resolutionInfo in resolutionsXMLList)
             {
-                XmlNode resolutionInfo = resolutionXMLList.Item(i);
-                XmlNode resolutionX = resolutionInfo.Attributes.GetNamedItem("Width");
-                XmlNode resolutionY = resolutionInfo.Attributes.GetNamedItem("Height");
+                XmlNode Width = resolutionInfo.Attributes.GetNamedItem("Width");
+                XmlNode Height = resolutionInfo.Attributes.GetNamedItem("Height");
                 XmlNode fpsLimit = resolutionInfo.Attributes.GetNamedItem("FpsLimit");
-                resolutionList.Add("&resolutionX=" + resolutionX.Value + "&resolutionY=" + resolutionY.Value + "%#" + fpsLimit.Value);
+                QualityList.Add(new QualityDataItem { Height = Convert.ToInt32(Width.Value), Width = Convert.ToInt32(Height.Value), FPS = Convert.ToInt32(fpsLimit.Value) });
             }
-            foreach (string channelid in channelidList)
+            foreach (ChannelDataItem channel in ChannelidList)
             {
-                foreach (string resolution in resolutionList)
+                foreach (QualityDataItem quality in QualityList)
                 {
-                    uriPartList.Add(channelid + resolution);
+                    UriPartList.Add(new XMLDataItem { ChannelData = channel, QualityData = quality });
                 }
             }
-            return uriPartList;
+            return UriPartList;
         }
     }
 }

@@ -10,13 +10,13 @@
     <Page.TopAppBar>
         <CommandBar IsSticky="True" Background="Transparent" IsOpen="True" DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed" ClosedDisplayMode="Compact">
             <!--<AppBarButton x:Name="BackButton" Icon="Back"  Click="BackButton_Click" muxc:ToolTipService.ToolTip="Назад"/>-->
-            <AppBarToggleButton x:ConnectionId='2' x:Name="PlayBtn" Icon="Video"                       muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="40" Width="35" LabelPosition="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center" muxc:ToolTipService.ToolTip="Включить камеру" IsCompact="False" BorderBrush="{muxc:ThemeResource ComboBoxBorderThemeBrush}" />
+            <AppBarToggleButton x:ConnectionId='2' x:Name="PlayBtn" Icon="Video"                         muxc:ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="40" Width="35" LabelPosition="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center" muxc:ToolTipService.ToolTip="Включить камеру" IsCompact="False" BorderBrush="{muxc:ThemeResource ComboBoxBorderThemeBrush}" />
             <CommandBar.Content>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                     
-                    <ComboBox x:ConnectionId='3' x:Name="channelsCBox"                                     HorizontalAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" muxc:ToolTipService.ToolTip="Канал" Height="40"                                                 />
+                    <ComboBox x:ConnectionId='3' x:Name="channelsCBox"                                     HorizontalAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" muxc:ToolTipService.ToolTip="Канал" Height="40"                                                />
                     <TextBlock FontSize="15" Text=" FPS:" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox x:ConnectionId='4' x:Name="fpsCBox"                                PlaceholderText="" muxc:ToolTipService.ToolTip="Кадры в секунду" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right"                                             Width="65"/>
+                    <ComboBox x:ConnectionId='4' x:Name="fpsCBox"                                PlaceholderText="" muxc:ToolTipService.ToolTip="Кадры в секунду" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right"                                            Width="65"/>
                     
                 </StackPanel>
             </CommandBar.Content>

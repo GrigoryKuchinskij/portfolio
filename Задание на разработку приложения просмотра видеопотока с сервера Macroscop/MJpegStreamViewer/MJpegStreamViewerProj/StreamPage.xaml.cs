@@ -83,21 +83,23 @@ namespace MJpegStreamViewerProj
             streamIsActive = false;
 
             fpsList = new List<int>();
-            fpsCBox.SelectedValue = defFpsList.DefaultIfEmpty(30).FirstOrDefault();
+
             try
             {
                 int fps = Convert.ToInt32(paramsUriSList.ElementAt(chosenInd).Split("&fps=")[1]);
                 fpsList.Clear();
+                fpsList.Add(fps);
                 foreach (int fpsitem in defFpsList)
                 {
-                    if (fps >= fpsitem)
-                    {
+                    if (fps != fpsitem)
                         fpsList.Add(fpsitem);
-                        fpsCBox.SelectedIndex = 0;                      //установить значение в fpsCBox только если макс.FPS не меньше всех значений в defFpsList
-                    }
                 };
+                fpsCBox.SelectedIndex = 0;
             }
-            catch { StopStream(fpsRespErrorText); }
+            catch
+            {
+                StopStream(fpsRespErrorText);
+            }
 
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
@@ -137,14 +139,14 @@ namespace MJpegStreamViewerProj
             });
         }
 
-        private void PlayBtn_Click(object sender, RoutedEventArgs e)
+        private void PlayButtonClick(object sender, RoutedEventArgs e)
         {
             if (streamIsActive)
             {
                 StopStream(pauseText);
                 return;
             };
-            StartStream(serverUriPart + (paramsUriSList.ElementAt(channelsCBox.SelectedIndex)).Split("&fps=")[0] + "&fps=" + Convert.ToString(fpsCBox.SelectedItem));
+            StartStream(serverUriPart + paramsUriSList.ElementAt(channelsCBox.SelectedIndex).Split("&fps=")[0] + "&fps=" + Convert.ToString(fpsCBox.SelectedItem));
             //StartStream(new Uri("http://demo.macroscop.com:8080/mobile?login=root&channelid=2016897c-8be5-4a80-b1a3-7f79a9ec729c&resolutionX=640&resolutionY=480&fps=25"));            
         }
 
@@ -237,7 +239,7 @@ namespace MJpegStreamViewerProj
                 }
                 if (collectorCounter >= 100)
                 { GC.Collect(); collectorCounter = 0; }                                         //принудительная "уборка мусора"
-                else 
+                else
                     collectorCounter++;
             }
             buffer = new byte[0];
@@ -245,9 +247,9 @@ namespace MJpegStreamViewerProj
             binaryReader.Dispose();
         }
 
-        private void FpsCBox_SelectionChanged(object sender, SelectionChangedEventArgs e) { SelectionChanged(); }       //метод привязанный к событию изменения качества потока
+        private void FpsCBoxSelectionChanged(object sender, SelectionChangedEventArgs e) { SelectionChanged(); }       //метод привязанный к событию изменения качества потока
 
-        private void ChannelsCBox_SelectionChanged(object sender, SelectionChangedEventArgs e) { SelectionChanged(); }  //метод привязанный к событию изменения канала
+        private void ChannelsCBoxSelectionChanged(object sender, SelectionChangedEventArgs e) { SelectionChanged(); }  //метод привязанный к событию изменения канала
 
         private void SelectionChanged()                                             //метод для смены канала или качества видеопотока
         {

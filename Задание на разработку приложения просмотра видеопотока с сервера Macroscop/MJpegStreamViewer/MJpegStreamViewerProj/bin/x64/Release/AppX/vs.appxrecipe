@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\AppX</LayoutDir>
-    <RegisteredManifestChecksum>30FCDDA1A0C21436289FAC121E017AEA14EE25B192B67871F780C48954BC8662</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>745B06EAC0228633ADC79F99CF9F7D7D8BECC0BB89A496C3CB7C233B7EB0088C</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>b31fa7b4-172b-4015-beb1-69d78b7760a3_1.0.1.0_x64__y0y78jp5dz7fg</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>b31fa7b4-172b-4015-beb1-69d78b7760a3_y0y78jp5dz7fg!App</RegisteredUserModeAppID>
     <RegisteredPackageID>b31fa7b4-172b-4015-beb1-69d78b7760a3</RegisteredPackageID>
@@ -30,7 +30,7 @@
     <AppXManifest Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-01-22T19:04:08.757</Modified>
+      <Modified>2023-02-02T13:24:45.111</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -74,19 +74,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.dll">
       <PackagePath>MJpegStreamViewerProj.dll</PackagePath>
-      <Modified>2023-01-22T19:04:08.157</Modified>
+      <Modified>2023-02-02T13:24:44.511</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.exe">
       <PackagePath>MJpegStreamViewerProj.exe</PackagePath>
-      <Modified>2023-01-22T19:04:08.737</Modified>
+      <Modified>2023-02-02T13:24:45.101</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.pdb">
       <PackagePath>MJpegStreamViewerProj.pdb</PackagePath>
-      <Modified>2023-01-22T19:04:08.737</Modified>
+      <Modified>2023-02-02T13:24:45.091</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-01-22T19:03:32.958</Modified>
+      <Modified>2023-02-02T13:24:09.452</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
