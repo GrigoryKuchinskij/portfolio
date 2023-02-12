@@ -1,1 +1,0 @@
-E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\MJpegStreamViewerProj.csproj;x64
