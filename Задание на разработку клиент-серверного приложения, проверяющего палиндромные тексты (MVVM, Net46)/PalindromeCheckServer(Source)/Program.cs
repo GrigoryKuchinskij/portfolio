@@ -181,8 +181,8 @@ namespace PalindromeCheckServer
 
     class CheckPalindromeServer
     {
-        public delegate void AccountHandler(string message);
-        public event AccountHandler Notify;
+        public delegate void MessageHandler(string message);
+        public event MessageHandler Notify;
 
         private bool skipPunctuation = false;
         private bool skipSimilar = false;
