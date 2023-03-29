@@ -3,7 +3,7 @@
     public class FileDataItem
     {
         public string Text { get; set; }
-        public bool Procd { get; set; }
+        public bool IsProcessed { get; set; }
     }
 
     public class PalindromeStatusItem

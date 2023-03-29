@@ -14,9 +14,9 @@ namespace PalindromeCheckClient.ViewModels
             _Model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
             OpenCommand = new DelegateCommand(() =>
             {
-                _Model.ShowOpenDialogForFolderPath();
+                if (_Model.GetFolderPathDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Cancel) return;
                 
-                if (_Model.FillDataGridWithFolderPath() == -1)
+                if (_Model.FillDataGridFromFolder() == -1)
                 {
                     _Model.FolderPath = "ошибка чтения файлов";
                     Thread.Sleep(500);
@@ -39,7 +39,7 @@ namespace PalindromeCheckClient.ViewModels
         }
 
         public string URI { get => _Model.URI; set => _Model.URI = value; }
-        public bool WaitingForCommand { get => _Model.WaitingForCommand; }
+        public bool IsIdle { get => !_Model.IsBusy; }
         public string FolderPath { get => _Model.FolderPath; set => _Model.FolderPath = value; }
 
         public DelegateCommand OpenCommand { get; }

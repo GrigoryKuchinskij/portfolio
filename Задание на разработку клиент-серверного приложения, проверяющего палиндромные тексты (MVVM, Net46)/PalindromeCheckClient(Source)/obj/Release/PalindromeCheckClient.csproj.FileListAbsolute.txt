@@ -82,3 +82,4 @@ E:\portfclone\Задание на разработку клиент-сервер
 E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.csproj.CopyComplete
 E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.exe
 E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.pdb
+E:\portfclone\Задание на разработку клиент-серверного приложения, проверяющего палиндромные тексты (MVVM, Net46)\PalindromeCheckClient(Source)\obj\Release\PalindromeCheckClient.csproj.SuggestedBindingRedirects.cache
