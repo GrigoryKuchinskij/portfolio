@@ -11,15 +11,25 @@ namespace MJpegStreamViewerProj
 {
     public class MJPEGStream
     {
-        private int ChunkSize = 4096;
-        private const int maxBufferSize = 1024 * 1024 * 10;             //размер буфера 10MB
+        private int chunkSize;
+        private readonly int maxBufferSize;
         private readonly byte[] JpegFirstBytes = new byte[] { 0xff, 0xd8 };    //первые байты Jpeg
         private readonly byte[] JpegLastBytes = new byte[] { 0xff, 0xd9 };    //последние байты Jpeg
-        HttpWebRequest request;
+        private HttpWebRequest request;
         private HttpWebResponse response = new HttpWebResponse();
         private Stream stream;
         public event EventHandler<FrameReadyEventArgs> FrameReady;
         public event EventHandler<ErrorEventArgs> Error;
+
+        public MJPEGStream(int chunkSize = 4096, int maxBufferSize = 1024 * 1024 * 10)
+        {
+            if (chunkSize >= maxBufferSize)
+            {
+                throw new ArgumentException("chunkSize too big", nameof(chunkSize));
+            }
+            this.chunkSize = chunkSize;
+            this.maxBufferSize = maxBufferSize;
+        }
 
         public void ErrorEventTrigger(EventHandler<ErrorEventArgs> ErrorHandler, Exception ex)
         {
@@ -82,14 +92,14 @@ namespace MJpegStreamViewerProj
         {
             BinaryReader binaryReader = new BinaryReader(stream);
             int currentPosition = 0;
-            byte[] buffer = new byte[ChunkSize];                                                //буфер для считываемых кадров
+            byte[] buffer = new byte[chunkSize];                                                //буфер для считываемых кадров
             byte[] currentChunk;                                                                //чанк для считывания потока в буфер
             byte[] FrameBuffer;                                                                 //буфер для кадра
             int collectorCounter = 0;
-            
+
             while (IsActive)
             {
-                currentChunk = binaryReader.ReadBytes(ChunkSize);                               //считывание полученных байт в чанк
+                currentChunk = binaryReader.ReadBytes(chunkSize);                               //считывание полученных байт в чанк
                 if (buffer.Length < currentPosition + currentChunk.Length)
                 {
                     if (buffer.Length < maxBufferSize)
@@ -99,7 +109,7 @@ namespace MJpegStreamViewerProj
                     else                                                                        //сброс буфера если его размер больше 10MB
                     {
                         currentPosition = 0;
-                        Array.Resize(ref buffer, ChunkSize);
+                        Array.Resize(ref buffer, chunkSize);
                     }
                 }
                 Array.Copy(currentChunk, 0, buffer, currentPosition, currentChunk.Length);      //копирование текущего чанка в буфер начиная с текущей позиции
@@ -122,7 +132,7 @@ namespace MJpegStreamViewerProj
                             int remainingSize = currentPosition - endOfCurrentImage;            //расчет размера буфера для оставшихся кадров
                             Array.Copy(buffer, endOfCurrentImage, buffer, 0, remainingSize);    //копирование байтов буфера, начиная с текущей позиции, в начало буфера
                             currentPosition = remainingSize;                                    //обновление значения теущей позиции в измененном буфере
-                            ChunkSize = Convert.ToInt32(FrameBuffer.Length * 0.5d);             //пересчет размера чанка чтобы избежать множественных считываний
+                            chunkSize = Convert.ToInt32(FrameBuffer.Length * 0.5d);             //пересчет размера чанка чтобы избежать множественных считываний
                         }
                     }
                 }

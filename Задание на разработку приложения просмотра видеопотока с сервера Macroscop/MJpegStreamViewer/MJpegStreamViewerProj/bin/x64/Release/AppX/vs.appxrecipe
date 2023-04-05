@@ -30,7 +30,7 @@
     <AppXManifest Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-04-05T13:38:18.527</Modified>
+      <Modified>2023-04-05T14:43:55.108</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -74,19 +74,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.dll">
       <PackagePath>MJpegStreamViewerProj.dll</PackagePath>
-      <Modified>2023-04-05T13:38:17.867</Modified>
+      <Modified>2023-04-05T14:43:54.444</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.exe">
       <PackagePath>MJpegStreamViewerProj.exe</PackagePath>
-      <Modified>2023-04-05T13:38:18.507</Modified>
+      <Modified>2023-04-05T14:43:55.088</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.pdb">
       <PackagePath>MJpegStreamViewerProj.pdb</PackagePath>
-      <Modified>2023-04-05T13:38:18.507</Modified>
+      <Modified>2023-04-05T14:43:55.087</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-04-05T13:37:39.212</Modified>
+      <Modified>2023-04-05T14:43:14.699</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
