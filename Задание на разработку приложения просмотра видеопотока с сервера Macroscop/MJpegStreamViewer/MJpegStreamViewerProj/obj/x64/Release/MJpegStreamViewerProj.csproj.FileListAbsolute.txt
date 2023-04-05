@@ -599,7 +599,6 @@ E:\portfclone\Задание на разработку приложения пр
 E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\System.Private.MJpegStreamViewerProj.Generated.dll
 E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\Prism.dll
 E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\Prism.pdb
-E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\Prism\en\Prism.Properties.Resources.resw
 E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\resources.en.resfiles
 E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\resources.en.resfiles.intermediate
 E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\in\Prism.pdb

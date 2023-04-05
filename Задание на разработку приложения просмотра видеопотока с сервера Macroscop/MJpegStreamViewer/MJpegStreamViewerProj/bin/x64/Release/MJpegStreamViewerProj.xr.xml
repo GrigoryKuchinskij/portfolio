@@ -3,13 +3,13 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="PageDataObject" />
     <RootPropertyPathName Name="StreamURI" />
-    <RootPropertyPathName Name="ExtOptions" />
+    <RootPropertyPathName Name="ExtendedOptionsIsOn" />
     <RootPropertyPathName Name="ProgressRingIsOn" />
     <RootPropertyPathName Name="CenterText" />
     <RootPropertyPathName Name="CenterTextIsOn" />
     <RootPropertyPathName Name="ShadeIsOn" />
     <RootPropertyPathName Name="ChannelsList" />
-    <RootPropertyPathName Name="ChosenIndex" />
+    <RootPropertyPathName Name="SelectedIndex" />
     <RootPropertyPathName Name="UriForConfigRequest" />
     <RootPropertyPathName Name="GetChannels" />
     <RootPropertyPathName Name="GetChannelsButtonIsOn" />

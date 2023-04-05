@@ -88,7 +88,7 @@ namespace MJpegStreamViewerProj.Models
         public void StreamStart()
         {
             MJPEGStream.Start(PageDataObject.StreamURI
-                + PageDataObject.UriParamsList.ElementAt(PageDataObject.ChosenIndex).Split("&fps=")[0]
+                + PageDataObject.UriParamsList.ElementAt(PageDataObject.SelectedIndex).Split("&fps=")[0]
                 + "&fps=" + Convert.ToString(FpsCollection.ElementAt(FpsCollSelectedIndex)));
             ImageCenterText = pauseText;
         }
@@ -121,7 +121,7 @@ namespace MJpegStreamViewerProj.Models
             //ImageCenterTextVisibility = false;
             try
             {
-                int fps = Convert.ToInt32(PageDataObject.UriParamsList.ElementAt(PageDataObject.ChosenIndex).Split("&fps=")[1]);
+                int fps = Convert.ToInt32(PageDataObject.UriParamsList.ElementAt(PageDataObject.SelectedIndex).Split("&fps=")[1]);
                 FpsCollection.Add(fps);
                 foreach (int fpsitem in defaultFpsList)
                 {

@@ -24,8 +24,8 @@ namespace MJpegStreamViewerProj.Models
     {
         public PageData PageDataObject { get; set; } = new PageData
         {
-            ChosenIndex = -1,
-            ExtOptions = false,
+            SelectedIndex = -1,
+            ExtendedOptionsIsOn = false,
             ChannelsList = new ObservableCollection<string>(),
             UriParamsList = new ObservableCollection<string>()
         };
@@ -105,7 +105,7 @@ namespace MJpegStreamViewerProj.Models
             }
             else
             {
-                PageDataObject.ChosenIndex = -1;
+                PageDataObject.SelectedIndex = -1;
                 Exception Exception = new Exception(streamUriInpErrorMsg);
                 throw Exception;
             }

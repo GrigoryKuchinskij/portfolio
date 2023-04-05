@@ -30,7 +30,7 @@ namespace MJpegStreamViewerProj.ViewModels
             _model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
             ShowExtendedOptions = new DelegateCommand(() =>
             {
-                PageDataObject.ExtOptions = !PageDataObject.ExtOptions;
+                PageDataObject.ExtendedOptionsIsOn = !PageDataObject.ExtendedOptionsIsOn;
                 RaisePropertyChanged(nameof(PageDataObject));
             });
             GetChannels = new DelegateCommand(async () =>
@@ -46,7 +46,7 @@ namespace MJpegStreamViewerProj.ViewModels
                 {
                     await ShowTemporarilyMessageAsync(ex.Message);
                 }
-                RaisePropertyChanged(nameof(ChannelsList));
+                RaisePropertyChanged(nameof(PageDataObject));
                 ProgressRingIsOn = false;
                 ShadeIsOn = false;
                 GetChannelsButtonIsOn = true;
@@ -68,27 +68,19 @@ namespace MJpegStreamViewerProj.ViewModels
         public PageData PageDataObject 
         {
             get => _model.PageDataObject;
-            set 
+            private set 
             {
                 _model.PageDataObject = value;
                 RaisePropertyChanged(nameof(PageDataObject));
             }
         }
-        public ObservableCollection<string> ChannelsList
+
+        public int SelectedIndex
         {
-            get => _model.PageDataObject.ChannelsList;
+            get => _model.PageDataObject.SelectedIndex;
             set
             {
-                _model.PageDataObject.ChannelsList = value;
-                //RaisePropertyChanged(nameof(ChannelsList));
-            }
-        }
-        public int ChosenIndex
-        {
-            get => _model.PageDataObject.ChosenIndex;
-            set
-            {
-                _model.PageDataObject.ChosenIndex = value;
+                _model.PageDataObject.SelectedIndex = value;
                 NavigateToStreamPage.Execute(this);
                 //RaisePropertyChanged(nameof(ChosenIndex));
             }
@@ -101,52 +93,26 @@ namespace MJpegStreamViewerProj.ViewModels
             {
                 _model.UriForConfigRequest = value;
                 RaisePropertyChanged(nameof(UriForConfigRequest));
-                RaisePropertyChanged(nameof(PageDataObject.StreamURI));
+                RaisePropertyChanged(nameof(PageDataObject));
             }
         }
 
-        //public string UriForStreamRequest
-        //{
-        //    get => _model.UriForStreamRequest;
-        //    set
-        //    {
-        //        _model.UriForStreamRequest = value;
-        //        RaisePropertyChanged(nameof(UriForStreamRequest));
-        //    }
-        //}
         private string centerText;
         public string CenterText
         {
             get => centerText;
-            set
+            private set
             {
                 centerText = value;
                 RaisePropertyChanged(nameof(CenterText));
             }
         }
 
-
-        public void OnNavigatedTo(NavigationEventArgs e)
-        {
-            _model.OnNavigatedTo(e);
-            RaisePropertyChanged(nameof(PageDataObject));
-            GetChannels.Execute();
-        }
-
-        //public bool ExtendedOptionsIsOn
-        //{
-        //    get => _model.ExtendedOptionsIsOn;
-        //    set
-        //    {
-        //        _model.ExtendedOptionsIsOn = value;
-        //        RaisePropertyChanged(nameof(ExtendedOptionsIsOn));
-        //    }
-        //}
         private bool shadeIsOn = false;
         public bool ShadeIsOn
         {
             get => shadeIsOn;
-            set
+            private set
             {
                 shadeIsOn = value;
                 RaisePropertyChanged(nameof(ShadeIsOn));
@@ -156,7 +122,7 @@ namespace MJpegStreamViewerProj.ViewModels
         public bool CenterTextIsOn
         {
             get => centerTextIsOn;
-            set
+            private set
             {
                 centerTextIsOn = value;
                 RaisePropertyChanged(nameof(CenterTextIsOn));
@@ -166,7 +132,7 @@ namespace MJpegStreamViewerProj.ViewModels
         public bool ProgressRingIsOn
         {
             get => progressRingIsOn;
-            set
+            private set
             {
                 progressRingIsOn = value;
                 RaisePropertyChanged(nameof(ProgressRingIsOn));
@@ -177,11 +143,18 @@ namespace MJpegStreamViewerProj.ViewModels
         public bool GetChannelsButtonIsOn
         {
             get => getChannelsButtonIsOn;
-            set
+            private set
             {
                 getChannelsButtonIsOn = value;
                 RaisePropertyChanged(nameof(GetChannelsButtonIsOn));
             }
+        }
+
+        public void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _model.OnNavigatedTo(e);
+            RaisePropertyChanged(nameof(PageDataObject));
+            GetChannels.Execute();
         }
 
         public DelegateCommand ShowExtendedOptions { get; set; }

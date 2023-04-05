@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\macroscop-alpha\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj": {}
+    "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj": {}
   },
   "projects": {
-    "E:\\macroscop-alpha\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj": {
+    "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\macroscop-alpha\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj",
+        "projectUniqueName": "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj",
         "projectName": "MJpegStreamViewerProj",
-        "projectPath": "E:\\macroscop-alpha\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj",
+        "projectPath": "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj",
         "packagesPath": "C:\\Users\\grigory\\.nuget\\packages\\",
-        "outputPath": "E:\\macroscop-alpha\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\obj\\",
+        "outputPath": "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EieE4ffp7AZF+WR3gyzpY21DDHoZ8kauGTyIbjzetIleS7VcIKwuV+wnid2ad9ZOWzmPqef06syS/NN0FySy9w==",
+  "dgSpecHash": "+TWKAHQaG9ugY4E/1QfdoxBD6tAgkBHhMZ3owZv6GgZP7nln8g66BcVWFBrohGK9IY+WZcCA6tzEb8jPXn+rAA==",
   "success": true,
-  "projectFilePath": "E:\\macroscop-alpha\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj",
+  "projectFilePath": "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewer\\MJpegStreamViewerProj\\MJpegStreamViewerProj.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\grigory\\.nuget\\packages\\microsoft.net.native.compiler\\2.2.10-rel-29722-00\\microsoft.net.native.compiler.2.2.10-rel-29722-00.nupkg.sha512",
     "C:\\Users\\grigory\\.nuget\\packages\\microsoft.net.uwpcoreruntimesdk\\2.2.12\\microsoft.net.uwpcoreruntimesdk.2.2.12.nupkg.sha512",

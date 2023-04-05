@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>b31fa7b4-172b-4015-beb1-69d78b7760a3</PackageIdentityName>
     <PackageIdentityPublisher>CN=grigory</PackageIdentityPublisher>
-    <IntermediateOutputPath>E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,7 +18,7 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\AppX</LayoutDir>
+    <LayoutDir>E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\AppX</LayoutDir>
     <RegisteredManifestChecksum>B57711286140E6DC9A2682294DCC6ABB9C407D47783B0414075F80848F0477FC</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>b31fa7b4-172b-4015-beb1-69d78b7760a3_1.0.1.0_x64__y0y78jp5dz7fg</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>b31fa7b4-172b-4015-beb1-69d78b7760a3_y0y78jp5dz7fg!App</RegisteredUserModeAppID>
@@ -27,66 +27,66 @@
     <RegisteredVersion>1.0.1.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\AppxManifest.xml">
+    <AppXManifest Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-04-04T13:53:48.245</Modified>
+      <Modified>2023-04-05T13:38:18.527</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2020-05-22T20:26:58.255</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-05-22T20:26:58.255</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-05-22T20:26:58.255</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-05-22T20:26:58.255</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-05-22T20:26:58.255</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-05-22T20:26:58.255</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-05-22T20:26:58.255</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\clrcompression.dll">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
       <Modified>2021-02-05T01:15:44.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.dll">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.dll">
       <PackagePath>MJpegStreamViewerProj.dll</PackagePath>
-      <Modified>2023-04-04T13:53:47.535</Modified>
+      <Modified>2023-04-05T13:38:17.867</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.exe">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.exe">
       <PackagePath>MJpegStreamViewerProj.exe</PackagePath>
-      <Modified>2023-04-04T13:53:48.225</Modified>
+      <Modified>2023-04-05T13:38:18.507</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.pdb">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\MJpegStreamViewerProj.pdb">
       <PackagePath>MJpegStreamViewerProj.pdb</PackagePath>
-      <Modified>2023-04-04T13:53:48.215</Modified>
+      <Modified>2023-04-05T13:38:18.507</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\resources.pri">
+    <AppxPackagedFile Include="E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-04-04T13:53:07.875</Modified>
+      <Modified>2023-04-05T13:37:39.212</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

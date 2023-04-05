@@ -59,7 +59,7 @@ namespace MJpegStreamViewerProj
                     // настройка новой страницы путем передачи необходимой информации в качестве параметра
                     // навигации
                     PageData pdo = new PageData();
-                    pdo.ExtOptions = false;
+                    pdo.ExtendedOptionsIsOn = false;
                     rootFrame.Navigate(typeof(MainPage), pdo);
                 }
                 // Обеспечение активности текущего окна

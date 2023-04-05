@@ -13741,23 +13741,14 @@ namespace __Interop
 				}, 
 				// Index = 132
 				new global::System.Runtime.InteropServices.CCWTemplateData() {
-					FixupClassType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("Internal.Cryptography.Pal.Native.SafeCertContextHandleWithKeyContainerDeletion, System.Security.Cryptography.X50" +
-								"9Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
-					SupportedInterfaceListBeginIndex = 58,
-					NumberOfSupportedInterface = 0,
-					ParentCCWTemplateIndex = 125,
-					IsWinRTType = false,
-				}, 
-				// Index = 133
-				new global::System.Runtime.InteropServices.CCWTemplateData() {
 					FixupClassType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("Internal.Cryptography.Pal.Native.SafeCertStoreHandle, System.Security.Cryptography.X509Certificates, Version=4.2" +
 								".1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
 					SupportedInterfaceListBeginIndex = 58,
 					NumberOfSupportedInterface = 0,
-					ParentCCWTemplateIndex = 134,
+					ParentCCWTemplateIndex = 133,
 					IsWinRTType = false,
 				}, 
-				// Index = 134
+				// Index = 133
 				new global::System.Runtime.InteropServices.CCWTemplateData() {
 					FixupClassType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"Internal.Cryptography.Pal.Native.SafePointerHandle`1[[Internal.Cryptography.Pal.Native.SafeCertStoreHandle, System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
 					SupportedInterfaceListBeginIndex = 58,
@@ -13765,21 +13756,30 @@ namespace __Interop
 					ParentCCWTemplateIndex = 15,
 					IsWinRTType = false,
 				}, 
-				// Index = 135
+				// Index = 134
 				new global::System.Runtime.InteropServices.CCWTemplateData() {
 					FixupClassType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("Internal.Cryptography.Pal.Native.SafeCryptMsgHandle, System.Security.Cryptography.X509Certificates, Version=4.2." +
 								"1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
 					SupportedInterfaceListBeginIndex = 58,
 					NumberOfSupportedInterface = 0,
-					ParentCCWTemplateIndex = 136,
+					ParentCCWTemplateIndex = 135,
 					IsWinRTType = false,
 				}, 
-				// Index = 136
+				// Index = 135
 				new global::System.Runtime.InteropServices.CCWTemplateData() {
 					FixupClassType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf(@"Internal.Cryptography.Pal.Native.SafePointerHandle`1[[Internal.Cryptography.Pal.Native.SafeCryptMsgHandle, System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
 					SupportedInterfaceListBeginIndex = 58,
 					NumberOfSupportedInterface = 0,
 					ParentCCWTemplateIndex = 15,
+					IsWinRTType = false,
+				}, 
+				// Index = 136
+				new global::System.Runtime.InteropServices.CCWTemplateData() {
+					FixupClassType = new global::Internal.Runtime.CompilerServices.FixupRuntimeTypeHandle(global::System.Runtime.InteropServices.TypeOfHelper.RuntimeTypeHandleOf("Internal.Cryptography.Pal.Native.SafeCertContextHandleWithKeyContainerDeletion, System.Security.Cryptography.X50" +
+								"9Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
+					SupportedInterfaceListBeginIndex = 58,
+					NumberOfSupportedInterface = 0,
+					ParentCCWTemplateIndex = 125,
 					IsWinRTType = false,
 				}, 
 				// Index = 137
@@ -23583,14 +23583,14 @@ namespace __Interop
 				"al, PublicKeyToken=40ee6c3a2184dc59]], System.Linq, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11" +
 				"d50a3a")]
 			[global::System.Runtime.CompilerServices.TypeHandleFixup(6288, @"System.Runtime.CompilerServices.TrueReadOnlyCollection`1[[System.Linq.Expressions.ParameterExpression, System.Linq.Expressions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Linq.Expressions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-			[global::System.Runtime.CompilerServices.TypeHandleFixup(6336, "Internal.Cryptography.Pal.Native.SafeCertContextHandleWithKeyContainerDeletion, System.Security.Cryptography.X50" +
-				"9Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-			[global::System.Runtime.CompilerServices.TypeHandleFixup(6384, "Internal.Cryptography.Pal.Native.SafeCertStoreHandle, System.Security.Cryptography.X509Certificates, Version=4.2" +
+			[global::System.Runtime.CompilerServices.TypeHandleFixup(6336, "Internal.Cryptography.Pal.Native.SafeCertStoreHandle, System.Security.Cryptography.X509Certificates, Version=4.2" +
 				".1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-			[global::System.Runtime.CompilerServices.TypeHandleFixup(6432, @"Internal.Cryptography.Pal.Native.SafePointerHandle`1[[Internal.Cryptography.Pal.Native.SafeCertStoreHandle, System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-			[global::System.Runtime.CompilerServices.TypeHandleFixup(6480, "Internal.Cryptography.Pal.Native.SafeCryptMsgHandle, System.Security.Cryptography.X509Certificates, Version=4.2." +
+			[global::System.Runtime.CompilerServices.TypeHandleFixup(6384, @"Internal.Cryptography.Pal.Native.SafePointerHandle`1[[Internal.Cryptography.Pal.Native.SafeCertStoreHandle, System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+			[global::System.Runtime.CompilerServices.TypeHandleFixup(6432, "Internal.Cryptography.Pal.Native.SafeCryptMsgHandle, System.Security.Cryptography.X509Certificates, Version=4.2." +
 				"1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-			[global::System.Runtime.CompilerServices.TypeHandleFixup(6528, @"Internal.Cryptography.Pal.Native.SafePointerHandle`1[[Internal.Cryptography.Pal.Native.SafeCryptMsgHandle, System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+			[global::System.Runtime.CompilerServices.TypeHandleFixup(6480, @"Internal.Cryptography.Pal.Native.SafePointerHandle`1[[Internal.Cryptography.Pal.Native.SafeCryptMsgHandle, System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Security.Cryptography.X509Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+			[global::System.Runtime.CompilerServices.TypeHandleFixup(6528, "Internal.Cryptography.Pal.Native.SafeCertContextHandleWithKeyContainerDeletion, System.Security.Cryptography.X50" +
+				"9Certificates, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
 			[global::System.Runtime.CompilerServices.TypeHandleFixup(6576, "System.Threading.PreAllocatedOverlapped, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToke" +
 				"n=b03f5f7f11d50a3a")]
 			[global::System.Runtime.CompilerServices.TypeHandleFixup(6624, @"System.Collections.Concurrent.ConcurrentDictionary`2+<GetEnumerator>d__32[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a],[System.WeakReference`1[[System.Net.ServicePoint, System.Net.ServicePoint, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Collections.Concurrent, Version=4.0.14.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
@@ -23941,10 +23941,10 @@ namespace __Interop
 					0, 0, 0, 0, 0, 0, 0, 0, 0x35, 0x0, 0x0, 0x0, 0x3A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 					0, 0, 0, 0, 0, 0, 0x75, 0x0, 0x0, 0x0, 0x6A, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 					0, 0, 0, 0, 0x29, 0x0, 0x0, 0x0, 0x87, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-					0, 0, 0x7D, 0x0, 0x0, 0x0, 0x3A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-					0x86, 0x0, 0x0, 0x0, 0x3A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xF, 0x0, 
-					0x0, 0x0, 0x3A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x88, 0x0, 0x0, 0x0, 
-					0x3A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xF, 0x0, 0x0, 0x0, 0x3A, 0x0, 
+					0, 0, 0x85, 0x0, 0x0, 0x0, 0x3A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+					0xF, 0x0, 0x0, 0x0, 0x3A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x87, 0x0, 
+					0x0, 0x0, 0x3A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xF, 0x0, 0x0, 0x0, 
+					0x3A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x7D, 0x0, 0x0, 0x0, 0x3A, 0x0, 
 					0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF, 0x31, 0x0, 0x0, 0x0, 
 					0x1, 0x0, 0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF, 0x31, 0x0, 0x0, 0x0, 0x1, 0x0, 
 					0x0, 0x0, 0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF, 0x53, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 

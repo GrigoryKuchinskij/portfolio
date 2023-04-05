@@ -27,7 +27,7 @@ namespace MJpegStreamViewerProj.ViewModels
         public PageData PageDataObject
         {
             get => _model.PageDataObject;
-            set
+            private set
             {
                 _model.PageDataObject = value;
                 RaisePropertyChanged(nameof(PageDataObject));
@@ -49,10 +49,10 @@ namespace MJpegStreamViewerProj.ViewModels
         }
         public int ChosenChannelIndex
         {
-            get => _model.PageDataObject.ChosenIndex;
+            get => _model.PageDataObject.SelectedIndex;
             set
             {
-                _model.PageDataObject.ChosenIndex = value;
+                _model.PageDataObject.SelectedIndex = value;
                 SelectionChanged();
             }
         }
@@ -60,7 +60,8 @@ namespace MJpegStreamViewerProj.ViewModels
         public bool PlayBtnIsChecked 
         { 
             get => _model.StreamIsActive; 
-            set {
+            set 
+            {
                 if (value)
                     _model.StreamStart();
                 else

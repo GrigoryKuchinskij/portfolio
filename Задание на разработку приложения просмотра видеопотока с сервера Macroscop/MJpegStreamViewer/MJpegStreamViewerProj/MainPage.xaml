@@ -18,14 +18,12 @@
                 <muxc:HyperlinkButton x:Name="ShowExtendedOptionsBtn" Content="Дополнительные настройки" Command="{Binding ShowExtendedOptions}" VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="12" />
                 <muxc:Button x:Name="getChannelsBtn" Content="Получить список каналов" Command="{Binding GetChannels}" IsEnabled="{Binding GetChannelsButtonIsOn}" TabIndex="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
-            <muxc:TextBox x:Name="requestUriTBox" Text="{Binding UriForConfigRequest, Mode=TwoWay}" Header="Введите URL адрес запроса доступных каналов:" Visibility="{Binding PageDataObject.ExtOptions}" PlaceholderText="URL" XYFocusKeyboardNavigation="Auto" TabIndex="1" VerticalAlignment="Bottom" Margin="5,10,5,10"/>
+            <muxc:TextBox x:Name="requestUriTBox" Text="{Binding UriForConfigRequest, Mode=TwoWay}" Header="Введите URL адрес запроса доступных каналов:" Visibility="{Binding PageDataObject.ExtendedOptionsIsOn}" PlaceholderText="URL" XYFocusKeyboardNavigation="Auto" TabIndex="1" VerticalAlignment="Bottom" Margin="5,10,5,10"/>
         </StackPanel>
-        <ListBox ItemsSource="{Binding ChannelsList, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Row="1" SelectedIndex="{Binding ChosenIndex, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="channelsListBox" Margin="0,0,0,0" TabIndex="2">
-            <!--SelectionChanged="NavigateToStreamPage"-->
-        </ListBox>
+        <ListBox ItemsSource="{Binding PageDataObject.ChannelsList, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Row="1" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" x:Name="channelsListBox" Margin="0,0,0,0" TabIndex="2"/>
         <Grid Grid.Row="1" x:Name="shadeListBoxGrid" Visibility="{Binding ShadeIsOn}" Background="Black" Margin="0,0,0,0" Opacity="0.5"/>
         <TextBlock Text="{Binding CenterText, Mode=OneWay}" Grid.Row="1" x:Name="overListBoxCenterText" Visibility="{Binding CenterTextIsOn}" VerticalAlignment="Center" FontSize="30" TextAlignment="Center" Margin="25,0,25,0"/>
         <ProgressRing x:Name="ListProgressRing" Visibility="{Binding ProgressRingIsOn}" IsActive="{Binding ProgressRingIsOn}"  Grid.Row="1" Width="60" Height="60" />
-        <TextBox muxc:Grid.Row="2" x:Name="streamURITBox" Text="{Binding PageDataObject.StreamURI, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding PageDataObject.ExtOptions}"  Header="URL адрес запроса видеопотока с сервера:" PlaceholderText="URL" Margin="10,10,10,10" VerticalAlignment="Center" TabIndex="3" Height="55" />
+        <TextBox muxc:Grid.Row="2" x:Name="streamURITBox" Text="{Binding PageDataObject.StreamURI, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding PageDataObject.ExtendedOptionsIsOn}"  Header="URL адрес запроса видеопотока с сервера:" PlaceholderText="URL" Margin="10,10,10,10" VerticalAlignment="Center" TabIndex="3" Height="55" />
     </Grid>
 </Page>

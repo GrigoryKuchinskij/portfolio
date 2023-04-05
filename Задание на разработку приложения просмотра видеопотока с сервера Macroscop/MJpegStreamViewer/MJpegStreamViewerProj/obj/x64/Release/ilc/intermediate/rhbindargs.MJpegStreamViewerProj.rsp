@@ -6,12 +6,12 @@
 "/nativeLink:C:\Users\grigory\.nuget\packages\runtime.win10-x64.microsoft.net.native.compiler\2.2.10-rel-29722-00\tools\x64\ilc\lib\Native\vmath.lib"
 /customImports
 /methodBodyFolding
-"E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\MDIL\MJpegStreamViewerProj.mdilexe"
-"/i:E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\MDIL"
-"/out:E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\Native\MJpegStreamViewerProj.exe"
-"/pdbAltPath:E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc"
-"/res:E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\Native.res"
+"E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\MDIL\MJpegStreamViewerProj.mdilexe"
+"/i:E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\MDIL"
+"/out:E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\Native\MJpegStreamViewerProj.exe"
+"/pdbAltPath:E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\bin\x64\Release\ilc"
+"/res:E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\Native.res"
 "/i:C:\Users\grigory\.nuget\packages\runtime.win10-x64.microsoft.net.native.sharedlibrary\2.2.8-rel-29722-00\tools\SharedLibrary\ret\MDIL"
 /shimexe
 "/classlib:SharedLibrary"
-"/sourcelink:E:\macroscop-alpha\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\ILTransformed\Prism.srclink"
+"/sourcelink:E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewer\MJpegStreamViewerProj\obj\x64\Release\ilc\intermediate\ILTransformed\Prism.srclink"
