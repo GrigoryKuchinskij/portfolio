@@ -131,8 +131,8 @@ namespace PolygonConsoleApp
                     }
                     segmentsList.Add(new Segment
                     {
-                        P1 = new Point { X = XBegSeg, Y = YBegSeg },
-                        P2 = new Point { X = XEndSeg, Y = YEndSeg }
+                        Point1 = new Point { X = XBegSeg, Y = YBegSeg },
+                        Point2 = new Point { X = XEndSeg, Y = YEndSeg }
                     });
                 }
             }
