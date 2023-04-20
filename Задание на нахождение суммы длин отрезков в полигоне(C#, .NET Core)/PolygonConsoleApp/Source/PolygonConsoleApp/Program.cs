@@ -8,23 +8,23 @@ namespace PolygonConsoleApp
 {
     class Program
     {
+        readonly static string shortHelpMessage = "\r\n Приложение рассчитывает сумму длин частей отрезков, находящихся внутри многоугольника. " +
+                "\r\n Координаты отрезков и углов многоугольника задаются в файлах \"segments.csv\" и \"polygonPoints.csv\", находящихся в папке с программой." +
+                "\r\n Вы также можете самостоятельно задать пути к файлам передав их в качестве аргументов. " +
+                "\r\n Пример:> ./PolygonConsoleApp.exe s=\"C:\\Temp\\Координаты_отрезков.csv\" p=\"C:\\Temp\\Координаты_углов_многоугольника.csv\"" +
+                "\r\n Приложение может работать с выпуклыми и невыпуклыми многоугольниками без самопересечений." +
+                "\r\n \r\n [ Enter ] для расчета | [ H ] для дополнительной информации | [ X ] для выхода\r\n>>";
+        readonly static string extendedHelpMessage = "\r\n Координаты отрезков задаются построчно (по ум. в файле \"segments.csv\")." +
+            "\r\n Формат: {X начала отрезка};{Y начала отрезка};{X конца отрезка};{Y конца отрезка} " +
+            "\r\n Пример строки: 62,076745;79,945621;64,819002;84,763976" +
+            "\r\n Координаты углов многоугольника задаются построчно (по ум. в файле \"polygonPoints.csv\"). Формат: {X точки};{Y точки}" +
+            "\r\n Пример строки: 62,76284217;79,61893362" +
+            "\r\n Углы многоугольника описываются последовательно, вдоль его границы.\r\n>>";
+
         static void Main(string[] args)
         {
             string polygonPointsFilePath = @"polygonPoints.csv";
             string segmentsFilePath = @"segments.csv";
-            bool noComments = false;                     //Выдать результат сразу
-            string startMessage = "\r\n Приложение рассчитывает сумму длин частей отрезков, находящихся внутри многоугольника. " +
-                "\r\n Координаты отрезков и углов многоугольника задаются в файлах \"segments.csv\" и \"polygonPoints.csv\", находящихся в папке с программой." +
-                "\r\n Вы также можете самостоятельно задать пути к файлам передав их в качестве аргументов. " +
-                "\r\n Пример:> ./PolygonConsoleApp.exe s=\"C:\\Temp\\Координаты_отрезков.csv\" p=\"C:\\Temp\\Координаты_углов_многоугольника.csv\"" +
-                "\r\n Приложение может работать с выпуклыми и невыпуклыми многоугольниками без самопересечений."+
-                "\r\n \r\n [ Enter ] для расчета | [ H ] для дополнительной информации | [ X ] для выхода\r\n>>";
-            string helpMessage = "\r\n Координаты отрезков задаются построчно (по ум. в файле \"segments.csv\")." +
-                "\r\n Формат: {X начала отрезка};{Y начала отрезка};{X конца отрезка};{Y конца отрезка} " +
-                "\r\n Пример строки: 62,076745;79,945621;64,819002;84,763976" +
-                "\r\n Координаты углов многоугольника задаются построчно (по ум. в файле \"polygonPoints.csv\"). Формат: {X точки};{Y точки}" +
-                "\r\n Пример строки: 62,76284217;79,61893362" +
-                "\r\n Углы многоугольника описываются последовательно, вдоль его границы.\r\n>>";
 
             foreach (string arg in args)
             {
@@ -36,27 +36,19 @@ namespace PolygonConsoleApp
                     case "p=":
                         polygonPointsFilePath = arg.Substring(2).Trim(new char[] { ' ', '"' });
                         break;
-                    case "-c":                      //Аргумент для запуска программы без доп. комментариев
-                        noComments = true;
-                        break;
                 }
             }
 
-            if (!noComments) Console.Write(startMessage);
 
-            ConsoleKey key = ConsoleKey.Enter;
+            Console.Write(shortHelpMessage);
 
             while (true)
             {
-                if (!noComments)
-                {
-                    key = Console.ReadKey().Key;
-                }
-                switch (key)
+                switch (Console.ReadKey().Key)
                 {
                     case ConsoleKey.H:
                         Console.Clear();
-                        Console.Write(startMessage + helpMessage);
+                        Console.Write(shortHelpMessage + extendedHelpMessage);
                         break;
                     case ConsoleKey.X:
                         Environment.Exit(0);
@@ -70,25 +62,20 @@ namespace PolygonConsoleApp
                             Segment[] lines = ConvertToSegment(segmentsList);
                             double summ = CalcGeometricIntersections.CalcSegmentsSummInPoly(polyPoints, lines);
                             Console.Clear();
-                            Console.WriteLine(startMessage + summ);
-                            if (noComments)
-                                Environment.Exit(0);
+                            Console.WriteLine(shortHelpMessage + summ);
                         }
                         catch
                         {
-                            if (noComments)
-                            { Console.WriteLine("ER_READCSV"); Environment.Exit(-1); }
-                            else
-                            {
-                                Console.WriteLine("Ошибка распознавания *.csv файлов!" +
-                              "\r\n Нажмите любую клавишу для выхода из приложения. "); Console.ReadKey(); Environment.Exit(-1);
-                            }
+                            Console.WriteLine("Ошибка распознавания *.csv файлов!" +
+                                "\r\n Нажмите любую клавишу для выхода из приложения. ");
+                            Console.ReadKey();
+                            Environment.Exit(-1);
                         }
                         GC.Collect();
                         break;
                     default:
                         Console.Clear();
-                        Console.Write(startMessage);
+                        Console.Write(shortHelpMessage);
                         break;
                 }
             }
@@ -147,7 +134,7 @@ namespace PolygonConsoleApp
                         P1 = new Point { X = XBegSeg, Y = YBegSeg },
                         P2 = new Point { X = XEndSeg, Y = YEndSeg }
                     });
-                }            
+                }
             }
             return segmentsList.ToArray();
         }
