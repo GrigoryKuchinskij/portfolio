@@ -69,17 +69,11 @@ namespace PalindromeCheckClient.Models
                     foreach (FileDataItem dataItem in _observableFileDataCollection)
                         if (dataItem.IsProcessed == false)
                             unProcd++;                                                  //считать необработанные строки
-                    if (unProcd > 0)                                                    //если есть необработанные строки
-                    {
-                        availableTreads = Math.Min(unProcd, availableTreads);
-                        OccupiedTreads = 0;
-                        index = 0;                                                          //начать с начала
-                        continue;
-                    }
-                    else                                                                //и если все строки обработаны
-                    {
-                        break;                                                          //закончить
-                    };
+                    if (unProcd == 0) break;                                            //и если все строки обработаны закончить
+                    availableTreads = Math.Min(unProcd, availableTreads);               //если есть необработанные строки
+                    OccupiedTreads = 0;
+                    index = 0;                                                          //начать с начала
+                    continue;
                 };
 
                 if (limitReached && availableTreads == -1)                              //если сервер перегружался и число доступных потоков ещё не задано
@@ -109,7 +103,8 @@ namespace PalindromeCheckClient.Models
                     ReceiveHtml(request, out string html);                              //отправка запроса к серверу и получение ответной строки
                     ParseHtml(html, out string recivedAnswer, out int recivedIndex);    //распознавание из строки индекса и ответа
                     ProcessAnswerAndShow(recivedAnswer, recivedIndex);                  //обработка ответа и вывод в строку datagrid
-                })){ IsBackground = true };
+                }))
+                { IsBackground = true };
 
                 thread.Start();
 
@@ -178,41 +173,39 @@ namespace PalindromeCheckClient.Models
 
         private void ProcessAnswerAndShow(string answer, int ind)
         {
-            if (ind != -1)                                                  //если отсутствует ошибка
+            if (ind == -1) return;                                              //если присутствует ошибка
+            dispatcher.Invoke(new Action(() =>
             {
-                dispatcher.Invoke(new Action(() =>
+                while (_palindromeStatusObservableCollection.Count <= ind)
+                    _palindromeStatusObservableCollection.Add(new PalindromeStatusItem { Value = "<Ожидание сервера>" });
+            }));
+            if (answer.Contains("wait="))                               //если сервер перегружен
+            {
+                if (!limitReached)                                      //если сервер еще не перегружался
                 {
-                    while (_palindromeStatusObservableCollection.Count <= ind)
-                        _palindromeStatusObservableCollection.Add(new PalindromeStatusItem { Value = "<Ожидание сервера>" });
-                }));
-                if (answer.Contains("wait="))                               //если сервер перегружен
-                {
-                    if (!limitReached)                                      //если сервер еще не перегружался
+                    if (Int32.TryParse(answer.Substring(5), out int time))
                     {
-                        if (Int32.TryParse(answer.Substring(5), out int time))
-                        {
-                            TranslateAnswer(ref answer);                    //перевод ответа для вывода в datagrid
-                            waitServ = time * 1000;                         //задать значение задержки отправки запросов
-                            limitReached = true;                            //флаг: сервер был перегружен
-                        };
-                    };
-                }
-                else
-                {
-                    if (ind <= _palindromeStatusObservableCollection.Count && ind <= _observableFileDataCollection.Count && _observableFileDataCollection[ind].IsProcessed == false)
-                    {                                                       //отбрасываются обработанные строки и строки вне диапазона 
-                        dispatcher.Invoke(new Action(() =>
-                        {
-                            TranslateAnswer(ref answer);                    //перевод ответа для вывода в datagrid
-
-                            _palindromeStatusObservableCollection[ind] = new PalindromeStatusItem { Value = answer };
-                            //вставка ответа в datagrid
-                            _observableFileDataCollection[ind].IsProcessed = true;        //пометить строку как обработанную
-                        }));
+                        TranslateAnswer(ref answer);                    //перевод ответа для вывода в datagrid
+                        waitServ = time * 1000;                         //задать значение задержки отправки запросов
+                        limitReached = true;                            //флаг: сервер был перегружен
                     };
                 };
-                RaisePropertyChanged(nameof(MainWindowViewModel.PalindromeStatusDGItems));
             }
+            else
+            {
+                if (ind <= _palindromeStatusObservableCollection.Count && ind <= _observableFileDataCollection.Count && _observableFileDataCollection[ind].IsProcessed == false)
+                {                                                       //отбрасываются обработанные строки и строки вне диапазона 
+                    dispatcher.Invoke(new Action(() =>
+                    {
+                        TranslateAnswer(ref answer);                    //перевод ответа для вывода в datagrid
+
+                        _palindromeStatusObservableCollection[ind] = new PalindromeStatusItem { Value = answer };
+                        //вставка ответа в datagrid
+                        _observableFileDataCollection[ind].IsProcessed = true;        //пометить строку как обработанную
+                    }));
+                };
+            };
+            RaisePropertyChanged(nameof(MainWindowViewModel.PalindromeStatusDGItems));
         }
 
         private static void TranslateAnswer(ref string answer)
