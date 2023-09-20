@@ -1,0 +1,20 @@
+﻿MJpegStreamViewerWPF
+1.0.0.0
+
+winexe
+C#
+.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\
+MJpegStreamViewerWPF
+none
+false
+TRACE;RELEASE;NET;NET6_0;NETCOREAPP;HAS_UNO;UNO_HAS_FRAMEWORKELEMENT_MEASUREOVERRIDE;UNO_HAS_NO_IDEPENDENCYOBJECT;UNO_REFERENCE_API
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\App.xaml
+41177200818
+
+16-1133569513
+211-878010593
+MainWindow.xaml;Utilities\DataTemplate.xaml;Views\HomePage.xaml;Views\StreamPage.xaml;
+
+False
+

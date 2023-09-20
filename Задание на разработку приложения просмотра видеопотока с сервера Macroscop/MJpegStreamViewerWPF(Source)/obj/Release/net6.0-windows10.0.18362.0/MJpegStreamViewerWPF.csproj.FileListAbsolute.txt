@@ -1,0 +1,101 @@
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.csproj.AssemblyReference.cache
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\App.g.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF_MarkupCompile.cache
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF_MarkupCompile.lref
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.exe
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.deps.json
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.runtimeconfig.json
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.pdb
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\Prism.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\Microsoft.Windows.SDK.NET.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\WinRT.Runtime.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\GeneratedInternalTypeHelper.g.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\App.baml
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.g.resources
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.GeneratedMSBuildEditorConfig.editorconfig
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.AssemblyInfoInputs.cache
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.AssemblyInfo.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.csproj.CoreCompileInputs.cache
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.csproj.CopyComplete
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\refint\MJpegStreamViewerWPF.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.pdb
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.genruntimeconfig.cache
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\ref\MJpegStreamViewerWPF.dll
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.exe
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.deps.json
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.runtimeconfig.json
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.dll
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.pdb
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\Prism.dll
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\Microsoft.Windows.SDK.NET.dll
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\WinRT.Runtime.dll
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.csproj.AssemblyReference.cache
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\App.g.cs
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\GeneratedInternalTypeHelper.g.cs
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF_MarkupCompile.cache
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF_MarkupCompile.lref
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\App.baml
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.g.resources
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.GeneratedMSBuildEditorConfig.editorconfig
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.AssemblyInfoInputs.cache
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.AssemblyInfo.cs
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.csproj.CoreCompileInputs.cache
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.csproj.CopyComplete
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.dll
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\refint\MJpegStreamViewerWPF.dll
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.pdb
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.genruntimeconfig.cache
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\ref\MJpegStreamViewerWPF.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.Properties.Resources.resources
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.csproj.GenerateResource.cache
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\ControlzEx.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\Microsoft.Xaml.Behaviors.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\de\MahApps.Metro.resources.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\Views\MainWindow.g.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\Views\MainWindow.baml
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\Styles\Button.baml
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\Styles\Text.baml
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\Views\MainWindow.g.cs
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\ControlzEx.dll
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.dll
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\Microsoft.Xaml.Behaviors.dll
+E:\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\de\MahApps.Metro.resources.dll
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\Views\MainWindow.baml
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.Properties.Resources.resources
+E:\MJpegStreamViewerWPF\obj\Release\net6.0-windows10.0.18362.0\MJpegStreamViewerWPF.csproj.GenerateResource.cache
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.BootstrapIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.BoxIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Codicons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Coolicons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Core.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Entypo.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.EvaIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.FeatherIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.FileIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.FontAwesome.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Fontaudio.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Fontisto.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.ForkAwesome.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Ionicons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.JamIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Material.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.MaterialDesign.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.MaterialLight.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Microns.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Modern.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Octicons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.PicolIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.PixelartIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.RPGAwesome.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.RadixIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.RemixIcon.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.SimpleIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Typicons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Unicons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.VaadinIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.WeatherIcons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.Zondicons.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\bin\Release\net6.0-windows10.0.18362.0\MahApps.Metro.IconPacks.dll

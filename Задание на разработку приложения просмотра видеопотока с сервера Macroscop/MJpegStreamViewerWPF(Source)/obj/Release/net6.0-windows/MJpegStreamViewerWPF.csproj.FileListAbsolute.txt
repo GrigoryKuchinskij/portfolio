@@ -1,0 +1,15 @@
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\MJpegStreamViewerWPF.csproj.AssemblyReference.cache
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\MainWindow.g.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\Views\HomePage.g.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\Views\StreamPage.g.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\App.g.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\MJpegStreamViewerWPF_MarkupCompile.cache
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\MJpegStreamViewerWPF_MarkupCompile.lref
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\App.baml
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\MainWindow.baml
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\Views\HomePage.baml
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\Views\StreamPage.baml
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\MJpegStreamViewerWPF.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\refint\MJpegStreamViewerWPF.dll
+E:\portfclone\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\MJpegStreamViewerWPF\obj\Release\net6.0-windows\MJpegStreamViewerWPF.pdb

@@ -1,0 +1,90 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewerWPF\\MJpegStreamViewerWPF.csproj": {}
+  },
+  "projects": {
+    "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewerWPF\\MJpegStreamViewerWPF.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewerWPF\\MJpegStreamViewerWPF.csproj",
+        "projectName": "MJpegStreamViewerWPF",
+        "projectPath": "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewerWPF\\MJpegStreamViewerWPF.csproj",
+        "packagesPath": "C:\\Users\\grigory\\.nuget\\packages\\",
+        "outputPath": "E:\\portfclone\\Задание на разработку приложения просмотра видеопотока с сервера Macroscop\\MJpegStreamViewerWPF\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\grigory\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows10.0.18362.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows10.0.18362": {
+            "targetAlias": "net6.0-windows10.0.18362.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows10.0.18362": {
+          "targetAlias": "net6.0-windows10.0.18362.0",
+          "dependencies": {
+            "Prism.Core": {
+              "target": "Package",
+              "version": "[8.1.97, )"
+            },
+            "System.IO": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.Windows.SDK.NET.Ref",
+              "version": "[10.0.18362.29, 10.0.18362.29]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Windows.SDK.NET.Ref": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

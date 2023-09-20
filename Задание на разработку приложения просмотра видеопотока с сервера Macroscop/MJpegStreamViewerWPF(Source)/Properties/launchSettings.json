@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MJpegStreamViewerWPF": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
