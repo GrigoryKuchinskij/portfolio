@@ -1,0 +1,15 @@
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Debug\net8.0\PolygonConsoleApp.exe
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Debug\net8.0\PolygonConsoleApp.deps.json
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Debug\net8.0\PolygonConsoleApp.runtimeconfig.json
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Debug\net8.0\PolygonConsoleApp.dll
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\bin\Debug\net8.0\PolygonConsoleApp.pdb
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\PolygonConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\PolygonConsoleApp.AssemblyInfoInputs.cache
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\PolygonConsoleApp.AssemblyInfo.cs
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\PolygonConsoleApp.csproj.CoreCompileInputs.cache
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\PolygonConsoleApp.sourcelink.json
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\PolygonConsoleApp.dll
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\refint\PolygonConsoleApp.dll
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\PolygonConsoleApp.pdb
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\PolygonConsoleApp.genruntimeconfig.cache
+E:\portfolio\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\PolygonConsoleApp\Source\PolygonConsoleApp\obj\Debug\net8.0\ref\PolygonConsoleApp.dll

@@ -39,7 +39,6 @@ namespace PolygonConsoleApp
                 }
             }
 
-
             Console.Write(shortHelpMessage);
 
             while (true)
@@ -56,11 +55,9 @@ namespace PolygonConsoleApp
                     case ConsoleKey.Enter:
                         try
                         {
-                            List<string[]> polygonPointsList = ReadCSVFile(polygonPointsFilePath);
-                            List<string[]> segmentsList = ReadCSVFile(segmentsFilePath);
-                            Point[] polyPoints = ConvertToPoint(polygonPointsList);
-                            Segment[] lines = ConvertToSegment(segmentsList);
-                            double summ = CalcGeometricIntersections.CalcSegmentsSummInPoly(polyPoints, lines);
+                            Point[] polyPoints = ReadPoints(polygonPointsFilePath);
+                            Segment[] segments = ReadSegments(segmentsFilePath);                            
+                            double summ = GeometricIntersections.CalcSegmentsLengthSummInPoly(polyPoints, segments);
                             Console.Clear();
                             Console.WriteLine(shortHelpMessage + summ);
                         }
@@ -81,6 +78,20 @@ namespace PolygonConsoleApp
             }
         }
 
+        private static Point[] ReadPoints(string pointsFilePath) 
+        {
+            List<string[]> pointsList = ReadCSVFile(pointsFilePath);
+            Point[] points = GeometricConversions.ConvertToPoint(pointsList);
+            return points;
+        }
+
+        private static Segment[] ReadSegments(string segmentsFilePath)
+        {
+            List<string[]> segmentsList = ReadCSVFile(segmentsFilePath);
+            Segment[] segments = GeometricConversions.ConvertToSegment(segmentsList);
+            return segments;
+        }
+
         private static List<string[]> ReadCSVFile(string pathToCsvFile)
         {
             using (StreamReader reader = new StreamReader(pathToCsvFile, Encoding.Default))
@@ -94,49 +105,6 @@ namespace PolygonConsoleApp
                 }
                 return CSVList;
             }
-        }
-
-        private static Point[] ConvertToPoint(List<string[]> pointsList)
-        {
-            Point[] pointsArray = new Point[pointsList.Count];
-            for (int i = 0; i < pointsList.Count; i++)
-            {
-                if (pointsList[i].Length == 2)
-                {
-                    pointsArray[i] = new Point { X = Convert.ToDouble(pointsList[i][0]), Y = Convert.ToDouble(pointsList[i][1]) };
-                }
-            }
-            return pointsArray;
-        }
-
-        private static Segment[] ConvertToSegment(List<string[]> segmentsStringsList)
-        {
-            List<Segment> segmentsList = new List<Segment>();
-            for (int i = 0; i < segmentsStringsList.Count; i++)
-            {
-                if (segmentsStringsList[i].Length == 4)
-                {
-                    double XBegSeg = Convert.ToDouble((string)segmentsStringsList[i][0]);
-                    double YBegSeg = Convert.ToDouble((string)segmentsStringsList[i][1]);
-                    double XEndSeg = Convert.ToDouble((string)segmentsStringsList[i][2]);
-                    double YEndSeg = Convert.ToDouble((string)segmentsStringsList[i][3]);
-                    if (XBegSeg > XEndSeg)                                                                  //если X координата первой точки больше X второй 
-                    {
-                        (XBegSeg, XEndSeg) = (XEndSeg, XBegSeg);
-                        (YBegSeg, YEndSeg) = (YEndSeg, YBegSeg);
-                    }   //обмен координат точек отрезка
-                    else if (XBegSeg == XEndSeg && YBegSeg > YEndSeg)                                       //если X координаты равны, а Y координата первой точки больше Y второй 
-                    {
-                        (YBegSeg, YEndSeg) = (YEndSeg, YBegSeg);
-                    }
-                    segmentsList.Add(new Segment
-                    {
-                        Point1 = new Point { X = XBegSeg, Y = YBegSeg },
-                        Point2 = new Point { X = XEndSeg, Y = YEndSeg }
-                    });
-                }
-            }
-            return segmentsList.ToArray();
         }
     }
 }

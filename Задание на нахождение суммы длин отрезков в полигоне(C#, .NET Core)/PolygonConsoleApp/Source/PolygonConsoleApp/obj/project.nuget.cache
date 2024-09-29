@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "amG3nKJwIMeHNKFG5OtiVvKkyhyi3382NcKx00ha4ZnoeWPu8c+nQuVhP2m3flPB1iP9U2u3VTThuMtyyG5C8w==",
+  "dgSpecHash": "NjSP5481F2A=",
   "success": true,
-  "projectFilePath": "E:\\portfclone\\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\PolygonConsoleApp.csproj",
+  "projectFilePath": "E:\\portfolio\\Задание на нахождение суммы длин отрезков в полигоне(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\PolygonConsoleApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\grigory\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+    "C:\\Users\\Grigory\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Grigory\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Grigory\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Grigory\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
   ],
   "logs": []
 }

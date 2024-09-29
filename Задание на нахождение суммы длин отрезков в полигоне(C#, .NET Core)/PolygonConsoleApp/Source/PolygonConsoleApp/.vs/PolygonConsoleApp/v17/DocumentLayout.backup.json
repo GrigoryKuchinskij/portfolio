@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|e:\\portfolio\\\u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(c#, .net core)\\polygonconsoleapp\\source\\polygonconsoleapp\\geometricintersections.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|solutionrelative:geometricintersections.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|e:\\portfolio\\\u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(c#, .net core)\\polygonconsoleapp\\source\\polygonconsoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|e:\\portfolio\\\u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(c#, .net core)\\polygonconsoleapp\\source\\polygonconsoleapp\\geometricconversions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|solutionrelative:geometricconversions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|e:\\portfolio\\\u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(c#, .net core)\\polygonconsoleapp\\source\\polygonconsoleapp\\polygonconsoleapp.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|solutionrelative:polygonconsoleapp.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|e:\\portfolio\\\u0437\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(c#, .net core)\\polygonconsoleapp\\source\\polygonconsoleapp\\geometricobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C77820C5-6AC0-432D-8911-2AF1681BFF8D}|PolygonConsoleApp.csproj|solutionrelative:geometricobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GeometricConversions.cs",
+              "DocumentMoniker": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\GeometricConversions.cs",
+              "RelativeDocumentMoniker": "GeometricConversions.cs",
+              "ToolTip": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\GeometricConversions.cs",
+              "RelativeToolTip": "GeometricConversions.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T09:05:23.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PolygonConsoleApp",
+              "DocumentMoniker": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\PolygonConsoleApp.csproj",
+              "RelativeDocumentMoniker": "PolygonConsoleApp.csproj",
+              "ToolTip": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\PolygonConsoleApp.csproj",
+              "RelativeToolTip": "PolygonConsoleApp.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-27T14:53:03.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GeometricObjects.cs",
+              "DocumentMoniker": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\GeometricObjects.cs",
+              "RelativeDocumentMoniker": "GeometricObjects.cs",
+              "ToolTip": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\GeometricObjects.cs",
+              "RelativeToolTip": "GeometricObjects.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-22T15:19:51.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GeometricIntersections.cs",
+              "DocumentMoniker": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\GeometricIntersections.cs",
+              "RelativeDocumentMoniker": "GeometricIntersections.cs",
+              "ToolTip": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\GeometricIntersections.cs",
+              "RelativeToolTip": "GeometricIntersections.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAAAkAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-22T15:19:51.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\portfolio\\\u0417\u0430\u0434\u0430\u043D\u0438\u0435 \u043D\u0430 \u043D\u0430\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u0441\u0443\u043C\u043C\u044B \u0434\u043B\u0438\u043D \u043E\u0442\u0440\u0435\u0437\u043A\u043E\u0432 \u0432 \u043F\u043E\u043B\u0438\u0433\u043E\u043D\u0435(C#, .NET Core)\\PolygonConsoleApp\\Source\\PolygonConsoleApp\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-22T15:19:51.903Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
